@@ -1,1 +1,2 @@
-#Innatera Plugin
+
+# Innatera IDE

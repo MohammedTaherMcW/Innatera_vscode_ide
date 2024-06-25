@@ -6,8 +6,7 @@
  * the root directory of this source tree.
  */
 
-import * as pioNodeHelpers from 'platformio-node-helpers';
-// import PlatformIOCoreStage  from 'platformio-node-helpers_1/src/installer/stages/platformio-core' ;
+import * as pioNodeHelpers from 'Innatera-node-helpers';
 
 import PIOHome from '../home';
 import { PIO_CORE_VERSION_SPEC } from '../constants';

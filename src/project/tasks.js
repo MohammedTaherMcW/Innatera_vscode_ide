@@ -12,6 +12,7 @@ import { getProjectItemState, updateProjectItemState } from './helpers';
 import ProjectTasksTreeProvider from './task-tree';
 import { extension } from '../main';
 import path from 'path';
+import PIOCustom from '../custom';
 import vscode from 'vscode';
 
 export default class ProjectTaskManager {
@@ -23,6 +24,7 @@ export default class ProjectTaskManager {
     this.projectDir = projectDir;
     this.projectObserver = projectObserver;
     this.subscriptions = [];
+    this.PIOCustom = new PIOCustom();
 
     this._sid = Math.random();
     this._multienvTaskExplorer = false;
@@ -254,7 +256,6 @@ export default class ProjectTaskManager {
       );
       this.runTask(candidates[0]);
     };
-
     this.subscriptions.push(
       vscode.commands.registerCommand('platformio-ide.build', () => _runTask('Build')),
       vscode.commands.registerCommand('platformio-ide.upload', () =>
@@ -268,6 +269,9 @@ export default class ProjectTaskManager {
       vscode.commands.registerCommand('platformio-ide.serialMonitor', () =>
         _runTask('Monitor'),
       ),
+      vscode.commands.registerCommand('platformio-ide.custom', () =>
+        this.PIOCustom.toggle(),
+      ),      
     );
   }
 

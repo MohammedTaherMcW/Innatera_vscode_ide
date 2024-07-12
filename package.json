@@ -164,6 +164,13 @@
         "enablement": "pioProjectTasksReady"
       },
       {
+        "command": "platformio-ide.custom",
+        "title": "Custom",
+        "category": "PlatformIO",
+        "icon": "$(arrow-left)",
+        "enablement": "pioProjectTasksReady"
+      },
+      {
         "command": "platformio-ide.upload",
         "title": "Upload",
         "category": "PlatformIO",
@@ -491,10 +498,15 @@
           "when": "pioProjectReady && config.platformio-ide.showEditorTitleShortcuts",
           "group": "pio_run@2"
         },
-        {
+        {  
           "command": "platformio-ide.clean",
           "when": "pioProjectReady && config.platformio-ide.showEditorTitleShortcuts",
           "group": "pio_run@3"
+        },
+        {
+          "command": "platformio-ide.custom",
+          "when": "pioProjectReady && config.platformio-ide.showEditorTitleShortcuts",
+          "group": "pio_run@0"
         }
       ],
       "editor/title": [

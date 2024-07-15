@@ -58,38 +58,22 @@ export default class PIOCustom {
 
     try {
       panel.webview.html = await this.getWebviewContent();
-      console.log(panel.webview.html)
     } catch (err) {
       if (!err.toString().includes('Webview is disposed')) {
         notifyError('Start PIO Home Server', err);
       }
     }
-
-    //TODO: Implement the WebView  communication 
-    panel.webview.onDidReceiveMessage(
-      
-      async (msg) => {
-        console.log("Message from the WebView",msg);
-        switch (msg.command) {
-          case 'performSubmit':
-            if (!msg.value) break;
-            context.workspaceState.update('reactLabyrinth', msg.value);
-            panel.webview.postMessage(
-              {
-                type: 'parsed-data',
-                value: msg.value, // tree object
-                settings: vscode.workspace.getConfiguration('reactLabyrinth')
-              });
-              console.log("Message from the WebView",msg.value);
-                break;
-              }
+     panel.webview.onDidReceiveMessage(
+       message => {
+          switch (message.command) {
+            case 'RetrieveTargets':
+              vscode.window.showInformationMessage(message.text);
+              return;
+          }
         },
         undefined,
-        this.subscriptions,
-  );
-
-    
-
+        this.subscriptions
+      );
 
     return panel;
   }
@@ -174,15 +158,16 @@ export default class PIOCustom {
     <input type="text" id="myInput" name="myInput">
   </form>
   <br>
-  <input type="submit" value="Submit" id="submitButton">
+  <input type="button" value="Submit" id="submitButton">
   <script>
-    document.getElementById('myForm').addEventListener('submit', function (event) {
+    const vscode = acquireVsCodeApi();
+    document.getElementById('submitButton').addEventListener('click', function (event) {
       event.preventDefault();
       let value = document.getElementById('myInput').value;
       console.log(value);
       vscode.postMessage({
-        command: 'performSubmit',
-        value: value
+        command: 'RetrieveTargets',
+        'text': value
       });
     });
     document.getElementById('submitButton').style.display = 'block';

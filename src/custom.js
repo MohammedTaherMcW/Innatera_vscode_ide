@@ -6,7 +6,6 @@ import { extension } from './main';
 import path from 'path';
 import vscode from 'vscode';
 
-
 export default class PIOCustom {
   static defaultStartUrl = '/';
 
@@ -16,7 +15,9 @@ export default class PIOCustom {
     this._lastStartUrl = PIOCustom.defaultStartUrl;
 
     this.subscriptions.push(
-      vscode.workspace.onDidChangeWorkspaceFolders(this.disposePanel.bind(this)),
+      vscode.workspace.onDidChangeWorkspaceFolders(
+        this.disposePanel.bind(this),
+      ),
     );
   }
 
@@ -28,8 +29,11 @@ export default class PIOCustom {
     try {
       if (this._currentPanel) {
         if (this._lastStartUrl !== startUrl) {
-          this._currentPanel.webview.html = await this.getWebviewContent();
+          this._currentPanel.webview.html = await this.getWebviewContent(
+            startUrl,
+          );
         }
+
         return this._currentPanel.reveal(column);
       }
     } catch (err) {
@@ -39,47 +43,18 @@ export default class PIOCustom {
     this._currentPanel = await this.newPanel(startUrl);
   }
 
-  async newPanel(startUrl) {
-    const panel = vscode.window.createWebviewPanel(
-      'pioHome',
-      extension.getEnterpriseSetting('pioHomeTitle', 'Custom Targets'),
-      vscode.ViewColumn.One,
-      {
-        enableScripts: true,
-        retainContextWhenHidden: true,
-      },
-    );
-
-    this.subscriptions.push(panel.onDidDispose(this.onPanelDisposed.bind(this)));
-
-    panel.iconPath = vscode.ThemeIcon.File;
-
-    panel.webview.html = this.getLoadingContent();
-
-    try {
-      panel.webview.html = await this.getWebviewContent();
-    } catch (err) {
-      if (!err.toString().includes('Webview is disposed')) {
-        notifyError('Start PIO Home Server', err);
-      }
-    }
-     panel.webview.onDidReceiveMessage(
-       message => {
-          switch (message.command) {
-            case 'RetrieveTargets':
-              vscode.window.showInformationMessage(message.text);
-              return;
-          }
-        },
-        undefined,
-        this.subscriptions
-      );
-
-    return panel;
+  static async shutdownAllServers() {
+    await pioNodeHelpers.custom.shutdownServer();
+    await pioNodeHelpers.custom.shutdownAllServers();
   }
 
   disposePanel() {
-    disposeSubscrictions(this.subscriptions);
+    if (!this._currentPanel) {
+      return;
+    }
+
+    this._currentPanel.dispose();
+    this._currentPanel = undefined;
   }
 
   onPanelDisposed() {
@@ -87,17 +62,67 @@ export default class PIOCustom {
   }
 
   dispose() {
-    pioNodeHelpers.home.shutdownServer();
+    pioNodeHelpers.custom.shutdownServer();
     this.disposePanel();
     disposeSubscriptions(this.subscriptions);
   }
 
+  async newPanel(startUrl) {
+    const panel = vscode.window.createWebviewPanel(
+      'pioHome',
+      extension.getEnterpriseSetting('pioHomeTitle', 'PIO Custom'),
+      vscode.ViewColumn.One,
+      {
+        enableScripts: true,
+        retainContextWhenHidden: true,
+      },
+    );
+
+    this.subscriptions.push(
+      panel.onDidDispose(this.onPanelDisposed.bind(this)),
+    );
+
+    panel.iconPath = vscode.Uri.file(
+      path.join(
+        extension.context.extensionPath,
+        'assets',
+        'images',
+        'platformio-mini-logo.svg',
+      ),
+    );
+
+    panel.webview.html = this.getLoadingContent();
+
+    try {
+      panel.webview.html = await this.getWebviewContent(startUrl);
+    } catch (err) {
+      if (!err.toString().includes('Webview is disposed')) {
+        notifyError('Start PIO Home Server', err);
+      }
+    }
+
+    panel.webview.onDidReceiveMessage(
+      message => {
+        switch (message.command) {
+          case 'RetrieveTargets':
+            vscode.window.showInformationMessage(message.text);
+            return;
+        }
+      },
+      undefined,
+      this.subscriptions,
+    );
+
+    return panel;
+  }
+
   getLoadingContent() {
-    const theme = "light";
-    console.log("Theme is ", theme);
+    const theme = this.getTheme();
     return `<!DOCTYPE html>
     <html lang="en">
-    <body style="background-color: ${theme === 'light' ? '#FFF' : '#1E1E1E'}">
+    <body style="background-color: ${
+      theme === 'light' ? '#FFF' : '#1E1E1E'
+    }">
       <div style="padding: 15px;">Loading...</div>
     </body>
     </html>`;
@@ -110,75 +135,121 @@ export default class PIOCustom {
       : 'dark';
   }
 
-  async getWebviewContent() {
-    const theme = "dark";
-    console.log(theme);
-    return `<!DOCTYPE html>
-<html lang="en">
+  async getWebviewContent(startUrl) {
+    this._lastStartUrl = startUrl;
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Custom Targets</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      text-align: center;
-      margin-top: 100px;
-    }
-    h1 {
-      font-size: 24px;
-      margin-bottom: 20px;
-    }
-    form {
-      display: inline-block;
-      margin-bottom: 20px;
-    }
-    input[type="text"] {
-      padding: 5px;
-      width: 300px;
-      font-size: 16px;
-    }
-    input[type="submit"] {
-      padding: 5px 10px;
-      font-size: 16px;
-    }
-    .label {
-      float: left;
-      margin-right: 10px;
-    }
-    
-  </style>
-</head>
-
-<body>
-  <h1>Custom Targets</h1>
-  <form id="myForm">
-    <label for="myInput" class="label">Enter Targets:</label>
-    <input type="text" id="myInput" name="myInput">
-  </form>
-  <br>
-  <input type="button" value="Submit" id="submitButton">
-  <script>
-    const vscode = acquireVsCodeApi();
-    document.getElementById('submitButton').addEventListener('click', function (event) {
-      event.preventDefault();
-      let value = document.getElementById('myInput').value;
-      console.log(value);
-      vscode.postMessage({
-        command: 'RetrieveTargets',
-        'text': value
-      });
+    await pioNodeHelpers.custom.ensureServerStarted({
+      port: extension.getConfiguration('pioHomeServerHttpPort'),
+      host: extension.getConfiguration('pioHomeServerHttpHost'),
+      onIDECommand: await this.onIDECommand.bind(this),
     });
-    document.getElementById('submitButton').style.display = 'block';
-    document.getElementById('submitButton').style.margin = '0 auto';
-  </script>
-</body>
 
-</html>
+    const theme = "light";
+    const iframeId = `pioHomeIFrame-${vscode.env.sessionId}`;
 
-`;
+    const iframeScript = `
+      <script>
+        function execCommand(data) {
+          document.getElementById('${iframeId}').contentWindow.postMessage({'command': 'execCommand', 'data': data}, '*');
+        }
+
+        for (const command of ['copy', 'paste', 'cut']) {
+          document.addEventListener(command, (e) => {
+            execCommand(command);
+          });
+        }
+
+        document.addEventListener('selectstart', (e) => {
+          execCommand('selectAll');
+          e.preventDefault();
+        });
+
+        window.addEventListener('keydown', (e) => {
+          if (e.key === 'z' && e.metaKey) {
+            execCommand(e.shiftKey ? 'redo' : 'undo');
+          }
+        });
+
+        window.addEventListener('message', (e) => {
+          if (e.data.command === 'kbd-event') {
+            window.dispatchEvent(new KeyboardEvent('keydown', e.data.data));
+          }
+        });
+      </script>
+    `;
+
+    return `<!DOCTYPE html>
+      <html lang="en">
+      <head>${IS_OSX ? iframeScript : ''}</head>
+      <body style="margin: 0; padding: 0; height: 100%; overflow: hidden; background-color: ${
+        theme === 'light' ? '#FFF' : '#1E1E1E'
+      }">
+        <iframe id="${iframeId}" src="${pioNodeHelpers.custom.getFrontendUrl({
+          start: startUrl,
+          theme,
+          workspace: extension.getEnterpriseSetting('defaultPIOHomeWorkspace'),
+        })}"
+          width="100%"
+          height="100%"
+          frameborder="0"
+          style="border: 0; left: 0; right: 0; bottom: 0; top: 0; position:absolute;" />
+      </body>
+      </html>
+    `;
+  }
+
+  async onIDECommand(command, params) {
+    switch (command) {
+      case 'open_project':
+        return this.onOpenProjectCommand(params);
+      case 'open_text_document':
+        return await this.onOpenTextDocumentCommand(params);
+      case 'get_pio_project_dirs':
+        return this.onGetPIOProjectDirs();
+    }
+  }
+
+  onOpenProjectCommand(params) {
+    if (extension.projectManager) {
+      updateProjectItemState(vscode.Uri.file(params).fsPath, 'selectedEnv', undefined);
+      extension.projectManager.switchToProject(vscode.Uri.file(params).fsPath, {
+        force: true,
+      });
+    }
+
+    this.disposePanel();
+
+    if (vscode.workspace.workspaceFolders) {
+      vscode.workspace.updateWorkspaceFolders(
+        vscode.workspace.workspaceFolders.length,
+        null,
+        { uri: vscode.Uri.file(params) },
+      );
+    } else {
+      vscode.commands.executeCommand('vscode.openFolder', vscode.Uri.file(params));
+    }
+
+    vscode.commands.executeCommand('workbench.view.explorer');
+
+    return true;
+  }
+
+  async onOpenTextDocumentCommand(params) {
+    const editor = await vscode.window.showTextDocument(vscode.Uri.file(params.path));
+    const gotoPosition = new vscode.Position(
+      (params.line || 1) - 1,
+      (params.column || 1) - 1,
+    );
+    editor.selection = new vscode.Selection(gotoPosition, gotoPosition);
+    editor.revealRange(
+      new vscode.Range(gotoPosition, gotoPosition),
+      vscode.TextEditorRevealType.InCenter,
+    );
+    return true;
+  }
+
+  onGetPIOProjectDirs() {
+    return getPIOProjectDirs();
   }
 }
-
-
+ 

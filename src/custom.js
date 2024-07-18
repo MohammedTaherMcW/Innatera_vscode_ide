@@ -137,15 +137,14 @@ export default class PIOCustom {
 
   async getWebviewContent(startUrl) {
     this._lastStartUrl = startUrl;
-
     await pioNodeHelpers.custom.ensureServerStarted({
-      port: extension.getConfiguration('pioHomeServerHttpPort'),
-      host: extension.getConfiguration('pioHomeServerHttpHost'),
+      port: extension.getConfiguration('pioCustomServerHttpPort'),
+      host: extension.getConfiguration('pioCustomServerHttpHost'),
       onIDECommand: await this.onIDECommand.bind(this),
     });
-
-    const theme = "light";
+    const theme = this.getTheme();
     const iframeId = `pioHomeIFrame-${vscode.env.sessionId}`;
+  
 
     const iframeScript = `
       <script>

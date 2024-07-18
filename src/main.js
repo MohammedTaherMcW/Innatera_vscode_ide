@@ -124,7 +124,7 @@ class PlatformIOVSCodeExtension {
   getEnterpriseSetting(id, defaultValue = undefined) {
     if (!this._enterpriseSettings) {
       this._enterpriseSettings = this.loadEnterpriseSettings();
-    }
+    } 
     if (this._enterpriseSettings && id in this._enterpriseSettings) {
       return this._enterpriseSettings[id];
     }

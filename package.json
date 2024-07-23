@@ -506,7 +506,7 @@
         {
           "command": "platformio-ide.custom",
           "when": "pioProjectReady && config.platformio-ide.showEditorTitleShortcuts",
-          "group": "pio_run@0"
+          "group": "pio_run@4"
         }
       ],
       "editor/title": [

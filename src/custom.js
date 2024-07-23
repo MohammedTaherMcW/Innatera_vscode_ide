@@ -5,9 +5,11 @@ import { IS_OSX } from './constants';
 import { extension } from './main';
 import path from 'path';
 import vscode from 'vscode';
+import { IS_WINDOWS, STATUS_BAR_PRIORITY_START } from './constants';
 
 export default class PIOCustom {
   static defaultStartUrl = '/';
+  vscode = require('vscode');
 
   constructor() {
     this.subscriptions = [];
@@ -101,17 +103,6 @@ export default class PIOCustom {
       }
     }
 
-    panel.webview.onDidReceiveMessage(
-      message => {
-        switch (message.command) {
-          case 'RetrieveTargets':
-            vscode.window.showInformationMessage(message.text);
-            return;
-        }
-      },
-      undefined,
-      this.subscriptions,
-    );
 
     return panel;
   }
@@ -144,8 +135,6 @@ export default class PIOCustom {
     });
     const theme = this.getTheme();
     const iframeId = `pioHomeIFrame-${vscode.env.sessionId}`;
-  
-
     const iframeScript = `
       <script>
         function execCommand(data) {
@@ -199,56 +188,60 @@ export default class PIOCustom {
 
   async onIDECommand(command, params) {
     switch (command) {
-      case 'open_project':
-        return this.onOpenProjectCommand(params);
-      case 'open_text_document':
-        return await this.onOpenTextDocumentCommand(params);
-      case 'get_pio_project_dirs':
-        return this.onGetPIOProjectDirs();
+      case 'get_custom_targets':
+        return this.onGetCustomTargets(params);
+    }
+  }
+  async runTask(target) {
+    try {
+        // Create a shell execution
+
+        const platformioPath = IS_WINDOWS 
+        ? path.join(process.env.USERPROFILE, '.platformio', 'penv', 'Scripts', 'platformio.exe')
+        : path.join(process.env.HOME, '.platformio', 'penv', 'bin', 'platformio');
+
+        const execution = new vscode.ProcessExecution(
+            platformioPath,
+            ['run', '--target', target],
+        );
+        // Define the task
+        const task = new vscode.Task(
+            { type: 'PlatformIO', target }, // Task definition
+            vscode.TaskScope.Workspace, // Task scope
+            `Run PIO Target: ${target}`, // Task name
+            'Custom Tasks', // Task source
+            execution // Task execution
+        );
+
+        // Execute the task
+        const taskExecution = await vscode.tasks.executeTask(task);
+
+        vscode.tasks.onDidStartTaskProcess(event => {
+            if (event.execution === taskExecution) {
+                console.log(`Task started: ${event.execution.task.name}`);
+            }
+        });
+
+        vscode.tasks.onDidEndTaskProcess(event => {
+            if (event.execution === taskExecution) {
+                console.log(`Task ended with exit code: ${event.exitCode}`);
+            }
+        });
+    } catch (error) {
+        console.error('Error executing task:', error.message);
     }
   }
 
-  onOpenProjectCommand(params) {
-    if (extension.projectManager) {
-      updateProjectItemState(vscode.Uri.file(params).fsPath, 'selectedEnv', undefined);
-      extension.projectManager.switchToProject(vscode.Uri.file(params).fsPath, {
-        force: true,
-      });
-    }
 
-    this.disposePanel();
+  onGetCustomTargets(params) {
+    const paramsArray = params.split(',');
+    paramsArray.forEach(target => {
+      console.log('Running target', target);
+      const taskName = `PlatformIO: Build --target(${target})`; 
+      console.log("taskName",taskName);
+      
+        this.runTask(target);
 
-    if (vscode.workspace.workspaceFolders) {
-      vscode.workspace.updateWorkspaceFolders(
-        vscode.workspace.workspaceFolders.length,
-        null,
-        { uri: vscode.Uri.file(params) },
-      );
-    } else {
-      vscode.commands.executeCommand('vscode.openFolder', vscode.Uri.file(params));
-    }
-
-    vscode.commands.executeCommand('workbench.view.explorer');
-
-    return true;
-  }
-
-  async onOpenTextDocumentCommand(params) {
-    const editor = await vscode.window.showTextDocument(vscode.Uri.file(params.path));
-    const gotoPosition = new vscode.Position(
-      (params.line || 1) - 1,
-      (params.column || 1) - 1,
-    );
-    editor.selection = new vscode.Selection(gotoPosition, gotoPosition);
-    editor.revealRange(
-      new vscode.Range(gotoPosition, gotoPosition),
-      vscode.TextEditorRevealType.InCenter,
-    );
-    return true;
-  }
-
-  onGetPIOProjectDirs() {
-    return getPIOProjectDirs();
+    });
   }
 }
- 

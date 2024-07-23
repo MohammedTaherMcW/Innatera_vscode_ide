@@ -269,8 +269,8 @@ export default class ProjectTaskManager {
       vscode.commands.registerCommand('platformio-ide.serialMonitor', () =>
         _runTask('Monitor'),
       ),
-      vscode.commands.registerCommand('platformio-ide.custom', () =>
-        this.PIOCustom.toggle(),
+      vscode.commands.registerCommand('platformio-ide.custom', (startUrl) =>
+        this.PIOCustom.toggle(startUrl),
       ),      
     );
   }

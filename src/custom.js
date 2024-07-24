@@ -10,6 +10,7 @@ import { IS_WINDOWS, STATUS_BAR_PRIORITY_START } from './constants';
 export default class PIOCustom {
   static defaultStartUrl = '/';
   vscode = require('vscode');
+  panel = undefined;
 
   constructor() {
     this.subscriptions = [];
@@ -92,7 +93,7 @@ export default class PIOCustom {
         'platformio-mini-logo.svg',
       ),
     );
-
+    this.panel =  panel;
     panel.webview.html = this.getLoadingContent();
 
     try {
@@ -192,56 +193,61 @@ export default class PIOCustom {
         return this.onGetCustomTargets(params);
     }
   }
-  async runTask(target) {
+async runTask(targets) {
     try {
-        // Create a shell execution
 
-        const platformioPath = IS_WINDOWS 
-        ? path.join(process.env.USERPROFILE, '.platformio', 'penv', 'Scripts', 'platformio.exe')
-        : path.join(process.env.HOME, '.platformio', 'penv', 'bin', 'platformio');
+        for (const target of targets) {
+            target = target.trim();
+            const platformioPath = IS_WINDOWS 
+                ? path.join(process.env.USERPROFILE, '.platformio', 'penv', 'Scripts', 'platformio.exe')
+                : path.join(process.env.HOME, '.platformio', 'penv', 'bin', 'platformio');
 
-        const execution = new vscode.ProcessExecution(
-            platformioPath,
-            ['run', '--target', target],
-        );
-        // Define the task
-        const task = new vscode.Task(
-            { type: 'PlatformIO', target }, // Task definition
-            vscode.TaskScope.Workspace, // Task scope
-            `Run PIO Target: ${target}`, // Task name
-            'Custom Tasks', // Task source
-            execution // Task execution
-        );
+            const execution = new vscode.ProcessExecution(
+                platformioPath,
+                ['run', '--target', target],
+            );
 
-        // Execute the task
-        const taskExecution = await vscode.tasks.executeTask(task);
+            const task = new vscode.Task(
+                { type: 'PlatformIO', target },
+                vscode.TaskScope.Workspace,
+                `Run PIO Target: ${target}`,
+                'Custom Tasks',
+                execution
+            );
 
-        vscode.tasks.onDidStartTaskProcess(event => {
-            if (event.execution === taskExecution) {
-                console.log(`Task started: ${event.execution.task.name}`);
-            }
-        });
+            console.log(`Executing task: ${task.name}`);
+            const taskExecution = await vscode.tasks.executeTask(task);
 
-        vscode.tasks.onDidEndTaskProcess(event => {
-            if (event.execution === taskExecution) {
-                console.log(`Task ended with exit code: ${event.exitCode}`);
-            }
-        });
+            await new Promise((resolve, reject) => {
+                const disposableEnd = vscode.tasks.onDidEndTaskProcess(event => {
+                    if (event.execution === taskExecution) {
+                        console.log(`Task ended with exit code: ${event.exitCode}`);
+                        disposableEnd.dispose();
+                        disposableStart.dispose();
+                        if (event.exitCode === 0) {
+                            resolve();
+                        } else {
+                            reject(new Error(`Task ${task.name} failed with exit code ${event.exitCode}`));
+                        }
+                    }
+                });
+
+                const disposableStart = vscode.tasks.onDidStartTaskProcess(event => {
+                    if (event.execution === taskExecution) {
+                        console.log(`Task started: ${event.execution.task.name}`);
+                    }
+                });
+            });
+        }
+
+        console.log("All tasks executed successfully.");
     } catch (error) {
-        console.error('Error executing task:', error.message);
+        console.error('Error executing tasks:', error.message);
     }
+}
+  async onGetCustomTargets(targets) {
+    const splitTargets  = targets.split(',');
+    await this.runTask(splitTargets); 
   }
 
-
-  onGetCustomTargets(params) {
-    const paramsArray = params.split(',');
-    paramsArray.forEach(target => {
-      console.log('Running target', target);
-      const taskName = `PlatformIO: Build --target(${target})`; 
-      console.log("taskName",taskName);
-      
-        this.runTask(target);
-
-    });
-  }
 }

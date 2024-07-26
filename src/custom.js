@@ -195,8 +195,7 @@ export default class PIOCustom {
   }
 async runTask(targets) {
     try {
-
-        for (const target of targets) {
+        for (let target of targets) { 
             target = target.trim();
             const platformioPath = IS_WINDOWS 
                 ? path.join(process.env.USERPROFILE, '.platformio', 'penv', 'Scripts', 'platformio.exe')
@@ -215,7 +214,6 @@ async runTask(targets) {
                 execution
             );
 
-            console.log(`Executing task: ${task.name}`);
             const taskExecution = await vscode.tasks.executeTask(task);
 
             await new Promise((resolve, reject) => {
@@ -240,14 +238,13 @@ async runTask(targets) {
             });
         }
 
-        console.log("All tasks executed successfully.");
     } catch (error) {
         console.error('Error executing tasks:', error.message);
     }
 }
   async onGetCustomTargets(targets) {
     const splitTargets  = targets.split(',');
-    await this.runTask(splitTargets); 
+    this.runTask(splitTargets); 
   }
 
 }

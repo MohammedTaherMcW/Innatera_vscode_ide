@@ -2,6 +2,7 @@
 # Innatera IDE
 # Setup
 Make sure the Node.js is installed.  
+https://nodejs.org/en/download/package-manager  
 Clone the Repository using.  
 ```git clone https://github.com/MohammedTaherMcW/Innatera_vscode_ide.git```
 

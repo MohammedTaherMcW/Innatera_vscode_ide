@@ -9,8 +9,6 @@
 import * as vscode from 'vscode';
 
 export default class ProjectTasksTreeProvider {
-  static DEFAULT_ENV_NAME = 'Default';
-
   constructor(id, envs, tasks, selectedEnv = undefined, multiEnvExplorer = false) {
     this.id = id;
     this.envs = envs;
@@ -74,9 +72,9 @@ export default class ProjectTasksTreeProvider {
 
   getRootChildren() {
     const result = [];
-    for (const env of [undefined, ...this.envs]) {
+    for (const env of [ ...this.envs]) {
       const treeItem = new vscode.TreeItem(
-        env || ProjectTasksTreeProvider.DEFAULT_ENV_NAME,
+        env ,
         env && (env === this.selectedEnv || !this.multiEnvProject)
           ? vscode.TreeItemCollapsibleState.Expanded
           : vscode.TreeItemCollapsibleState.Collapsed,
@@ -99,7 +97,7 @@ export default class ProjectTasksTreeProvider {
     for (const group of this.getTaskGroups(envTasks)) {
       const element = new vscode.TreeItem(
         group,
-        ['General', 'Platform'].includes(group)
+        ['Platform'].includes(group)
           ? vscode.TreeItemCollapsibleState.Expanded
           : vscode.TreeItemCollapsibleState.Collapsed,
       );
@@ -112,7 +110,7 @@ export default class ProjectTasksTreeProvider {
   }
 
   getTaskGroups(tasks) {
-    const result = ['General'];
+    const result = [];
     const candidates = tasks.filter((task) => task.group).map((task) => task.group);
     // reorder
     if (candidates.includes('Platform')) {

@@ -11,10 +11,9 @@ import { disposeSubscriptions, listCoreSerialPorts } from '../utils';
 import { getProjectItemState, updateProjectItemState } from './helpers';
 import ProjectTasksTreeProvider from './task-tree';
 import { extension } from '../main';
-import path from 'path';
 import PIOCustom from '../custom';
+import path from 'path';
 import vscode from 'vscode';
-import {language} from '../home';
 
 export default class ProjectTaskManager {
   static PROVIDER_TYPE = 'PlatformIO';
@@ -66,7 +65,7 @@ export default class ProjectTaskManager {
     const projectEnvs = (await this.projectObserver.getConfig()).envs();
     const projectTasks = [];
     for (const env of projectEnvs) {  
-      projectTasks.push(...((await this.projectObserver.getLoadedEnvTasks(env,language )) || []));
+      projectTasks.push(...((await this.projectObserver.getLoadedEnvTasks(env )) || []));
     }
     const taskViewer = vscode.window.createTreeView(ProjectTaskManager.TASKS_VIEW_ID, {
       treeDataProvider: new ProjectTasksTreeProvider(

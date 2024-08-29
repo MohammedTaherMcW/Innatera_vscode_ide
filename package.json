@@ -485,27 +485,27 @@
       "editor/title/run": [
         {
           "command": "platformio-ide.build",
-          "when": "pioProjectReady && config.platformio-ide.showEditorTitleShortcuts",
+          "when": "pioProjectReady && config.platformio-ide.showEditorTitleShortcuts ",
           "group": "pio_run@0"
         },
         {
           "command": "platformio-ide.upload",
-          "when": "pioProjectReady && config.platformio-ide.showEditorTitleShortcuts",
+          "when": "pioProjectReady && config.platformio-ide.showEditorTitleShortcuts && !isTalamoProject",
           "group": "pio_run@1"
         },
         {
           "command": "platformio-ide.test",
-          "when": "pioProjectReady && config.platformio-ide.showEditorTitleShortcuts",
+          "when": "pioProjectReady && config.platformio-ide.showEditorTitleShortcuts && !isTalamoProject",
           "group": "pio_run@2"
         },
         {  
           "command": "platformio-ide.clean",
-          "when": "pioProjectReady && config.platformio-ide.showEditorTitleShortcuts",
+          "when": "pioProjectReady && config.platformio-ide.showEditorTitleShortcuts  && !isTalamoProject",
           "group": "pio_run@3"
         },
         {
           "command": "platformio-ide.custom",
-          "when": "pioProjectReady && config.platformio-ide.showEditorTitleShortcuts",
+          "when": "pioProjectReady && config.platformio-ide.showEditorTitleShortcuts  && !isTalamoProject",
           "group": "pio_run@4"
         }
       ],
@@ -526,27 +526,27 @@
       "touchBar": [
         {
           "command": "platformio-ide.build",
-          "when": "pioProjectReady && config.platformio-ide.showEditorTitleShortcuts",
+          "when": "pioProjectReady && config.platformio-ide.showEditorTitleShortcuts ",
           "group": "z_pio_run@0"
         },
         {
           "command": "platformio-ide.upload",
-          "when": "pioProjectReady && config.platformio-ide.showEditorTitleShortcuts",
+          "when": "pioProjectReady && config.platformio-ide.showEditorTitleShortcuts && !isTalamoProject",
           "group": "z_pio_run@1"
         },
         {
           "command": "platformio-ide.test",
-          "when": "pioProjectReady && config.platformio-ide.showEditorTitleShortcuts",
+          "when": "pioProjectReady && config.platformio-ide.showEditorTitleShortcuts  && !isTalamoProject",
           "group": "z_pio_run@2"
         },
         {
           "command": "platformio-ide.clean",
-          "when": "pioProjectReady && config.platformio-ide.showEditorTitleShortcuts",
+          "when": "pioProjectReady && config.platformio-ide.showEditorTitleShortcuts  && !isTalamoProject",
           "group": "z_pio_run@3"
         },
         {
           "command": "platformio-ide.serialMonitor",
-          "when": "pioCoreReady && config.platformio-ide.showEditorTitleShortcuts",
+          "when": "pioCoreReady && config.platformio-ide.showEditorTitleShortcuts && !isTalamoProject",
           "group": "z_pio_tools"
         }
       ]

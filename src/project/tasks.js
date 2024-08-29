@@ -248,12 +248,12 @@ export default class ProjectTaskManager {
     const _runTask = (name) => {
       const candidates = tasks.filter(
         (task) =>
-          task.name === name && task.coreEnv === this.projectObserver.getSelectedEnv(),
+          task.name === name,
       );
       this.runTask(candidates[0]);
     };
     this.subscriptions.push(
-      vscode.commands.registerCommand('platformio-ide.build', () => _runTask('Build Release')),
+      vscode.commands.registerCommand('platformio-ide.build', () => _runTask('BUILD')),
       vscode.commands.registerCommand('platformio-ide.upload', () =>
         _runTask('Upload'),
       ),

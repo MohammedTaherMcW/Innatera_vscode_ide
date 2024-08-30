@@ -22,7 +22,6 @@ export default class InstallationManager {
   constructor(disableAutoUpdates = false) {
     const config = vscode.workspace.getConfiguration('platformio-ide');
     // new PlatformIOCoreStage(
-      console.log("Use Builtin Python",config.get('useBuiltinPython'));
       this.stages = [
       new pioNodeHelpers.installer.PlatformIOCoreStage(
         {

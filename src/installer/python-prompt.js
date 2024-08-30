@@ -15,7 +15,6 @@ export default class PythonPrompt {
   STATUS_CUSTOMEXE = 2;
 
   async prompt() {
-    console.log("Prompt is getting called from python-prompt.js")
     const selectedItem = await vscode.window.showInformationMessage(
       'PlatformIO: Can not find working Python 3.6+ Interpreter. Please install the latest Python 3 and restart VSCode',
       { title: 'Install Python', isCloseAffordance: false },

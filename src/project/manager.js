@@ -17,6 +17,7 @@ import { STATUS_BAR_PRIORITY_START } from '../constants';
 import { extension } from '../main';
 import path from 'path';
 import vscode from 'vscode';
+import { isTalamoProject  } from './helpers';
 
 export default class ProjectManager {
   CONFIG_CHANGED_DELAY = 3; // seconds
@@ -244,6 +245,7 @@ export default class ProjectManager {
       }
     }
 
+    vscode.commands.executeCommand('setContext', 'isTalamoProject',isTalamoProject(projectDir));
     this.showSelectedEnv();
     this.saveActiveProjectState();
   }

@@ -244,7 +244,7 @@ export default class ProjectManager {
         );
       }
     }
-
+    console.log("Is Talamo Project",isTalamoProject(projectDir))
     vscode.commands.executeCommand('setContext', 'isTalamoProject',isTalamoProject(projectDir));
     this.showSelectedEnv();
     this.saveActiveProjectState();

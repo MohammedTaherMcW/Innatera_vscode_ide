@@ -1,12 +1,12 @@
 {
   "name": "platformio-ide",
   "version": "3.3.3",
-  "publisher": "platformio",
+  "publisher": "innatera",
   "engines": {
-    "vscode": "^1.65.0"
+    "vscode": "^1.90.2"
   },
   "license": "Apache-2.0",
-  "displayName": "PlatformIO IDE",
+  "displayName": "PlatformIO INNATERA IDE",
   "description": "Your Gateway to Embedded Software Development Excellence: CMSIS, ESP-IDF, FreeRTOS, libOpenCM3, mbed OS, SPL, STM32Cube, Zephyr RTOS, Arduino, ARM, AVR, Espressif (ESP8266/ESP32), FPGA, MCS-51 (8051), MSP430, Nordic (nRF51/nRF52), PIC32, RISC-V, Raspberry Pi (RP2040), STMicroelectronics (STM8/STM32), Teensy",
   "categories": [
     "Programming Languages",
@@ -24,9 +24,9 @@
   ],
   "main": "./dist/extension",
   "icon": "assets/images/platformio-logo.png",
-  "homepage": "https://platformio.org",
+  "homepage": "https://innatera.com/",
   "author": {
-    "name": "PlatformIO Labs"
+    "name": "Innatera NanoSysems"
   },
   "bugs": {
     "url": "https://github.com/platformio/platformio-vscode-ide/issues"
@@ -485,27 +485,27 @@
       "editor/title/run": [
         {
           "command": "platformio-ide.build",
-          "when": "pioProjectReady && config.platformio-ide.showEditorTitleShortcuts ",
+          "when": "pioProjectReady && config.platformio-ide.showEditorTitleShortcuts",
           "group": "pio_run@0"
         },
         {
           "command": "platformio-ide.upload",
-          "when": "pioProjectReady && config.platformio-ide.showEditorTitleShortcuts && !isTalamoProject",
+          "when": "pioProjectReady && config.platformio-ide.showEditorTitleShortcuts",
           "group": "pio_run@1"
         },
         {
           "command": "platformio-ide.test",
-          "when": "pioProjectReady && config.platformio-ide.showEditorTitleShortcuts && !isTalamoProject",
+          "when": "pioProjectReady && config.platformio-ide.showEditorTitleShortcuts",
           "group": "pio_run@2"
         },
-        {  
+        {
           "command": "platformio-ide.clean",
-          "when": "pioProjectReady && config.platformio-ide.showEditorTitleShortcuts  && !isTalamoProject",
+          "when": "pioProjectReady && config.platformio-ide.showEditorTitleShortcuts",
           "group": "pio_run@3"
         },
         {
           "command": "platformio-ide.custom",
-          "when": "pioProjectReady && config.platformio-ide.showEditorTitleShortcuts  && !isTalamoProject",
+          "when": "pioProjectReady && config.platformio-ide.showEditorTitleShortcuts",
           "group": "pio_run@4"
         }
       ],
@@ -526,27 +526,27 @@
       "touchBar": [
         {
           "command": "platformio-ide.build",
-          "when": "pioProjectReady && config.platformio-ide.showEditorTitleShortcuts ",
+          "when": "pioProjectReady && config.platformio-ide.showEditorTitleShortcuts",
           "group": "z_pio_run@0"
         },
         {
           "command": "platformio-ide.upload",
-          "when": "pioProjectReady && config.platformio-ide.showEditorTitleShortcuts && !isTalamoProject",
+          "when": "pioProjectReady && config.platformio-ide.showEditorTitleShortcuts",
           "group": "z_pio_run@1"
         },
         {
           "command": "platformio-ide.test",
-          "when": "pioProjectReady && config.platformio-ide.showEditorTitleShortcuts  && !isTalamoProject",
+          "when": "pioProjectReady && config.platformio-ide.showEditorTitleShortcuts",
           "group": "z_pio_run@2"
         },
         {
           "command": "platformio-ide.clean",
-          "when": "pioProjectReady && config.platformio-ide.showEditorTitleShortcuts  && !isTalamoProject",
+          "when": "pioProjectReady && config.platformio-ide.showEditorTitleShortcuts",
           "group": "z_pio_run@3"
         },
         {
           "command": "platformio-ide.serialMonitor",
-          "when": "pioCoreReady && config.platformio-ide.showEditorTitleShortcuts && !isTalamoProject",
+          "when": "pioCoreReady && config.platformio-ide.showEditorTitleShortcuts",
           "group": "z_pio_tools"
         }
       ]
@@ -555,7 +555,7 @@
       "activitybar": [
         {
           "id": "platformio",
-          "title": "PlatformIO",
+          "title": "Innatera",
           "icon": "assets/icons/platformio-activity-icon.svg"
         }
       ]
@@ -919,14 +919,17 @@
     "vscode:package": "webpack --mode production && vsce package"
   },
   "dependencies": {
+    "express": "^4.19.2",
     "fs-plus": "~3.1.1",
     "Innatera-node-helpers": "git+https://github.com/MohammedTaherMcW/Innatera_node_modules.git",
-    "platformio-vscode-debug": "~1.4.1"
+    "node": "^20.17.0",
+    "platformio-vscode-debug": "~1.4.1",
+    "socket.io": "^4.7.5"
   },
   "devDependencies": {
     "@types/node": "~14",
     "@types/vscode": "~1.65.0",
-    "@vscode/vsce": "~2.23.0",
+    "@vscode/vsce": "^2.32.0",
     "eslint": "~8.56.0",
     "eslint-import-resolver-webpack": "~0.13.8",
     "eslint-plugin-import": "~2.29.1",

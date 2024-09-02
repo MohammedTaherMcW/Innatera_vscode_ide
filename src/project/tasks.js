@@ -11,8 +11,8 @@ import { disposeSubscriptions, listCoreSerialPorts } from '../utils';
 import { getProjectItemState, updateProjectItemState } from './helpers';
 import ProjectTasksTreeProvider from './task-tree';
 import { extension } from '../main';
-import PIOCustom from '../custom';
 import path from 'path';
+import PIOCustom from '../custom';
 import vscode from 'vscode';
 
 export default class ProjectTaskManager {
@@ -25,6 +25,7 @@ export default class ProjectTaskManager {
     this.projectObserver = projectObserver;
     this.subscriptions = [];
     this.PIOCustom = new PIOCustom();
+
     this._sid = Math.random();
     this._multienvTaskExplorer = false;
     this._refreshTimeout = undefined;
@@ -62,11 +63,13 @@ export default class ProjectTaskManager {
       this.projectObserver.resetCache();
       this._sid = Math.random();
     }
+
     const projectEnvs = (await this.projectObserver.getConfig()).envs();
-    const projectTasks = [];
-    for (const env of projectEnvs) {  
-      projectTasks.push(...((await this.projectObserver.getLoadedEnvTasks(env )) || []));
+    const projectTasks = [...(await this.projectObserver.getDefaultTasks())];
+    for (const env of projectEnvs) {
+      projectTasks.push(...((await this.projectObserver.getLoadedEnvTasks(env)) || []));
     }
+
     const taskViewer = vscode.window.createTreeView(ProjectTaskManager.TASKS_VIEW_ID, {
       treeDataProvider: new ProjectTasksTreeProvider(
         this._sid,
@@ -77,6 +80,7 @@ export default class ProjectTaskManager {
       ),
       showCollapseAll: true,
     });
+
     this.subscriptions.push(
       taskViewer,
 
@@ -248,12 +252,12 @@ export default class ProjectTaskManager {
     const _runTask = (name) => {
       const candidates = tasks.filter(
         (task) =>
-          task.name === name,
+          task.name === name && task.coreEnv === this.projectObserver.getSelectedEnv(),
       );
       this.runTask(candidates[0]);
     };
     this.subscriptions.push(
-      vscode.commands.registerCommand('platformio-ide.build', () => _runTask('BUILD')),
+      vscode.commands.registerCommand('platformio-ide.build', () => _runTask('Build Release')),
       vscode.commands.registerCommand('platformio-ide.upload', () =>
         _runTask('Upload'),
       ),

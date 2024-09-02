@@ -1,9 +1,11 @@
 import * as pioNodeHelpers from 'Innatera-node-helpers';
 import { disposeSubscriptions, notifyError } from './utils';
-import { IS_OSX, IS_WINDOWS} from './constants';
+import { getPIOProjectDirs, updateProjectItemState } from './project/helpers';
+import { IS_OSX } from './constants';
 import { extension } from './main';
 import path from 'path';
 import vscode from 'vscode';
+import { IS_WINDOWS, STATUS_BAR_PRIORITY_START } from './constants';
 
 export default class PIOCustom {
   static defaultStartUrl = '/';
@@ -217,7 +219,7 @@ async runTask(targets) {
             await new Promise((resolve, reject) => {
                 const disposableEnd = vscode.tasks.onDidEndTaskProcess(event => {
                     if (event.execution === taskExecution) {
-                        console.info(`Task ended with exit code: ${event.exitCode}`);
+                        console.log(`Task ended with exit code: ${event.exitCode}`);
                         disposableEnd.dispose();
                         disposableStart.dispose();
                         if (event.exitCode === 0) {
@@ -230,7 +232,7 @@ async runTask(targets) {
 
                 const disposableStart = vscode.tasks.onDidStartTaskProcess(event => {
                     if (event.execution === taskExecution) {
-                        console.info(`Task started: ${event.execution.task.name}`);
+                        console.log(`Task started: ${event.execution.task.name}`);
                     }
                 });
             });

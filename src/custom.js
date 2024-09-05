@@ -100,7 +100,7 @@ export default class PIOCustom {
       panel.webview.html = await this.getWebviewContent(startUrl);
     } catch (err) {
       if (!err.toString().includes('Webview is disposed')) {
-        notifyError('Start PIO Home Server', err);
+        notifyError('Start Innatera Home Server', err);
       }
     }
 

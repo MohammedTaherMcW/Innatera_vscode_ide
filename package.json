@@ -1,3 +1,6 @@
+
+
+
 {
   "name": "platformio-ide",
   "version": "3.3.3",
@@ -6,7 +9,7 @@
     "vscode": "^1.90.2"
   },
   "license": "Apache-2.0",
-  "displayName": "PlatformIO INNATERA IDE",
+  "displayName": "INNATERA IDE",
   "description": "Your Gateway to Embedded Software Development Excellence: CMSIS, ESP-IDF, FreeRTOS, libOpenCM3, mbed OS, SPL, STM32Cube, Zephyr RTOS, Arduino, ARM, AVR, Espressif (ESP8266/ESP32), FPGA, MCS-51 (8051), MSP430, Nordic (nRF51/nRF52), PIC32, RISC-V, Raspberry Pi (RP2040), STMicroelectronics (STM8/STM32), Teensy",
   "categories": [
     "Programming Languages",
@@ -26,7 +29,7 @@
   "icon": "assets/images/platformio-logo.png",
   "homepage": "https://innatera.com/",
   "author": {
-    "name": "Innatera NanoSysems"
+    "name": "Innatera NanoSystems"
   },
   "bugs": {
     "url": "https://github.com/platformio/platformio-vscode-ide/issues"

@@ -19,7 +19,7 @@ Select the Install from vsix  option and select the vsix package.
 
 
 ------------------------------------------------------------------------------------------
-changes mage for innatera icons and images:
+changes made for innatera icons and images:
 Modified for icons & images in assest folder (Image size need to be taken care)
 package.json file updated accordingly for innatera images
 For Tooltip title value is changed to innatera.

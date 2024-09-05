@@ -1,12 +1,13 @@
 {
   "name": "platformio-ide",
   "version": "3.3.3",
-  "publisher": "platformio",
+  "publisher": "Innatera",
   "engines": {
-    "vscode": "^1.65.0"
-  },
+    "vscode": "^1.65.0",
+    "vscode": "^1.90.2"
+    },
   "license": "Apache-2.0",
-  "displayName": "PlatformIO IDE",
+  "displayName": "INNATERA IDE",
   "description": "Your Gateway to Embedded Software Development Excellence: CMSIS, ESP-IDF, FreeRTOS, libOpenCM3, mbed OS, SPL, STM32Cube, Zephyr RTOS, Arduino, ARM, AVR, Espressif (ESP8266/ESP32), FPGA, MCS-51 (8051), MSP430, Nordic (nRF51/nRF52), PIC32, RISC-V, Raspberry Pi (RP2040), STMicroelectronics (STM8/STM32), Teensy",
   "categories": [
     "Programming Languages",
@@ -24,9 +25,9 @@
   ],
   "main": "./dist/extension",
   "icon": "assets/images/platformio-logo.png",
-  "homepage": "https://platformio.org",
+  "homepage": "https://innatera.com",
   "author": {
-    "name": "PlatformIO Labs"
+    "name": "INNATERA NANO SYSTEMS"
   },
   "bugs": {
     "url": "https://github.com/platformio/platformio-vscode-ide/issues"
@@ -338,7 +339,7 @@
                 ]
               },
               "loadMode": {
-                "description": "Control when PlatformIO should load debugging firmware to the end target (see docs for `debug_load_mode` option)",
+                "description": "Control when INNATERA should load debugging firmware to the end target (see docs for `debug_load_mode` option)",
                 "default": null,
                 "type": [
                   "string",
@@ -383,7 +384,7 @@
             "label": "PlatformIO Debugger"
           }
         ],
-        "label": "PlatformIO Debugger",
+        "label": "INNATERA Debugger",
         "program": "./node_modules/platformio-vscode-debug/dist/adapter.js",
         "runtime": "node",
         "type": "platformio-debug"
@@ -600,7 +601,7 @@
       },
       {
         "view": "platformio-ide.quickAccess",
-        "contents": "Initializing PlatformIO Core..."
+        "contents": "Initializing Innatera Core..."
       }
     ],
     "walkthroughs": [
@@ -615,7 +616,7 @@
             "description": "[PlatformIO Core](https://bit.ly/vscode-platformio-core-docs) is the heart of PlatformIO IDE and it's your one-stop shop for professional embedded development.\nIt takes care of everything from dependency management to testing, so you can focus on what matters most – your project.\n[Install PlatformIO Core](command:platformio-ide.openPIOCoreCLI)",
             "media": {
               "image": "assets/welcome/platformio-core-cli-demo.png",
-              "altText": "PlatformIO Core CLI Demo"
+              "altText": "INNATERA Core CLI Demo"
             },
             "completionEvents": [
               "onContext:pioCoreReady"

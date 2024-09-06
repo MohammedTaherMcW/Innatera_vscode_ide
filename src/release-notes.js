@@ -52,7 +52,7 @@ export default class PIOReleaseNotes {
   async newPanel() {
     const panel = vscode.window.createWebviewPanel(
       'pioReleaseNotes',
-      'PlatformIO IDE: Release Notes',
+      'Innatera IDE: Release Notes',
       vscode.ViewColumn.One,
       {
         enableScripts: true,
@@ -94,18 +94,18 @@ export default class PIOReleaseNotes {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PlatformIO IDE: Release Notes</title>
+  <title>Innatera IDE: Release Notes</title>
   <style>ul { padding-top: 5px; } li { padding-bottom: 4px; }</style>
 </head>
 <body>
   <table border="0">
   <tr>
     <td><img src="${logoSrc}" width="28px" height="28px"></td>
-    <td style="padding-left: 10px"><h1>PlatformIO IDE Release Notes</h1></td>
+    <td style="padding-left: 10px"><h1>Innatera IDE Release Notes</h1></td>
   </tr>
   </table>
   <div>
-    Welcome to the ${this.version} release of PlatformIO IDE.
+    Welcome to the ${this.version} release of Innatera IDE.
     There are many updates in this version that we hope you'll like.
   </div>
   <p>
@@ -121,7 +121,7 @@ export default class PIOReleaseNotes {
   </p>
   <hr />
   <p>
-    <b>PlatformIO Core</b>: If you would like to read the PlatformIO Core release notes,
+    <b>Innatera Core</b>: If you would like to read the PlatformIO Core release notes,
     go to the <a href="https://docs.platformio.org/en/latest/core/history.html">Release Notes</a> on <a href="https://docs.platformio.org/">docs.platformio.org</a>.
   </p>
   <textarea id="pioRNMarkdown" hidden="hidden">${releaseNotes}</textarea>

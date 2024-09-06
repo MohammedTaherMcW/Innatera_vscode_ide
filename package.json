@@ -3,11 +3,10 @@
   "version": "3.3.3",
   "publisher": "Innatera",
   "engines": {
-    "vscode": "^1.65.0",
-    "vscode": "^1.90.2"
+    "vscode": "^1.92.2"
     },
   "license": "Apache-2.0",
-  "displayName": "INNATERA IDE",
+  "displayName": "Innatera IDE",
   "description": "Your Gateway to Embedded Software Development Excellence: CMSIS, ESP-IDF, FreeRTOS, libOpenCM3, mbed OS, SPL, STM32Cube, Zephyr RTOS, Arduino, ARM, AVR, Espressif (ESP8266/ESP32), FPGA, MCS-51 (8051), MSP430, Nordic (nRF51/nRF52), PIC32, RISC-V, Raspberry Pi (RP2040), STMicroelectronics (STM8/STM32), Teensy",
   "categories": [
     "Programming Languages",
@@ -25,9 +24,9 @@
   ],
   "main": "./dist/extension",
   "icon": "assets/images/platformio-logo.png",
-  "homepage": "https://innatera.com",
+  "homepage": "https://Innatera.com",
   "author": {
-    "name": "INNATERA NANO SYSTEMS"
+    "name": "Innatera NANO SYSTEMS"
   },
   "bugs": {
     "url": "https://github.com/platformio/platformio-vscode-ide/issues"
@@ -37,16 +36,8 @@
     "url": "https://github.com/platformio/platformio-vscode-ide.git"
   },
   "activationEvents": [
-    "workspaceContains:**/platformio.ini",
-    "onView:platformio-ide.quickAccess",
-    "onView:platformio-ide.projectTasks",
-    "onView:platformio-debug.peripherals",
-    "onView:platformio-debug.registers",
-    "onView:platformio-debug.memory",
-    "onView:platformio-debug.disassembly",
-    "onCommand:platformio-ide.showReleaseNotes",
-    "onCommand:platformio-ide.showHome",
-    "onCommand:platformio-ide.openPIOCoreCLI"
+    "workspaceContains:**/platformio.ini"
+   
   ],
   "contributes": {
     "languages": [
@@ -339,7 +330,7 @@
                 ]
               },
               "loadMode": {
-                "description": "Control when INNATERA should load debugging firmware to the end target (see docs for `debug_load_mode` option)",
+                "description": "Control when Innatera should load debugging firmware to the end target (see docs for `debug_load_mode` option)",
                 "default": null,
                 "type": [
                   "string",
@@ -384,7 +375,7 @@
             "label": "PlatformIO Debugger"
           }
         ],
-        "label": "INNATERA Debugger",
+        "label": "Innatera Debugger",
         "program": "./node_modules/platformio-vscode-debug/dist/adapter.js",
         "runtime": "node",
         "type": "platformio-debug"
@@ -556,7 +547,7 @@
       "activitybar": [
         {
           "id": "platformio",
-          "title": "PlatformIO",
+          "title": "Innatera",
           "icon": "assets/icons/platformio-activity-icon.svg"
         }
       ]
@@ -616,7 +607,7 @@
             "description": "[PlatformIO Core](https://bit.ly/vscode-platformio-core-docs) is the heart of PlatformIO IDE and it's your one-stop shop for professional embedded development.\nIt takes care of everything from dependency management to testing, so you can focus on what matters most – your project.\n[Install PlatformIO Core](command:platformio-ide.openPIOCoreCLI)",
             "media": {
               "image": "assets/welcome/platformio-core-cli-demo.png",
-              "altText": "INNATERA Core CLI Demo"
+              "altText": "Innatera Core CLI Demo"
             },
             "completionEvents": [
               "onContext:pioCoreReady"
@@ -875,37 +866,37 @@
           "default": [
             {
               "text": "$(home)",
-              "tooltip": "PlatformIO: Home",
+              "tooltip": "Innatera: Home",
               "commands": "platformio-ide.showHome"
             },
             {
               "text": "$(check)",
-              "tooltip": "PlatformIO: Build",
+              "tooltip": "Innatera: Build",
               "commands": "platformio-ide.build"
             },
             {
               "text": "$(arrow-right)",
-              "tooltip": "PlatformIO: Upload",
+              "tooltip": "Innnatera: Upload",
               "commands": "platformio-ide.upload"
             },
             {
               "text": "$(trashcan)",
-              "tooltip": "PlatformIO: Clean",
+              "tooltip": "Innatera: Clean",
               "commands": "platformio-ide.clean"
             },
             {
               "text": "$(beaker)",
-              "tooltip": "PlatformIO: Test",
+              "tooltip": "Innatera: Test",
               "commands": "platformio-ide.test"
             },
             {
               "text": "$(plug)",
-              "tooltip": "PlatformIO: Serial Monitor",
+              "tooltip": "Innatera: Serial Monitor",
               "commands": "platformio-ide.serialMonitor"
             },
             {
               "text": "$(terminal)",
-              "tooltip": "PlatformIO: New Terminal",
+              "tooltip": "Innatera: New Terminal",
               "commands": "platformio-ide.newTerminal"
             }
           ]

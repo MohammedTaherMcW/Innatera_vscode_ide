@@ -35,7 +35,7 @@ export default class QuickAccessTreeProvider {
         vscode.TreeItemCollapsibleState.Expanded,
         [
           new QuickItem('Open', 'platformio-ide.showHome'),
-          new QuickItem('PIO Account', 'platformio-ide.showHome', ['/account']),
+          new QuickItem('Innatera Account', 'platformio-ide.showHome', ['/account']),
           new QuickItem('Inspect', 'platformio-ide.showHome', ['/inspect']),
           new QuickItem('Projects & Configuration', 'platformio-ide.showHome', [
             '/projects',
@@ -67,10 +67,10 @@ export default class QuickAccessTreeProvider {
             'workbench.extensions.action.showExtensionsWithIds',
             [['alexnesnes.teleplot']],
           ),
-          new QuickItem('PlatformIO Core CLI', 'platformio-ide.openPIOCoreCLI'),
+          new QuickItem('Innatera Core CLI', 'platformio-ide.openPIOCoreCLI'),
           new QuickItem('Clone Git Project', 'git.clone'),
           new QuickItem('New Terminal', 'platformio-ide.newTerminal'),
-          new QuickItem('Upgrade PlatformIO Core', 'platformio-ide.upgradeCore'),
+          new QuickItem('Upgrade Innatera Core', 'platformio-ide.upgradeCore'),
           new QuickItem('Show Release Notes', 'platformio-ide.showReleaseNotes'),
         ],
       ),

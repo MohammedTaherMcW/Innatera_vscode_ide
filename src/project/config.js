@@ -216,7 +216,7 @@ ${option.description}
 
     return new vscode.Hover(
       new vscode.MarkdownString(
-        `[Open in PlatformIO Registry](${pkgUrlParts.join('/')})`,
+        `[Open in Innatera Registry](${pkgUrlParts.join('/')})`,
       ),
     );
   }

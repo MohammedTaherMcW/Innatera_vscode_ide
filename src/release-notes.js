@@ -121,7 +121,7 @@ export default class PIOReleaseNotes {
   </p>
   <hr />
   <p>
-    <b>Innatera Core</b>: If you would like to read the PlatformIO Core release notes,
+    <b>Innatera Core</b>: If you would like to read the Innatera Core release notes,
     go to the <a href="https://docs.platformio.org/en/latest/core/history.html">Release Notes</a> on <a href="https://docs.platformio.org/">docs.platformio.org</a>.
   </p>
   <textarea id="pioRNMarkdown" hidden="hidden">${releaseNotes}</textarea>

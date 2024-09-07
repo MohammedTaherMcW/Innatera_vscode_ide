@@ -26,7 +26,7 @@ export default class ProjectManager {
     this._taskManager = undefined;
     this._sbEnvSwitcher = undefined;
     this._logOutputChannel = vscode.window.createOutputChannel(
-      'PlatformIO: Project Configuration',
+      'Innatera: Project Configuration',
     );
     this._configProvider = new ProjectConfigLanguageProvider();
     this._configChangedTimeout = undefined;
@@ -42,7 +42,7 @@ export default class ProjectManager {
           vscode.window.withProgress(
             {
               location: { viewId: vscode.ProgressLocation.Notification },
-              title: 'PlatformIO: Configuring project',
+              title: 'Innatera: Configuring project',
               cancellable: true,
             },
             async (progress, token) =>

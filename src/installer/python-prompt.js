@@ -48,7 +48,7 @@ export default class PythonPrompt {
           };
         }
         break;
-      case 'Abort PlatformIO IDE Installation':
+      case 'Abort Innatera IDE Installation':
         result = { status: this.STATUS_ABORT };
         break;
     }

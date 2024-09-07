@@ -30,15 +30,15 @@ export async function maybeRateExtension() {
   }
 
   const selectedItem = await vscode.window.showInformationMessage(
-    'If you enjoy using PlatformIO IDE for VSCode, would you mind taking a moment to rate it? ' +
+    'If you enjoy using Innatera IDE for VSCode, would you mind taking a moment to rate it? ' +
       'It will not take more than one minute. Thanks for your support!',
-    { title: 'Rate PlatformIO IDE Extension', isCloseAffordance: false },
+    { title: 'Rate Innatera IDE Extension', isCloseAffordance: false },
     { title: 'Remind later', isCloseAffordance: false },
     { title: 'No, Thanks', isCloseAffordance: true },
   );
 
   switch (selectedItem ? selectedItem.title : undefined) {
-    case 'Rate PlatformIO IDE Extension':
+    case 'Rate Innatera IDE Extension':
       vscode.commands.executeCommand(
         'vscode.open',
         vscode.Uri.parse('http://bit.ly/pio-vscode-rate'),

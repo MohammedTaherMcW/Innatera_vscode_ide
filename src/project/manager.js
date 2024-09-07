@@ -256,8 +256,8 @@ export default class ProjectManager {
       vscode.StatusBarAlignment.Left,
       STATUS_BAR_PRIORITY_START,
     );
-    this._sbEnvSwitcher.name = 'PlatformIO: Project Environment Switcher';
-    this._sbEnvSwitcher.tooltip = 'Switch PlatformIO Project Environment';
+    this._sbEnvSwitcher.name = 'Innatera: Project Environment Switcher';
+    this._sbEnvSwitcher.tooltip = 'Switch  Project Environment';
     this._sbEnvSwitcher.command = 'platformio-ide.pickProjectEnv';
     this._sbEnvSwitcher.text = '$(root-folder) Loading...';
     this._sbEnvSwitcher.show();

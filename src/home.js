@@ -72,7 +72,7 @@ export default class PIOHome {
   async newPanel(startUrl) {
     const panel = vscode.window.createWebviewPanel(
       'pioHome',
-      extension.getEnterpriseSetting('pioHomeTitle', 'PIO Home'),
+      extension.getEnterpriseSetting('pioHomeTitle', 'Innatera Home'),
       vscode.ViewColumn.One,
       {
         enableScripts: true,

@@ -160,7 +160,7 @@ class PlatformIOVSCodeExtension {
     const im = new InstallationManager(disableAutoUpdates);
     if (im.locked()) {
       vscode.window.showInformationMessage(
-        'PlatformIO IDE installation has been suspended, because PlatformIO ' +
+        'Innatera IDE installation has been suspended, because Innatera ' +
           'IDE Installer is already started in another window.',
       );
       return;
@@ -168,11 +168,11 @@ class PlatformIOVSCodeExtension {
     const doInstall = await vscode.window.withProgress(
       {
         location: vscode.ProgressLocation.Window,
-        title: 'PlatformIO',
+        title: 'Innatera',
       },
       async (progress) => {
         progress.report({
-          message: 'Initializing PlatformIO Core...',
+          message: 'Initializing Innatera Core...',
         });
         try {
           return !(await im.check());
@@ -188,17 +188,17 @@ class PlatformIOVSCodeExtension {
     return await vscode.window.withProgress(
       {
         location: vscode.ProgressLocation.Notification,
-        title: 'PlatformIO Installer',
+        title: 'Innatera Installer',
       },
       async (progress) => {
         progress.report({
-          message: 'Installing PlatformIO IDE...',
+          message: 'Installing Innatera IDE...',
         });
         const outputChannel = vscode.window.createOutputChannel(
-          'PlatformIO Installation',
+          'Innatera Installation',
         );
         outputChannel.show();
-        outputChannel.appendLine('Installing PlatformIO IDE...');
+        outputChannel.appendLine('Installing Innatera IDE...');
         outputChannel.appendLine(
           'It may take a few minutes depending on your connection speed',
         );
@@ -213,18 +213,18 @@ class PlatformIOVSCodeExtension {
         try {
           im.lock();
           await im.install(progress);
-          outputChannel.appendLine('PlatformIO IDE installed successfully.\n');
+          outputChannel.appendLine('Innatera IDE installed successfully.\n');
           outputChannel.appendLine('Please restart VSCode.');
           const action = 'Reload Now';
           const selected = await vscode.window.showInformationMessage(
-            'PlatformIO IDE has been successfully installed! Please reload window',
+            'Innatera IDE has been successfully installed! Please reload window',
             action,
           );
           if (selected === action) {
             vscode.commands.executeCommand('workbench.action.reloadWindow');
           }
         } catch (err) {
-          outputChannel.appendLine('Failed to install PlatformIO IDE.');
+          outputChannel.appendLine('Failed to install Innatera IDE.');
           utils.notifyError('Installation Manager', err);
         } finally {
           im.unlock();

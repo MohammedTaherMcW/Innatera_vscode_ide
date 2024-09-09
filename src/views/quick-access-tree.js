@@ -29,7 +29,7 @@ export default class QuickAccessTreeProvider {
     }
     return [
       new QuickItem(
-        'PIO Home',
+        'Innatera Home',
         undefined,
         undefined,
         vscode.TreeItemCollapsibleState.Expanded,

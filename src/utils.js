@@ -54,7 +54,8 @@ export async function notifyError(title, err) {
 }
 
 export function getIDEManifest() {
-  return vscode.extensions.getExtension('platformio.platformio-ide').packageJSON;
+  //return vscode.extensions.getExtension('platformio.platformio-ide').packageJSON;
+  return vscode.extensions.getExtension('Innatera.platformio-ide').packageJSON;
 }
 
 export function getIDEVersion() {

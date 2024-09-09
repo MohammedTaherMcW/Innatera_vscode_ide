@@ -1,15 +1,15 @@
 {
   "name": "platformio-ide",
-  "version": "3.3.3",
+  "version": "1.0.0",
   "publisher": "Innatera",
   "engines": {
-    "vscode": "^1.92.2"
+    "vscode": "^1.93.0"
     },
   "license": "Apache-2.0",
   "displayName": "Innatera IDE",
   "description": "Your Gateway to Embedded Software Development Excellence: CMSIS, ESP-IDF, FreeRTOS, libOpenCM3, mbed OS, SPL, STM32Cube, Zephyr RTOS, Arduino, ARM, AVR, Espressif (ESP8266/ESP32), FPGA, MCS-51 (8051), MSP430, Nordic (nRF51/nRF52), PIC32, RISC-V, Raspberry Pi (RP2040), STMicroelectronics (STM8/STM32), Teensy",
   "categories": [
-    "Programming >Languages",
+    "Programming Languages",
     "Linters",
     "Debuggers",
     "Testing",
@@ -96,163 +96,163 @@
       {
         "command": "platformio-ide.showReleaseNotes",
         "title": "Show Release Notes",
-        "category": "PlatformIO"
+        "category": "Innatera"
       },
       {
         "command": "platformio-ide.showHome",
         "title": "Innatera Home",
-        "category": "PlatformIO"
+        "category": "Innatera"
       },
       {
         "command": "platformio-ide.openPIOCoreCLI",
         "title": "Open Innatera Core CLI",
-        "category": "PlatformIO"
+        "category": "Innatera"
       },
       {
         "command": "platformio-ide.newTerminal",
         "title": "New Terminal",
-        "category": "PlatformIO",
+        "category": "Innatera",
         "enablement": "pioCoreReady"
       },
       {
         "command": "platformio-ide.upgradeCore",
         "title": "Upgrade Innatera Core",
-        "category": "PlatformIO",
+        "category": "Innatera",
         "enablement": "pioCoreReady"
       },
       {
         "command": "platformio-ide.pickProjectEnv",
         "title": "Pick Project Environment",
-        "category": "PlatformIO",
+        "category": "Innatera",
         "icon": "$(root-folder)",
         "enablement": "pioProjectReady"
       },
       {
         "command": "platformio-ide.setProjectPort",
         "title": "Set Project Port (upload/monitor/test)",
-        "category": "PlatformIO",
+        "category": "Innatera",
         "icon": "$(plug)",
         "enablement": "pioProjectReady"
       },
       {
         "command": "platformio-ide.toggleMultiEnvProjectTasks",
         "title": "Toggle between Multi Environment Project Tasks",
-        "category": "PlatformIO",
+        "category": "Innatera",
         "icon": "$(layers)",
         "enablement": "pioProjectTasksReady"
       },
       {
         "command": "platformio-ide.refreshProjectTasks",
         "title": "Refresh Project Tasks",
-        "category": "PlatformIO",
+        "category": "Innatera",
         "icon": "$(refresh)",
         "enablement": "pioProjectTasksReady"
       },
       {
         "command": "platformio-ide.build",
         "title": "Build",
-        "category": "PlatformIO",
+        "category": "Innatera",
         "icon": "$(check)",
         "enablement": "pioProjectTasksReady"
       },
       {
         "command": "platformio-ide.custom",
         "title": "Custom",
-        "category": "PlatformIO",
+        "category": "Innatera",
         "icon": "$(arrow-left)",
         "enablement": "pioProjectTasksReady"
       },
       {
         "command": "platformio-ide.upload",
         "title": "Upload",
-        "category": "PlatformIO",
+        "category": "Innatera",
         "icon": "$(arrow-right)",
         "enablement": "pioProjectTasksReady"
       },
       {
         "command": "platformio-ide.uploadAndMonitor",
         "title": "Upload and Monitor",
-        "category": "PlatformIO",
+        "category": "Innatera",
         "icon": "$(arrow-right)",
         "enablement": "pioProjectTasksReady"
       },
       {
         "command": "platformio-ide.clean",
         "title": "Clean",
-        "category": "PlatformIO",
+        "category": "Innatera",
         "icon": "$(trashcan)",
         "enablement": "pioProjectTasksReady"
       },
       {
         "command": "platformio-ide.serialMonitor",
         "title": "Serial Monitor",
-        "category": "PlatformIO",
+        "category": "Innatera",
         "icon": "$(plug)",
         "enablement": "pioProjectReady"
       },
       {
         "command": "platformio-ide.test",
         "title": "Test",
-        "category": "PlatformIO",
+        "category": "Innatera",
         "icon": "$(beaker)",
         "enablement": "pioProjectTasksReady"
       },
       {
         "command": "platformio-ide.rebuildProjectIndex",
         "title": "Rebuild IntelliSense Index",
-        "category": "PlatformIO",
+        "category": "Innatera",
         "enablement": "pioProjectTasksReady"
       },
       {
         "command": "platformio-ide.startDebugging",
         "title": "Start Debugging",
-        "category": "PlatformIO",
+        "category": "Innatera",
         "enablement": "pioProjectReady"
       },
       {
-        "category": "PlatformIO Debug",
+        "category": "Innatera Debug",
         "command": "platformio-debug.peripherals.updateNode",
         "title": "Update Value",
         "enablement": "pioProjectReady"
       },
       {
-        "category": "PlatformIO Debug",
+        "category": "Innatera Debug",
         "command": "platformio-debug.peripherals.selectedNode",
         "title": "Selected",
         "enablement": "pioProjectReady"
       },
       {
-        "category": "PlatformIO Debug",
+        "category": "Innatera Debug",
         "command": "platformio-debug.registers.selectedNode",
         "title": "Selected",
         "enablement": "pioProjectReady"
       },
       {
-        "category": "PlatformIO Debug",
+        "category": "Innatera Debug",
         "command": "platformio-debug.peripherals.copyValue",
         "title": "Copy Value",
         "enablement": "pioProjectReady"
       },
       {
-        "category": "PlatformIO Debug",
+        "category": "Innatera Debug",
         "command": "platformio-debug.registers.copyValue",
         "title": "Copy Value",
         "enablement": "pioProjectReady"
       },
       {
-        "category": "PlatformIO Debug",
+        "category": "Innatera Debug",
         "command": "platformio-debug.peripherals.setFormat",
         "title": "Set Value Format",
         "enablement": "pioProjectReady"
       },
       {
-        "category": "PlatformIO Debug",
+        "category": "Innatera Debug",
         "command": "platformio-debug.registers.setFormat",
         "title": "Set Value Format",
         "enablement": "pioProjectReady"
       },
       {
-        "category": "PlatformIO Debug",
+        "category": "Innatera Debug",
         "command": "platformio-debug.examineMemory",
         "title": " View Memory",
         "icon": {
@@ -262,7 +262,7 @@
         "enablement": "pioProjectReady"
       },
       {
-        "category": "PlatformIO Debug",
+        "category": "Innatera Debug",
         "command": "platformio-debug.memory.clearHistory",
         "title": "Clear Memory View History",
         "icon": {
@@ -272,19 +272,19 @@
         "enablement": "pioProjectReady"
       },
       {
-        "category": "PlatformIO Debug",
+        "category": "Innatera Debug",
         "command": "platformio-debug.memory.deleteHistoryItem",
         "title": "Delete",
         "enablement": "pioProjectReady"
       },
       {
-        "category": "PlatformIO Debug",
+        "category": "Innatera Debug",
         "command": "platformio-debug.viewDisassembly",
         "title": "View Disassembly (Function)",
         "enablement": "pioProjectReady"
       },
       {
-        "category": "PlatformIO Debug",
+        "category": "Innatera Debug",
         "command": "platformio-debug.setForceDisassembly",
         "title": "Set Force Disassembly",
         "enablement": "pioProjectReady"
@@ -356,7 +356,7 @@
         },
         "initialConfigurations": [
           {
-            "name": "PlatformIO Debugger",
+            "name": "Innatera Debugger",
             "request": "launch",
             "type": "platformio-debug",
             "toolchainBinDir": "/usr/local/bin"
@@ -365,7 +365,7 @@
         "configurationSnippets": [
           {
             "body": {
-              "name": "${6:PlatformIO Debugger}",
+              "name": "${6:Innatera Debugger}",
               "request": "launch",
               "type": "platformio-debug",
               "executable": ".pio/build/myenv/firmware.elf",
@@ -588,7 +588,7 @@
     "viewsWelcome": [
       {
         "view": "platformio-ide.projectTasks",
-        "contents": "You have not yet opened a Innatera project.\nYou can open an existing Innatera-based project (a folder that contains [platformio.ini](https://bit.ly/vscode-platformio-ini-docs) file).\n[Pick a folder](command:workbench.action.files.openFolder)\nYou can create a new PlatformIO Project or explore examples using PlatformIO Home.\n[Create New Project](command:platformio-ide.showHome)"
+        "contents": "You have not yet opened a Innatera project.\nYou can open an existing Innatera-based project (a folder that contains [platformio.ini](https://bit.ly/vscode-platformio-ini-docs) file).\n[Pick a folder](command:workbench.action.files.openFolder)\nYou can create a new Innatera Project or explore examples using PlatformIO Home.\n[Create New Project](command:platformio-ide.showHome)"
       },
       {
         "view": "platformio-ide.quickAccess",

@@ -111,15 +111,20 @@ class PlatformIOVSCodeExtension {
     return vscode.workspace.getConfiguration('platformio-ide').get(id);
   }
 
-  loadEnterpriseSettings() {
+ loadEnterpriseSettings() {
     const ext = vscode.extensions.all.find(
       (item) =>
-        item.id.startsWith('platformio.') &&
-        item.id !== 'platformio.platformio-ide' &&
+        //change for the default platformio otherwiese core is not loading...
+        //item.id.startsWith('platformio.') &&
+        item.id.startsWith('Innatera.') &&
+       // item.id !== 'platformio.platformio-ide' &&
+        item.id !== 'Innatera.platformio-ide' &&
         item.isActive,
     );
     return ext && ext.exports ? ext.exports.settings : undefined;
   }
+  
+  
 
   getEnterpriseSetting(id, defaultValue = undefined) {
     if (!this._enterpriseSettings) {

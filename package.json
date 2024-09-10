@@ -61,6 +61,7 @@
       },
       {
         "id": "platformio-debug.asm",
+        "icon":
         "aliases": [
           "Assembly",
           "asm"
@@ -616,6 +617,7 @@
           {
             "id": "platformio.ini",
             "title": "Platform-agnostic shareable configuration",
+            "icon": "file_type_innatera.svg",
             "description": "[platformio.ini](https://bit.ly/vscode-platformio-ini-docs) is the single configuration file that lets you set up your development environment and share your configurations with your team or organization.\nLeverage a declarative approach to embedded development and the power of semantic versioning.\n[Learn More](https://bit.ly/vscode-platformio-ini-docs)",
             "media": {
               "markdown": "assets/welcome/platformio-ini-example.md"

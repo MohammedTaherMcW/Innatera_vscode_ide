@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2017-present PlatformIO <contact@platformio.org>
+ * Copyright (c)2024-present Innatera <contact@innatera.com>
  * All rights reserved.
  *
  * This source code is licensed under the license found in the LICENSE file in
@@ -114,7 +114,7 @@ class PlatformIOVSCodeExtension {
  loadEnterpriseSettings() {
     const ext = vscode.extensions.all.find(
       (item) =>
-        //change for the default platformio otherwiese core is not loading...
+       //change for the default platformio otherwiese core is not loading...
         //item.id.startsWith('platformio.') &&
         item.id.startsWith('Innatera.') &&
        // item.id !== 'platformio.platformio-ide' &&

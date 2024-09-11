@@ -1,0 +1,121 @@
+{
+	"iconDefinitions": 
+	{
+		"_innetera_ini_file": {
+			"iconPath": "./images/file_type_innatera.svg"
+		},
+		"_innetera_asm_file": {
+			"iconPath": "./images/file_type_asm.png"            
+		},
+		"_innetera_folder_open": {
+			"iconPath": "./images/file_type_folder_open.png"        
+		},
+		"_innetera_c_file": {
+			"iconPath": "./images/file_type_c.png"            
+		},
+		"_innetera_cpp_file": {
+			"iconPath": "./images/file_type_cpp.png"            
+		},
+		"_innetera_python_file": {
+			"iconPath": "./images/file_type_python.svg"
+		},
+		"_innetera_elf_file": {
+			"iconPath": "./images/file_type_elf.svg"            
+		},
+		"_innetera_folder_closed": {
+			"iconPath": "./images/file_type_folder_closed.png"  
+		},
+		"_innetera_makefile_file": {
+			"iconPath": "./images/file_type_makefile.png"
+		}
+	},
+
+	"dark": 
+	{
+		"folderExpanded": "_innetera_folder_open",
+		"folderClosed":	"_innetera_folder_closed",
+
+		"fileExtensions": {
+			"ini": "_innetera_ini_file",
+			"s": "_innetera_asm_file",
+			"asm": "_innetera_asm_file",
+			"cpp": "_innetera_cpp_file",
+			"cc": "_innetera_cpp_file",
+			"c": "_innetera_c_file",
+			"cxx": "_innetera_cpp_file",
+			"py": "_innetera_python_file",
+			"elf": "_innetera_elf_file",
+			"makefile": "_innetera_makefile_file"
+		},
+		"fileNames": {
+			"platformio.ini": "_innetera_ini_file",
+			"Makefile": "_innetera_makefile_file"
+		},
+		"languageIds": {
+			"cpp": "_innetera_cpp_file",
+			"c": "_innetera_c_file",
+			"python": "_innetera_python_file",
+			"assembly": "_innetera_asm_file"
+		}
+	},
+	
+	"light": 
+	{
+		"folderExpanded": "_innetera_folder_open",
+		"folderClosed":	"_innetera_folder_closed",
+
+		"fileExtensions": {
+			"ini": "_innetera_ini_file",
+			"s": "_innetera_asm_file",
+			"asm": "_innetera_asm_file",
+			"cpp": "_innetera_cpp_file",
+			"cc": "_innetera_cpp_file",
+			"c": "_innetera_c_file",
+			"cxx": "_innetera_cpp_file",
+			"py": "_innetera_python_file",
+			"elf": "_innetera_elf_file",
+			"makefile": "_innetera_makefile_file"
+		},
+		"fileNames": {
+			"platformio.ini": "_innetera_ini_file",
+			"Makefile": "_innetera_makefile_file"
+		},
+		"languageIds": {
+			"cpp": "_innetera_cpp_file",
+			"c": "_innetera_c_file",
+			"python": "_innetera_python_file",
+			"assembly": "_innetera_asm_file"
+		}
+	},
+	
+	"highContrast": 
+	{
+		// overrides for high contrast
+		"folderExpanded": "_innetera_folder_open",
+		"folderClosed":	"_innetera_folder_closed",
+
+		"fileExtensions": {
+			"ini": "_innetera_ini_file",
+			"s": "_innetera_asm_file",
+			"asm": "_innetera_asm_file",
+			"cpp": "_innetera_cpp_file",
+			"cc": "_innetera_cpp_file",
+			"c": "_innetera_c_file",
+			"cxx": "_innetera_cpp_file",
+			"py": "_innetera_python_file",
+			"elf": "_innetera_elf_file",
+			"makefile": "_innetera_makefile_file"
+		},
+		"fileNames": {
+			"platformio.ini": "_innetera_ini_file",
+			"Makefile": "_innetera_makefile_file"
+		},
+		"languageIds": {
+			"cpp": "_innetera_cpp_file",
+			"c": "_innetera_c_file",
+			"python": "_innetera_python_file",
+			"assembly": "_innetera_asm_file"
+		}
+	}
+}
+

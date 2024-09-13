@@ -11,13 +11,13 @@ import fs from 'fs';
 import path from 'path';
 import vscode from 'vscode';
 
-export function isTalamoProject(projectDir) {
+export function getFrameworkFromProject(projectDir) {
   const iniContent = fs.readFileSync(
     path.join(projectDir, 'platformio.ini'),
     'utf8'
   );
   const frameworkMatch = iniContent.match(/\bframework\s*=\s*([\w-]+)/);
-  return frameworkMatch && frameworkMatch[1] === 'talamo';
+  return frameworkMatch[1];
 }
 
 export function isPIOProjectSync(projectDir) {

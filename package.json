@@ -161,49 +161,56 @@
         "title": "Build",
         "category": "PlatformIO",
         "icon": "$(check)",
-        "enablement": "pioProjectTasksReady"
+        "enablement": "pioProjectTasksReady && isTalamoProject==='spine' || isTalamoProject==='combine'"
+      },
+      {
+        "command": "platformio-ide.python_run",
+        "title": "Python Run",
+        "category": "PlatformIO",
+        "icon": "$(check)",
+        "enablement": "pioProjectTasksReady && isTalamoProject==='talamo'"
       },
       {
         "command": "platformio-ide.custom",
         "title": "Custom",
         "category": "PlatformIO",
         "icon": "$(arrow-left)",
-        "enablement": "pioProjectTasksReady"
+        "enablement": "pioProjectTasksReady && isTalamoProject==='spine' || isTalamoProject==='combine'"
       },
       {
         "command": "platformio-ide.upload",
         "title": "Upload",
         "category": "PlatformIO",
         "icon": "$(arrow-right)",
-        "enablement": "pioProjectTasksReady"
+        "enablement": "pioProjectTasksReady && isTalamoProject==='spine' || isTalamoProject==='combine'"
       },
       {
         "command": "platformio-ide.uploadAndMonitor",
         "title": "Upload and Monitor",
         "category": "PlatformIO",
         "icon": "$(arrow-right)",
-        "enablement": "pioProjectTasksReady"
+        "enablement": "pioProjectTasksReady && isTalamoProject==='spine' || isTalamoProject==='combine'"
       },
       {
         "command": "platformio-ide.clean",
         "title": "Clean",
         "category": "PlatformIO",
         "icon": "$(trashcan)",
-        "enablement": "pioProjectTasksReady"
+        "enablement": "pioProjectTasksReady && isTalamoProject==='spine' || isTalamoProject==='combine'"
       },
       {
         "command": "platformio-ide.serialMonitor",
         "title": "Serial Monitor",
         "category": "PlatformIO",
         "icon": "$(plug)",
-        "enablement": "pioProjectReady"
+        "enablement": "pioProjectReady && isTalamoProject==='spine' || isTalamoProject==='combine'"
       },
       {
         "command": "platformio-ide.test",
         "title": "Test",
         "category": "PlatformIO",
         "icon": "$(beaker)",
-        "enablement": "pioProjectTasksReady"
+        "enablement": "pioProjectTasksReady && isTalamoProject==='spine' || isTalamoProject==='combine'"
       },
       {
         "command": "platformio-ide.rebuildProjectIndex",
@@ -484,28 +491,33 @@
       ],
       "editor/title/run": [
         {
+          "command": "platformio-ide.python_run",
+          "when": "pioProjectReady && config.platformio-ide.showEditorTitleShortcuts && isTalamoProject==='talamo'",
+          "group": "pio_run@5"
+        },
+        {
           "command": "platformio-ide.build",
-          "when": "pioProjectReady && config.platformio-ide.showEditorTitleShortcuts ",
+          "when": "pioProjectReady && config.platformio-ide.showEditorTitleShortcuts && isTalamoProject==='spine' || isTalamoProject==='combine' ",
           "group": "pio_run@0"
         },
         {
           "command": "platformio-ide.upload",
-          "when": "pioProjectReady && config.platformio-ide.showEditorTitleShortcuts && !isTalamoProject",
+          "when": "pioProjectReady && config.platformio-ide.showEditorTitleShortcuts && isTalamoProject==='spine' || isTalamoProject==='combine'",
           "group": "pio_run@1"
         },
         {
           "command": "platformio-ide.test",
-          "when": "pioProjectReady && config.platformio-ide.showEditorTitleShortcuts && !isTalamoProject",
+          "when": "pioProjectReady && config.platformio-ide.showEditorTitleShortcuts && isTalamoProject==='spine' || isTalamoProject==='combine'",
           "group": "pio_run@2"
         },
         {  
           "command": "platformio-ide.clean",
-          "when": "pioProjectReady && config.platformio-ide.showEditorTitleShortcuts  && !isTalamoProject",
+          "when": "pioProjectReady && config.platformio-ide.showEditorTitleShortcuts  && isTalamoProject==='spine' || isTalamoProject==='combine'",
           "group": "pio_run@3"
         },
         {
           "command": "platformio-ide.custom",
-          "when": "pioProjectReady && config.platformio-ide.showEditorTitleShortcuts  && !isTalamoProject",
+          "when": "pioProjectReady && config.platformio-ide.showEditorTitleShortcuts  && isTalamoProject==='spine' || isTalamoProject==='combine'",
           "group": "pio_run@4"
         }
       ],
@@ -531,22 +543,22 @@
         },
         {
           "command": "platformio-ide.upload",
-          "when": "pioProjectReady && config.platformio-ide.showEditorTitleShortcuts && !isTalamoProject",
+          "when": "pioProjectReady && config.platformio-ide.showEditorTitleShortcuts && isTalamoProject==='spine' || isTalamoProject==='combine'",
           "group": "z_pio_run@1"
         },
         {
           "command": "platformio-ide.test",
-          "when": "pioProjectReady && config.platformio-ide.showEditorTitleShortcuts  && !isTalamoProject",
+          "when": "pioProjectReady && config.platformio-ide.showEditorTitleShortcuts  && isTalamoProject==='spine' || isTalamoProject==='combine'",
           "group": "z_pio_run@2"
         },
         {
           "command": "platformio-ide.clean",
-          "when": "pioProjectReady && config.platformio-ide.showEditorTitleShortcuts  && !isTalamoProject",
+          "when": "pioProjectReady && config.platformio-ide.showEditorTitleShortcuts  && isTalamoProject==='spine' || isTalamoProject==='combine'",
           "group": "z_pio_run@3"
         },
         {
           "command": "platformio-ide.serialMonitor",
-          "when": "pioCoreReady && config.platformio-ide.showEditorTitleShortcuts && !isTalamoProject",
+          "when": "pioCoreReady && config.platformio-ide.showEditorTitleShortcuts && isTalamoProject==='spine' || isTalamoProject==='combine'",
           "group": "z_pio_tools"
         }
       ]

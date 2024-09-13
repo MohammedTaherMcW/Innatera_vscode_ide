@@ -253,7 +253,9 @@ export default class ProjectTaskManager {
       this.runTask(candidates[0]);
     };
     this.subscriptions.push(
-      vscode.commands.registerCommand('platformio-ide.build', () => _runTask('BUILD')),
+
+      vscode.commands.registerCommand('platformio-ide.build', () => _runTask('C Build')),
+      vscode.commands.registerCommand('platformio-ide.python_run', () => _runTask('Python Run')),
       vscode.commands.registerCommand('platformio-ide.upload', () =>
         _runTask('Upload'),
       ),

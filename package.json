@@ -537,9 +537,14 @@
       ],
       "touchBar": [
         {
+          "command": "platformio-ide.python_run",
+          "when": "pioProjectReady && config.platformio-ide.showEditorTitleShortcuts && isTalamoProject==='talamo'",
+          "group": "pio_run@5"
+        },
+        {
           "command": "platformio-ide.build",
-          "when": "pioProjectReady && config.platformio-ide.showEditorTitleShortcuts ",
-          "group": "z_pio_run@0"
+          "when": "pioProjectReady && config.platformio-ide.showEditorTitleShortcuts && isTalamoProject==='spine' || isTalamoProject==='combine' ",
+          "group": "pio_run@0"
         },
         {
           "command": "platformio-ide.upload",
@@ -880,6 +885,27 @@
                     }
                   }
                 ]
+              },
+              "when": {
+                "anyof": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "title": "when",
+                      "properties": {
+                        "id": {
+                          "type": "string",
+                          "title": "The command identifier"
+                        }
+                      }
+                    }
+                  }
+                ],
+                "description": "The condition that must be true to show the button"
               }
             }
           },
@@ -891,33 +917,45 @@
             },
             {
               "text": "$(check)",
-              "tooltip": "PlatformIO: Build",
-              "commands": "platformio-ide.build"
+              "tooltip": "PlatformIO: Python Run",
+              "commands": "platformio-ide.python_run",
+              "when": "talamo"
             },
+            {
+              "text": "$(check)",
+              "tooltip": "PlatformIO: Build",
+              "commands": "platformio-ide.build",
+              "when": "spine"
+            },  
             {
               "text": "$(arrow-right)",
               "tooltip": "PlatformIO: Upload",
-              "commands": "platformio-ide.upload"
+              "commands": "platformio-ide.upload",
+              "when": "talamo, spine, combine"
             },
             {
               "text": "$(trashcan)",
               "tooltip": "PlatformIO: Clean",
-              "commands": "platformio-ide.clean"
+              "commands": "platformio-ide.clean",
+              "when": "talamo, spine, combine"
             },
             {
               "text": "$(beaker)",
               "tooltip": "PlatformIO: Test",
-              "commands": "platformio-ide.test"
+              "commands": "platformio-ide.test",
+              "when": "talamo, spine, combine"
             },
             {
               "text": "$(plug)",
               "tooltip": "PlatformIO: Serial Monitor",
-              "commands": "platformio-ide.serialMonitor"
+              "commands": "platformio-ide.serialMonitor",
+              "when": "talamo, spine, combine"
             },
             {
               "text": "$(terminal)",
               "tooltip": "PlatformIO: New Terminal",
-              "commands": "platformio-ide.newTerminal"
+              "commands": "platformio-ide.newTerminal",
+              "when": "talamo, spine, combine"
             }
           ]
         }

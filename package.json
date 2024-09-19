@@ -43,10 +43,12 @@
   "iconThemes": [
       {
         "id": "innatera-fileicon-theme",
-        "label": "innatera-fileicon-theme",
-        "path": "./fileicons/innatera-icon-theme.json"
+        "label": "innatera ide Icons",
+        "path": "./vscode-icons/dist/src/vsicons-icon-theme.json",
+        "_watch": true
       }
-    ],  
+      
+    ],
     "languages": [
       {
         "id": "platformio-debug.disassembly",
@@ -83,6 +85,7 @@
         "configuration": "./syntaxes/assembly-configuration.json"
       }
     ],
+    
     "grammars": [
       {
         "language": "platformio-debug.disassembly",
@@ -942,4 +945,7 @@
   "extensionDependencies": [
     "ms-vscode.cpptools"
   ]
+
+  
 }
+

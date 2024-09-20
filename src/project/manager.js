@@ -20,7 +20,6 @@ import { EventEmitter } from 'vscode';
 
 import vscode from 'vscode';
 import { getFrameworkFromProject  } from './helpers';
-import PIOToolbar from '../toolbar';
 
 export default class ProjectManager {
   CONFIG_CHANGED_DELAY = 3; // seconds

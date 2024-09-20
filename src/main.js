@@ -303,7 +303,7 @@ class PlatformIOVSCodeExtension {
   disposeLocalSubscriptions() {
     vscode.commands.executeCommand('setContext', 'pioCoreReady', false);
     vscode.commands.executeCommand('setContext', 'pioProjectReady', false);
-    vscode.commands.executeCommand('setContext', 'isTalamoProject', false);
+    vscode.commands.executeCommand('setContext', 'isTalamoProject', 'spine');
     utils.disposeSubscriptions(this.subscriptions);
   }
 

@@ -69,11 +69,17 @@ export default class PIOToolbar {
       if(getPIOProjectDirs().length > 0){
       projectManager.onProjectSwitched(() => {
         this.isTalamoProject  = getFrameworkFromProject(projectManager.findActiveProjectDir());
+        this.show();
       });
     }
-    this.options = options;
-    this.subscriptions = [];
-    this.show();
+    else{      
+      this.options = options;
+      this.subscriptions = [];
+      this.show();
+      return;
+    }
+      this.options = options;
+      this.subscriptions = [];
   }
 
   dispose() {

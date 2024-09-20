@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2017-present PlatformIO <contact@platformio.org>
+ * Copyright (c)2024-present Innatera <contact@innatera.com>
  * All rights reserved.
  *
  * This source code is licensed under the license found in the LICENSE file in
@@ -20,7 +20,7 @@ export default class PIOTerminal {
       envClone.Path = process.env.PLATFORMIO_PATH;
     }
     return vscode.window.createTerminal({
-      name: 'PlatformIO CLI',
+      name: 'Innatera CLI',
       env: envClone,
     });
   }

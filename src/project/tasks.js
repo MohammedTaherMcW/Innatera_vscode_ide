@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2017-present PlatformIO <contact@platformio.org>
+ * Copyright (c)2024-present Innatera <contact@innatera.com>
  * All rights reserved.
  *
  * This source code is licensed under the license found in the LICENSE file in
@@ -279,7 +279,7 @@ export default class ProjectTaskManager {
       vscode.StatusBarAlignment.Left,
       STATUS_BAR_PRIORITY_START,
     );
-    this._sbPortSwitcher.name = 'PlatformIO: Port Switcher';
+    this._sbPortSwitcher.name = 'Innatera: Port Switcher';
     this._sbPortSwitcher.tooltip = 'Set upload/monitor/test port';
     this._sbPortSwitcher.command = 'platformio-ide.setProjectPort';
     this.switchPort(this._customPort);

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2017-present PlatformIO <contact@platformio.org>
+ * Copyright (c)2024-present Innatera <contact@innatera.com>
  * All rights reserved.
  *
  * This source code is licensed under the license found in the LICENSE file in
@@ -33,7 +33,7 @@ export default class ProjectManager {
     this._taskManager = undefined;
     this._sbEnvSwitcher = undefined;
     this._logOutputChannel = vscode.window.createOutputChannel(
-      'PlatformIO: Project Configuration',
+      'Innatera: Project Configuration',
     );
     this._configProvider = new ProjectConfigLanguageProvider();
     this._configChangedTimeout = undefined;
@@ -49,7 +49,7 @@ export default class ProjectManager {
           vscode.window.withProgress(
             {
               location: { viewId: vscode.ProgressLocation.Notification },
-              title: 'PlatformIO: Configuring project',
+              title: 'Innatera: Configuring project',
               cancellable: true,
             },
             async (progress, token) =>
@@ -262,8 +262,8 @@ export default class ProjectManager {
       vscode.StatusBarAlignment.Left,
       STATUS_BAR_PRIORITY_START,
     );
-    this._sbEnvSwitcher.name = 'PlatformIO: Project Environment Switcher';
-    this._sbEnvSwitcher.tooltip = 'Switch PlatformIO Project Environment';
+    this._sbEnvSwitcher.name = 'Innatera: Project Environment Switcher';
+    this._sbEnvSwitcher.tooltip = 'Switch  Project Environment';
     this._sbEnvSwitcher.command = 'platformio-ide.pickProjectEnv';
     this._sbEnvSwitcher.text = '$(root-folder) Loading...';
     this._sbEnvSwitcher.show();

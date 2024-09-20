@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2017-present PlatformIO <contact@platformio.org>
+ * Copyright (c) 2017-present Innatera <contact@innatera.com>
  * All rights reserved.
  *
  * This source code is licensed under the license found in the LICENSE file in
@@ -72,7 +72,7 @@ export default class PIOHome {
   async newPanel(startUrl) {
     const panel = vscode.window.createWebviewPanel(
       'pioHome',
-      extension.getEnterpriseSetting('pioHomeTitle', 'PIO Home'),
+      extension.getEnterpriseSetting('pioHomeTitle', 'Innatera Home'),
       vscode.ViewColumn.One,
       {
         enableScripts: true,

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2017-present PlatformIO <contact@platformio.org>
+ * Copyright (c)2024-present Innatera <contact@innatera.com>
  * All rights reserved.
  *
  * This source code is licensed under the license found in the LICENSE file in
@@ -216,7 +216,7 @@ ${option.description}
 
     return new vscode.Hover(
       new vscode.MarkdownString(
-        `[Open in PlatformIO Registry](${pkgUrlParts.join('/')})`,
+        `[Open in Innatera Registry](${pkgUrlParts.join('/')})`,
       ),
     );
   }

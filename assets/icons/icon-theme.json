@@ -1,0 +1,11 @@
+{
+  "fileTypes": {
+    "platformio.ini": "file_type_platformio_ini"
+  },
+  "iconDefinitions": {
+    "file_type_platformio_ini": {
+      "iconPath": "file_type_innatera.svg"
+    }
+  }
+}
+

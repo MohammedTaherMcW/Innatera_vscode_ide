@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2017-present PlatformIO <contact@platformio.org>
+ * Copyright (c)2024-present Innatera <contact@innatera.com>
  * All rights reserved.
  *
  * This source code is licensed under the license found in the LICENSE file in
@@ -54,7 +54,9 @@ export async function notifyError(title, err) {
 }
 
 export function getIDEManifest() {
-  return vscode.extensions.getExtension('platformio.platformio-ide').packageJSON;
+  //change for innatera otheriwse in VSCODE core is not gettign iniatilized 
+  //return vscode.extensions.getExtension('platformio.platformio-ide').packageJSON;
+  return vscode.extensions.getExtension('Innatera.platformio-ide').packageJSON;
 }
 
 export function getIDEVersion() {

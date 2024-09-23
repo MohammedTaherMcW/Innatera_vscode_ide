@@ -171,7 +171,7 @@
         "title": "Python Run",
         "category": "PlatformIO",
         "icon": "$(check)",
-        "enablement": "pioProjectTasksReady && isTalamoProject==='talamo'"
+        "enablement": "pioProjectTasksReady && isTalamoProject==='talamo' || isTalamoProject==='combine'"
       },
       {
         "command": "platformio-ide.custom",
@@ -499,7 +499,7 @@
       "editor/title/run": [
         {
           "command": "platformio-ide.python_run",
-          "when": "pioProjectReady && config.platformio-ide.showEditorTitleShortcuts && isTalamoProject==='talamo'",
+          "when": "pioProjectReady && config.platformio-ide.showEditorTitleShortcuts && isTalamoProject==='talamo' || isTalamoProject==='combine'",
           "group": "pio_run@5"
         },
         {
@@ -545,7 +545,7 @@
       "touchBar": [
         {
           "command": "platformio-ide.python_run",
-          "when": "pioProjectReady && config.platformio-ide.showEditorTitleShortcuts && isTalamoProject==='talamo'",
+          "when": "pioProjectReady && config.platformio-ide.showEditorTitleShortcuts && isTalamoProject==='talamo' || isTalamoProject==='combine'",
           "group": "pio_run@5"
         },
         {
@@ -927,13 +927,13 @@
               "text": "$(check)",
               "tooltip": "PlatformIO: Python Run",
               "commands": "platformio-ide.python_run",
-              "when": "talamo"
+              "when": "talamo, combine"
             },
             {
               "text": "$(check)",
               "tooltip": "Innatera: Build",
               "commands": "platformio-ide.build",
-              "when": "spine"
+              "when": "spine, combine"
             },  
             {
               "text": "$(arrow-right)",

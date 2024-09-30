@@ -16,11 +16,18 @@ import ProjectTestManager from './tests';
 import { STATUS_BAR_PRIORITY_START } from '../constants';
 import { extension } from '../main';
 import path from 'path';
+import { EventEmitter } from 'vscode';
+
 import vscode from 'vscode';
 import { getFrameworkFromProject  } from './helpers';
 
 export default class ProjectManager {
   CONFIG_CHANGED_DELAY = 3; // seconds
+  _onProjectSwitched = new EventEmitter();
+
+  get onProjectSwitched() {
+    return this._onProjectSwitched.event;
+  }
 
   constructor() {
     this._taskManager = undefined;
@@ -137,14 +144,13 @@ export default class ProjectManager {
     disposeSubscriptions(this.subscriptions);
   }
 
-  findActiveProjectDir() {
+ findActiveProjectDir() {
     let projectDir = undefined;
     if (extension.getConfiguration('activateProjectOnTextEditorChange')) {
       projectDir = projectHelpers.getActiveEditorProjectDir();
     }
     return projectDir || this.getSelectedProjectDir();
   }
-
   getSelectedProjectDir() {
     const pioProjectDirs = projectHelpers.getPIOProjectDirs();
     const currentActiveDir = this._pool.getActiveProjectDir();
@@ -244,6 +250,7 @@ export default class ProjectManager {
         );
       }
     }
+    this._onProjectSwitched.fire();
     vscode.commands.executeCommand('setContext', 'isTalamoProject',getFrameworkFromProject(projectDir));
     this.showSelectedEnv();
     this.saveActiveProjectState();

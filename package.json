@@ -169,9 +169,9 @@
       {
         "command": "platformio-ide.python_run",
         "title": "Python Run",
-        "category": "PlatformIO",
+        "category": "Innatera",
         "icon": "$(check)",
-        "enablement": "pioProjectTasksReady && isTalamoProject==='talamo'"
+        "enablement": "pioProjectTasksReady && isTalamoProject==='talamo' || isTalamoProject==='combine'"
       },
       {
         "command": "platformio-ide.custom",
@@ -499,7 +499,7 @@
       "editor/title/run": [
         {
           "command": "platformio-ide.python_run",
-          "when": "pioProjectReady && config.platformio-ide.showEditorTitleShortcuts && isTalamoProject==='talamo'",
+          "when": "pioProjectReady && config.platformio-ide.showEditorTitleShortcuts && isTalamoProject==='talamo' || isTalamoProject==='combine'",
           "group": "pio_run@5"
         },
         {
@@ -544,9 +544,14 @@
       ],
       "touchBar": [
         {
+          "command": "platformio-ide.python_run",
+          "when": "pioProjectReady && config.platformio-ide.showEditorTitleShortcuts && isTalamoProject==='talamo' || isTalamoProject==='combine'",
+          "group": "pio_run@5"
+        },
+        {
           "command": "platformio-ide.build",
-          "when": "pioProjectReady && config.platformio-ide.showEditorTitleShortcuts ",
-          "group": "z_pio_run@0"
+          "when": "pioProjectReady && config.platformio-ide.showEditorTitleShortcuts && isTalamoProject==='spine' || isTalamoProject==='combine' ",
+          "group": "pio_run@0"
         },
         {
           "command": "platformio-ide.upload",
@@ -888,6 +893,27 @@
                     }
                   }
                 ]
+              },
+              "when": {
+                "anyof": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "title": "when",
+                      "properties": {
+                        "id": {
+                          "type": "string",
+                          "title": "The command identifier"
+                        }
+                      }
+                    }
+                  }
+                ],
+                "description": "The condition that must be true to show the button"
               }
             }
           },
@@ -899,33 +925,45 @@
             },
             {
               "text": "$(check)",
-              "tooltip": "Innatera: Build",
-              "commands": "platformio-ide.build"
+              "tooltip": "Innatera: Python Run",
+              "commands": "platformio-ide.python_run",
+              "when": "talamo, combine"
             },
+            {
+              "text": "$(check)",
+              "tooltip": "Innatera: Build",
+              "commands": "platformio-ide.build",
+              "when": "spine, combine"
+            },  
             {
               "text": "$(arrow-right)",
               "tooltip": "Innnatera: Upload",
-              "commands": "platformio-ide.upload"
+              "commands": "platformio-ide.upload",
+              "when": "talamo, spine, combine"
             },
             {
               "text": "$(trashcan)",
               "tooltip": "Innatera: Clean",
-              "commands": "platformio-ide.clean"
+              "commands": "platformio-ide.clean",
+              "when": "talamo, spine, combine"
             },
             {
               "text": "$(beaker)",
               "tooltip": "Innatera: Test",
-              "commands": "platformio-ide.test"
+              "commands": "platformio-ide.test",
+              "when": "talamo, spine, combine"
             },
             {
               "text": "$(plug)",
               "tooltip": "Innatera: Serial Monitor",
-              "commands": "platformio-ide.serialMonitor"
+              "commands": "platformio-ide.serialMonitor",
+              "when": "talamo, spine, combine"
             },
             {
               "text": "$(terminal)",
               "tooltip": "Innatera: New Terminal",
-              "commands": "platformio-ide.newTerminal"
+              "commands": "platformio-ide.newTerminal",
+              "when": "talamo, spine, combine"
             }
           ]
         }

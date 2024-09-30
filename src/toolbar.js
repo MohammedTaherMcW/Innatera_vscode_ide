@@ -10,12 +10,13 @@ import { STATUS_BAR_PRIORITY_START } from './constants';
 import { disposeSubscriptions } from './utils';
 import { extension } from './main';
 import vscode from 'vscode';
-
+import {getFrameworkFromProject, getPIOProjectDirs} from './project/helpers';
 class ToolbarButton {
-  constructor(text, tooltip, commands) {
+  constructor(text, tooltip, commands, when) {
     this.text = text;
     this.tooltip = tooltip;
     this.commands = ToolbarButtonCommands.from(commands);
+    this.when =when;
   }
 
   createStatusBarItem(options = { priority: 0 }) {
@@ -32,6 +33,7 @@ class ToolbarButton {
       command: PIOToolbar.RUN_BUTTON_COMMANDS_ID,
       arguments: [this],
     };
+    item.when = this.when;
     return item;
   }
 }
@@ -60,11 +62,22 @@ class ToolbarButtonCommands {
 
 export default class PIOToolbar {
   static RUN_BUTTON_COMMANDS_ID = 'platformio-ide.runToolbarButtonCommand';
-
-  constructor(options = { filterCommands: undefined, ignoreCommands: undefined }) {
-    this.options = options;
-    this.subscriptions = [];
-    this.show();
+  
+  constructor(options = { filterCommands: undefined, ignoreCommands: undefined }, projectManager = undefined) {
+      if(getPIOProjectDirs().length > 0 && projectManager) {
+        projectManager.onProjectSwitched(() => {
+          this.isTalamoProject  = getFrameworkFromProject(projectManager.findActiveProjectDir());
+          this.show();
+        });
+      }
+      else{      
+        this.options = options;
+        this.subscriptions = [];
+        this.show();
+        return;
+      }
+        this.options = options;
+        this.subscriptions = [];
   }
 
   dispose() {
@@ -79,6 +92,7 @@ export default class PIOToolbar {
           item.text,
           item.tooltip,
           ToolbarButtonCommands.from(item.commands),
+          item.when,
         ),
     );
   }
@@ -89,15 +103,16 @@ export default class PIOToolbar {
 
   refresh() {
     this.dispose();
-    const buttons = PIOToolbar.getButtons().filter(
-      (button) =>
-        (!this.options.filterCommands ||
-          button.commands.some((cmd) =>
-            this.options.filterCommands.includes(cmd.id),
-          )) &&
-        (!this.options.ignoreCommands ||
-          !button.commands.some((cmd) => this.options.ignoreCommands.includes(cmd.id))),
-    );
+    const buttons = PIOToolbar.getButtons().filter((button) => {
+
+      if (!button.when) {
+        return true;
+      }
+
+      const listFrameworksEnablement = button.when.split(',').map(word => word.trim());
+   
+      return listFrameworksEnablement.includes(this.isTalamoProject);
+    });
 
     buttons.forEach((button, index) => {
       const sbItem = button.createStatusBarItem({ priority: buttons.length - index });

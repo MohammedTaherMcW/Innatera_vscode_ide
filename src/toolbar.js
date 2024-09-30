@@ -6,15 +6,10 @@
  * the root directory of this source tree.
  */
 
-// import { extension } from './main';
-
-import * as pioNodeHelpers from 'Innatera-node-helpers';
 import { STATUS_BAR_PRIORITY_START } from './constants';
-import { disposeSubscriptions, notifyError } from './utils';
+import { disposeSubscriptions } from './utils';
 import { extension } from './main';
 import vscode from 'vscode';
-import ProjectManager from './project/manager';
-import * as projectHelpers from './project/helpers';
 import {getFrameworkFromProject, getPIOProjectDirs} from './project/helpers';
 class ToolbarButton {
   constructor(text, tooltip, commands, when) {
@@ -69,29 +64,21 @@ export default class PIOToolbar {
   static RUN_BUTTON_COMMANDS_ID = 'platformio-ide.runToolbarButtonCommand';
   
   constructor(options = { filterCommands: undefined, ignoreCommands: undefined }, projectManager = undefined) {
-    console.log("projectManager", projectManager);
-
       if(getPIOProjectDirs().length > 0 && projectManager) {
-        console.log("projectManager", projectManager);
         projectManager.onProjectSwitched(() => {
           this.isTalamoProject  = getFrameworkFromProject(projectManager.findActiveProjectDir());
-          console.log("isTalamoProject", this.isTalamoProject);
           this.show();
         });
       }
       else{      
-        print("No projects found");
         this.options = options;
         this.subscriptions = [];
         this.show();
         return;
       }
-        console.log("isTalamoProject", this.isTalamoProject);
         this.options = options;
         this.subscriptions = [];
   }
-
-
 
   dispose() {
     disposeSubscriptions(this.subscriptions);

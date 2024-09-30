@@ -169,7 +169,7 @@
       {
         "command": "platformio-ide.python_run",
         "title": "Python Run",
-        "category": "PlatformIO",
+        "category": "Innatera",
         "icon": "$(check)",
         "enablement": "pioProjectTasksReady && isTalamoProject==='talamo' || isTalamoProject==='combine'"
       },
@@ -925,7 +925,7 @@
             },
             {
               "text": "$(check)",
-              "tooltip": "PlatformIO: Python Run",
+              "tooltip": "Innatera: Python Run",
               "commands": "platformio-ide.python_run",
               "when": "talamo, combine"
             },

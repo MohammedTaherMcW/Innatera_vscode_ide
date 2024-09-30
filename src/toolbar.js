@@ -6,11 +6,15 @@
  * the root directory of this source tree.
  */
 
+// import { extension } from './main';
+
+import * as pioNodeHelpers from 'Innatera-node-helpers';
 import { STATUS_BAR_PRIORITY_START } from './constants';
-import { disposeSubscriptions } from './utils';
+import { disposeSubscriptions, notifyError } from './utils';
 import { extension } from './main';
 import vscode from 'vscode';
 import ProjectManager from './project/manager';
+import * as projectHelpers from './project/helpers';
 import {getFrameworkFromProject, getPIOProjectDirs} from './project/helpers';
 class ToolbarButton {
   constructor(text, tooltip, commands, when) {
@@ -63,24 +67,31 @@ class ToolbarButtonCommands {
 
 export default class PIOToolbar {
   static RUN_BUTTON_COMMANDS_ID = 'platformio-ide.runToolbarButtonCommand';
+  
+  constructor(options = { filterCommands: undefined, ignoreCommands: undefined }, projectManager = undefined) {
+    console.log("projectManager", projectManager);
 
-  constructor(options = { filterCommands: undefined, ignoreCommands: undefined }) {
-    const projectManager = new ProjectManager();
-      if(getPIOProjectDirs().length > 0){
-      projectManager.onProjectSwitched(() => {
-        this.isTalamoProject  = getFrameworkFromProject(projectManager.findActiveProjectDir());
+      if(getPIOProjectDirs().length > 0 && projectManager) {
+        console.log("projectManager", projectManager);
+        projectManager.onProjectSwitched(() => {
+          this.isTalamoProject  = getFrameworkFromProject(projectManager.findActiveProjectDir());
+          console.log("isTalamoProject", this.isTalamoProject);
+          this.show();
+        });
+      }
+      else{      
+        print("No projects found");
+        this.options = options;
+        this.subscriptions = [];
         this.show();
-      });
-    }
-    else{      
-      this.options = options;
-      this.subscriptions = [];
-      this.show();
-      return;
-    }
-      this.options = options;
-      this.subscriptions = [];
+        return;
+      }
+        console.log("isTalamoProject", this.isTalamoProject);
+        this.options = options;
+        this.subscriptions = [];
   }
+
+
 
   dispose() {
     disposeSubscriptions(this.subscriptions);
@@ -115,8 +126,6 @@ export default class PIOToolbar {
    
       return listFrameworksEnablement.includes(this.isTalamoProject);
     });
-
-
 
     buttons.forEach((button, index) => {
       const sbItem = button.createStatusBarItem({ priority: buttons.length - index });

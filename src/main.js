@@ -1,5 +1,5 @@
 /**
- * Copyright (c)2024-present Innatera <contact@innatera.com>
+ * Copyright (c) 2017-present PlatformIO <contact@platformio.org>
  * All rights reserved.
  *
  * This source code is licensed under the license found in the LICENSE file in
@@ -77,10 +77,12 @@ class PlatformIOVSCodeExtension {
     );
 
     this.registerGlobalCommands();
+    this.projectManager = new ProjectManager();
 
     if (!hasPIOProject) {
       this.subscriptions.push(
-        new PIOToolbar({ filterCommands: ['platformio-ide.showHome'] }),
+        new PIOToolbar({ filterCommands: ['platformio-ide.showHome'] }, 
+        this.projectManager),
       );
       return;
     }
@@ -89,11 +91,11 @@ class PlatformIOVSCodeExtension {
     this.subscriptions.push(
       new PIOToolbar({
         ignoreCommands: this.getEnterpriseSetting('ignoreToolbarCommands'),
-      }),
+      },
+      this.projectManager),
     );
 
     this.initDebug();
-    this.projectManager = new ProjectManager();
     this.subscriptions.push(this.projectManager);
 
     this.startPIOHome();
@@ -111,20 +113,15 @@ class PlatformIOVSCodeExtension {
     return vscode.workspace.getConfiguration('platformio-ide').get(id);
   }
 
- loadEnterpriseSettings() {
+  loadEnterpriseSettings() {
     const ext = vscode.extensions.all.find(
       (item) =>
-       //change for the default platformio otherwiese core is not loading...
-        //item.id.startsWith('platformio.') &&
-        item.id.startsWith('Innatera.') &&
-       // item.id !== 'platformio.platformio-ide' &&
-        item.id !== 'Innatera.platformio-ide' &&
+        item.id.startsWith('platformio.') &&
+        item.id !== 'platformio.platformio-ide' &&
         item.isActive,
     );
     return ext && ext.exports ? ext.exports.settings : undefined;
   }
-  
-  
 
   getEnterpriseSetting(id, defaultValue = undefined) {
     if (!this._enterpriseSettings) {
@@ -165,7 +162,7 @@ class PlatformIOVSCodeExtension {
     const im = new InstallationManager(disableAutoUpdates);
     if (im.locked()) {
       vscode.window.showInformationMessage(
-        'Innatera IDE installation has been suspended, because Innatera ' +
+        'PlatformIO IDE installation has been suspended, because PlatformIO ' +
           'IDE Installer is already started in another window.',
       );
       return;
@@ -173,11 +170,11 @@ class PlatformIOVSCodeExtension {
     const doInstall = await vscode.window.withProgress(
       {
         location: vscode.ProgressLocation.Window,
-        title: 'Innatera',
+        title: 'PlatformIO',
       },
       async (progress) => {
         progress.report({
-          message: 'Initializing Innatera Core...',
+          message: 'Initializing PlatformIO Core...',
         });
         try {
           return !(await im.check());
@@ -193,17 +190,17 @@ class PlatformIOVSCodeExtension {
     return await vscode.window.withProgress(
       {
         location: vscode.ProgressLocation.Notification,
-        title: 'Innatera Installer',
+        title: 'PlatformIO Installer',
       },
       async (progress) => {
         progress.report({
-          message: 'Installing Innatera IDE...',
+          message: 'Installing PlatformIO IDE...',
         });
         const outputChannel = vscode.window.createOutputChannel(
-          'Innatera Installation',
+          'PlatformIO Installation',
         );
         outputChannel.show();
-        outputChannel.appendLine('Installing Innatera IDE...');
+        outputChannel.appendLine('Installing PlatformIO IDE...');
         outputChannel.appendLine(
           'It may take a few minutes depending on your connection speed',
         );
@@ -218,18 +215,18 @@ class PlatformIOVSCodeExtension {
         try {
           im.lock();
           await im.install(progress);
-          outputChannel.appendLine('Innatera IDE installed successfully.\n');
+          outputChannel.appendLine('PlatformIO IDE installed successfully.\n');
           outputChannel.appendLine('Please restart VSCode.');
           const action = 'Reload Now';
           const selected = await vscode.window.showInformationMessage(
-            'Innatera IDE has been successfully installed! Please reload window',
+            'PlatformIO IDE has been successfully installed! Please reload window',
             action,
           );
           if (selected === action) {
             vscode.commands.executeCommand('workbench.action.reloadWindow');
           }
         } catch (err) {
-          outputChannel.appendLine('Failed to install Innatera IDE.');
+          outputChannel.appendLine('Failed to install PlatformIO IDE.');
           utils.notifyError('Installation Manager', err);
         } finally {
           im.unlock();
@@ -308,7 +305,7 @@ class PlatformIOVSCodeExtension {
   disposeLocalSubscriptions() {
     vscode.commands.executeCommand('setContext', 'pioCoreReady', false);
     vscode.commands.executeCommand('setContext', 'pioProjectReady', false);
-    vscode.commands.executeCommand('setContext', 'isTalamoProject', 'spine');
+    vscode.commands.executeCommand('setContext', 'isTalamoProject', false);
     utils.disposeSubscriptions(this.subscriptions);
   }
 

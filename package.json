@@ -290,6 +290,12 @@
         "enablement": "pioProjectReady"
       },
       {
+				"category": "Innatera Debug",
+				"command": "platformio-debug.memory.updateNode",
+				"title": "Update",
+				"enablement": "pioProjectReady"
+			},
+      {
         "category": "Innatera Debug",
         "command": "platformio-debug.memory.deleteHistoryItem",
         "title": "Delete",
@@ -459,6 +465,10 @@
           "command": "platformio-debug.peripherals.setFormat",
           "when": "view == platformio-debug.peripherals"
         },
+        {
+					"command": "platformio-debug.memory.updateNode",
+					"when": "view == platformio-debug.memory"
+				},
         {
           "command": "platformio-debug.registers.setFormat",
           "when": "view == platformio-debug.registers"

@@ -1007,7 +1007,8 @@
   "dependencies": {
     "fs-plus": "~3.1.1",
     "Innatera-node-helpers": "git+https://github.com/MohammedTaherMcW/Innatera_node_modules.git",
-    "platformio-vscode-debug": "~1.4.1"
+    "platformio-vscode-debug": "~1.4.1",
+    "Innatera-debug-adapter":"https://github.com/MohammedTaherMcW/Innatera_debug_adapter.git"
   },
   "devDependencies": {
     "@types/node": "~14",

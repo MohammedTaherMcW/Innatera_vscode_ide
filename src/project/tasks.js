@@ -122,6 +122,7 @@ export default class ProjectTaskManager {
       envClone.PATH = process.env.PLATFORMIO_PATH;
       envClone.Path = process.env.PLATFORMIO_PATH;
     }
+    console.log("Envclone Path from Innatera vscode",envClone);
     const vscodeTask = new vscode.Task(
       {
         type: ProjectTaskManager.PROVIDER_TYPE,
@@ -131,14 +132,14 @@ export default class ProjectTaskManager {
       projectTask.id,
       ProjectTaskManager.PROVIDER_TYPE,
       new vscode.ProcessExecution(
-        IS_WINDOWS ? 'platformio.exe' : 'platformio',
+        IS_WINDOWS ? 'innaterapluginio.exe' : 'innaterapluginio',
         projectTask.getCoreArgs({ port: this._customPort }),
         {
           cwd: this.projectDir,
           env: envClone,
         },
       ),
-      '$platformio',
+      '$innaterapluginio',
     );
     vscodeTask.presentationOptions = {
       panel: vscode.TaskPanelKind.Dedicated,

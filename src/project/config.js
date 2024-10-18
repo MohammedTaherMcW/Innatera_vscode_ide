@@ -351,7 +351,7 @@ ${option.description}
     const script = `
 import json
 
-from platformio.public import ProjectConfig
+from innaterapluginio.public import ProjectConfig
 
 print(json.dumps(ProjectConfig.lint()))
   `;

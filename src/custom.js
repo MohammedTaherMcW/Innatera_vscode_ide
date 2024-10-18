@@ -196,8 +196,8 @@ async runTask(targets) {
         for (let target of targets) { 
             target = target.trim();
             const platformioPath = IS_WINDOWS 
-                ? path.join(process.env.USERPROFILE, '.platformio', 'penv', 'Scripts', 'platformio.exe')
-                : path.join(process.env.HOME, '.platformio', 'penv', 'bin', 'platformio');
+                ? path.join(process.env.USERPROFILE, '.innatera', 'penv', 'Scripts', 'innaterapluginio.exe')
+                : path.join(process.env.HOME, '.innatera', 'penv', 'bin', 'innaterapluginio');
 
             const execution = new vscode.ProcessExecution(
                 platformioPath,

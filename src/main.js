@@ -174,7 +174,7 @@ class PlatformIOVSCodeExtension {
       },
       async (progress) => {
         progress.report({
-          message: 'Initializing PlatformIO Core...',
+          message: 'Initializing Innatera Core...',
         });
         try {
           return !(await im.check());
@@ -194,13 +194,13 @@ class PlatformIOVSCodeExtension {
       },
       async (progress) => {
         progress.report({
-          message: 'Installing PlatformIO IDE...',
+          message: 'Installing Innatera IDE...',
         });
         const outputChannel = vscode.window.createOutputChannel(
           'PlatformIO Installation',
         );
         outputChannel.show();
-        outputChannel.appendLine('Installing PlatformIO IDE...');
+        outputChannel.appendLine('Installing Innatera IDE...');
         outputChannel.appendLine(
           'It may take a few minutes depending on your connection speed',
         );

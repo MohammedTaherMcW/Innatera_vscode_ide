@@ -13,7 +13,7 @@ import vscode from 'vscode';
 
 export function getFrameworkFromProject(projectDir) {
   const iniContent = fs.readFileSync(
-    path.join(projectDir, 'platformio.ini'),
+    path.join(projectDir, 'innaterapluginio.ini'),
     'utf8'
   );
   const frameworkMatch = iniContent.match(/\bframework\s*=\s*([\w-]+)/);
@@ -22,7 +22,7 @@ export function getFrameworkFromProject(projectDir) {
 
 export function isPIOProjectSync(projectDir) {
   try {
-    fs.accessSync(path.join(projectDir, 'platformio.ini'));
+    fs.accessSync(path.join(projectDir, 'innaterapluginio.ini'));
     return true;
   } catch (err) {}
   return false;

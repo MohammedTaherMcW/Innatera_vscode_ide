@@ -344,8 +344,8 @@ ${option.description}
    * Linting
    */
   async lintConfig(uri) {
-    // ignore non-platformio.ini docs
-    if (path.basename(uri.fsPath) !== 'platformio.ini') {
+    // ignore non-innaterapluginio.ini docs
+    if (path.basename(uri.fsPath) !== 'innaterapluginio.ini') {
       return;
     }
     const script = `

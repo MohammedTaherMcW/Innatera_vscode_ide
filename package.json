@@ -37,7 +37,7 @@
     "url": "https://github.com/platformio/platformio-vscode-ide.git"
   },
   "activationEvents": [
-    "workspaceContains:**/platformio.ini"
+    "workspaceContains:**/innaterapluginio.ini"
   ],
   "contributes": {
   "iconThemes": [
@@ -398,7 +398,7 @@
           }
         ],
         "label": "Innatera Debugger",
-        "program": "./node_modules/platformio-vscode-debug/dist/adapter.js",
+        "program": "./node_modules/Innatera-vscode-debug/dist/adapter.js",
         "runtime": "node",
         "type": "platformio-debug"
       }
@@ -620,7 +620,7 @@
     "viewsWelcome": [
       {
         "view": "platformio-ide.projectTasks",
-        "contents": "You have not yet opened a Innatera project.\nYou can open an existing Innatera-based project (a folder that contains [platformio.ini](https://bit.ly/vscode-platformio-ini-docs) file).\n[Pick a folder](command:workbench.action.files.openFolder)\nYou can create a new Innatera Project or explore examples using Innatera Home.\n[Create New Project](command:platformio-ide.showHome)"
+        "contents": "You have not yet opened a Innatera project.\nYou can open an existing Innatera-based project (a folder that contains [innaterapluginio.ini](https://bit.ly/vscode-platformio-ini-docs) file).\n[Pick a folder](command:workbench.action.files.openFolder)\nYou can create a new Innatera Project or explore examples using Innatera Home.\n[Create New Project](command:platformio-ide.showHome)"
       },
       {
         "view": "platformio-ide.quickAccess",
@@ -646,10 +646,10 @@
             ]
           },
           {
-            "id": "platformio.ini",
+            "id": "innaterapluginio.ini",
             "title": "Platform-agnostic shareable configuration",
             "icon": "assets/icons/file_type_innatera.svg",
-            "description": "[platformio.ini](https://bit.ly/vscode-platformio-ini-docs) is the single configuration file that lets you set up your development environment and share your configurations with your team or organization.\nLeverage a declarative approach to embedded development and the power of semantic versioning.\n[Learn More](https://bit.ly/vscode-platformio-ini-docs)",
+            "description": "[innaterapluginio.ini](https://bit.ly/vscode-platformio-ini-docs) is the single configuration file that lets you set up your development environment and share your configurations with your team or organization.\nLeverage a declarative approach to embedded development and the power of semantic versioning.\n[Learn More](https://bit.ly/vscode-platformio-ini-docs)",
             "media": {
               "markdown": "assets/welcome/platformio-ini-example.md"
             },
@@ -757,7 +757,7 @@
         "platformio-ide.autoOpenPlatformIOIniFile": {
           "type": "boolean",
           "default": true,
-          "description": "Automatically open the `platformio.ini` file from a project when no other editors are opened"
+          "description": "Automatically open the `innaterapluginio.ini` file from a project when no other editors are opened"
         },
         "platformio-ide.autoCloseSerialMonitor": {
           "type": "boolean",
@@ -767,7 +767,7 @@
         "platformio-ide.autoRebuildAutocompleteIndex": {
           "type": "boolean",
           "default": true,
-          "description": "Automatically rebuild the project IntelliSense index when platformio.ini is changed or when new libraries are installed"
+          "description": "Automatically rebuild the project IntelliSense index when innaterapluginio.ini is changed or when new libraries are installed"
         },
         "platformio-ide.showEditorTitleShortcuts": {
           "type": "boolean",
@@ -975,12 +975,12 @@
     "lint": "eslint .eslintrc.js src",
     "format": "prettier --single-quote --print-width 88 --write \"src/**/*.js\"",
     "vscode:package": "webpack --mode production && vsce package"
-  },
+  },  
   "dependencies": {
     "fs-plus": "~3.1.1",
     "Innatera-node-helpers": "git+https://github.com/MohammedTaherMcW/Innatera_node_modules.git",
     "Innatera-vscode-debug": "git+https://github.com/MohammedTaherMcW/Innatera_debug_adapter.git"
-  },
+  },  
   "devDependencies": {
     "@types/node": "~14",
     "@types/vscode": "~1.65.0",

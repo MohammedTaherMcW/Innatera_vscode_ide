@@ -1,6 +1,6 @@
 {
   "fileTypes": {
-    "platformio.ini": "file_type_platformio_ini"
+    "innaterapluginio.ini": "file_type_platformio_ini"
   },
   "iconDefinitions": {
     "file_type_platformio_ini": {

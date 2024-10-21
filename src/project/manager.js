@@ -201,13 +201,13 @@ export default class ProjectManager {
     const observer = this._pool.getObserver(projectDir);
 
     // validate configuration file
-    const configUri = vscode.Uri.file(path.join(projectDir, 'platformio.ini'));
+    const configUri = vscode.Uri.file(path.join(projectDir, 'innaterapluginio.ini'));
     try {
       const isConfigValid = await this._configProvider.lintConfig(configUri);
       if (!isConfigValid) {
         vscode.window.showErrorMessage(
           'The project configuration process has encountered an error due to ' +
-            "a problem with the 'platformio.ini' file. " +
+            "a problem with the 'innaterapluginio.ini' file. " +
             'Please review the file and fix the issues.',
         );
         vscode.window.showTextDocument(configUri);
@@ -240,13 +240,13 @@ export default class ProjectManager {
         new ProjectTestManager(projectDir),
       );
 
-      // open "platformio.ini" if no visible editors
+      // open "innaterapluginio.ini" if no visible editors
       if (
         vscode.window.visibleTextEditors.length === 0 &&
         extension.getConfiguration('autoOpenPlatformIOIniFile')
       ) {
         vscode.window.showTextDocument(
-          vscode.Uri.file(path.join(projectDir, 'platformio.ini')),
+          vscode.Uri.file(path.join(projectDir, 'innaterapluginio.ini')),
         );
       }
     }
@@ -303,7 +303,7 @@ export default class ProjectManager {
       items.push({
         projectDir,
         label: 'Default',
-        description: `$(folder) ${shortProjectDir} ("default_envs" from "platformio.ini")`,
+        description: `$(folder) ${shortProjectDir} ("default_envs" from "innaterapluginio.ini")`,
       });
       items.push(
         ...envs.map((env) => ({

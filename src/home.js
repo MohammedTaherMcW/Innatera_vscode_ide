@@ -1,11 +1,3 @@
-/**
- * Copyright (c) 2017-present Innatera <contact@innatera.com>
- * All rights reserved.
- *
- * This source code is licensed under the license found in the LICENSE file in
- * the root directory of this source tree.
- */
-
 import * as pioNodeHelpers from 'Innatera-node-helpers';
 
 import { disposeSubscriptions, notifyError } from './utils';
@@ -72,7 +64,7 @@ export default class PIOHome {
   async newPanel(startUrl) {
     const panel = vscode.window.createWebviewPanel(
       'pioHome',
-      extension.getEnterpriseSetting('pioHomeTitle', 'Innatera Home'),
+      extension.getEnterpriseSetting('pioHomeTitle', 'innatera Home'),
       vscode.ViewColumn.One,
       {
         enableScripts: true,

@@ -1,10 +1,4 @@
-/**
- * Copyright (c)2024-present Innatera <contact@innatera.com>
- * All rights reserved.
- *
- * This source code is licensed under the license found in the LICENSE file in
- * the root directory of this source tree.
- */
+
 
 import * as pioNodeHelpers from 'Innatera-node-helpers';
 import * as projectHelpers from './helpers';
@@ -33,7 +27,7 @@ export default class ProjectManager {
     this._taskManager = undefined;
     this._sbEnvSwitcher = undefined;
     this._logOutputChannel = vscode.window.createOutputChannel(
-      'Innatera: Project Configuration',
+      'innatera: Project Configuration',
     );
     this._configProvider = new ProjectConfigLanguageProvider();
     this._configChangedTimeout = undefined;
@@ -49,7 +43,7 @@ export default class ProjectManager {
           vscode.window.withProgress(
             {
               location: { viewId: vscode.ProgressLocation.Notification },
-              title: 'Innatera: Configuring project',
+              title: 'innatera: Configuring project',
               cancellable: true,
             },
             async (progress, token) =>
@@ -71,7 +65,7 @@ export default class ProjectManager {
               await vscode.window.withProgress(
                 {
                   location: { viewId: vscode.ProgressLocation.Window },
-                  title: 'PlatformIO: Loading tasks...',
+                  title: 'innateraPluginIO: Loading tasks...',
                 },
                 task,
               ),
@@ -114,20 +108,20 @@ export default class ProjectManager {
       vscode.workspace.onDidChangeWorkspaceFolders(() =>
         this.switchToProject(this.findActiveProjectDir()),
       ),
-      vscode.commands.registerCommand('platformio-ide.rebuildProjectIndex', () =>
+      vscode.commands.registerCommand('Innatera-ide.rebuildProjectIndex', () =>
         this._pool.getActiveObserver().rebuildIndex({ force: true }),
       ),
-      vscode.commands.registerCommand('platformio-ide.refreshProjectTasks', () =>
+      vscode.commands.registerCommand('Innatera-ide.refreshProjectTasks', () =>
         this._taskManager.refresh({ force: true }),
       ),
-      vscode.commands.registerCommand('platformio-ide.toggleMultiEnvProjectTasks', () =>
+      vscode.commands.registerCommand('Innatera-ide.toggleMultiEnvProjectTasks', () =>
         this._taskManager.toggleMultiEnvExplorer(),
       ),
-      vscode.commands.registerCommand('platformio-ide._runProjectTask', (task) =>
+      vscode.commands.registerCommand('Innatera-ide._runProjectTask', (task) =>
         this._taskManager.runTask(task),
       ),
       vscode.commands.registerCommand(
-        'platformio-ide.activeEnvironment',
+        'Innatera-ide.activeEnvironment',
         async () => await this._pool.getActiveObserver().revealActiveEnvironment(),
       ),
     ];
@@ -262,15 +256,15 @@ export default class ProjectManager {
       vscode.StatusBarAlignment.Left,
       STATUS_BAR_PRIORITY_START,
     );
-    this._sbEnvSwitcher.name = 'Innatera: Project Environment Switcher';
+    this._sbEnvSwitcher.name = 'innatera: Project Environment Switcher';
     this._sbEnvSwitcher.tooltip = 'Switch  Project Environment';
-    this._sbEnvSwitcher.command = 'platformio-ide.pickProjectEnv';
+    this._sbEnvSwitcher.command = 'Innatera-ide.pickProjectEnv';
     this._sbEnvSwitcher.text = '$(root-folder) Loading...';
     this._sbEnvSwitcher.show();
 
     this.subscriptions.push(
       this._sbEnvSwitcher,
-      vscode.commands.registerCommand('platformio-ide.pickProjectEnv', () =>
+      vscode.commands.registerCommand('Innatera-ide.pickProjectEnv', () =>
         this.pickProjectEnv(),
       ),
     );

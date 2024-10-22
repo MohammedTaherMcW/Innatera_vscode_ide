@@ -1,10 +1,4 @@
-/**
- * Copyright (c)2024-present Innatera <contact@innatera.com>
- * All rights reserved.
- *
- * This source code is licensed under the license found in the LICENSE file in
- * the root directory of this source tree.
- */
+
 
 import { STATUS_BAR_PRIORITY_START } from './constants';
 import { disposeSubscriptions } from './utils';
@@ -61,7 +55,7 @@ class ToolbarButtonCommands {
 }
 
 export default class PIOToolbar {
-  static RUN_BUTTON_COMMANDS_ID = 'platformio-ide.runToolbarButtonCommand';
+  static RUN_BUTTON_COMMANDS_ID = 'Innatera-ide.runToolbarButtonCommand';
   
   constructor(options = { filterCommands: undefined, ignoreCommands: undefined }, projectManager = undefined) {
       if(getPIOProjectDirs().length > 0 && projectManager) {
@@ -122,7 +116,7 @@ export default class PIOToolbar {
 
     this.subscriptions.push(
       vscode.workspace.onDidChangeConfiguration((e) =>
-        e.affectsConfiguration('platformio-ide.toolbar') ? this.refresh() : undefined,
+        e.affectsConfiguration('Innatera-ide.toolbar') ? this.refresh() : undefined,
       ),
       vscode.commands.registerCommand(
         PIOToolbar.RUN_BUTTON_COMMANDS_ID,

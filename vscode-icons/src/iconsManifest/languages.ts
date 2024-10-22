@@ -21,7 +21,7 @@ export const languages = {
       'arm',
       'asm',
       'asm-intel-x86-generic',
-      'platformio-debug.asm',
+      'Innatera-debug.asm',
       'asm-collection',
     ],
     defaultExtension: 'asm',
@@ -295,11 +295,11 @@ export const languages = {
   pine: { ids: ['pine', 'pinescript'], defaultExtension: 'pine' },
   pip: { ids: 'pip-requirements', defaultExtension: 'requirements.txt' },
   plaintext: { ids: ['plaintext', 'vim-help'], defaultExtension: 'txt' },
-  platformio: {
+  innatera: {
     ids: [
-      'platformio-debug.disassembly',
-      'platformio-debug.memoryview',
-      'platformio-debug.asm',
+      'Innatera-debug.disassembly',
+      'Innatera-debug.memoryview',
+      'Innatera-debug.asm',
     ],
     defaultExtension: 'dbgasm',
   },

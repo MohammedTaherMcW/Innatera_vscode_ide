@@ -1,10 +1,4 @@
-/**
- * Copyright (c)2024-present Innatera <contact@innatera.com>
- * All rights reserved.
- *
- * This source code is licensed under the license found in the LICENSE file in
- * the root directory of this source tree.
- */
+
 
 import fs from 'fs-plus';
 import vscode from 'vscode';
@@ -16,11 +10,11 @@ export default class PythonPrompt {
 
   async prompt() {
     const selectedItem = await vscode.window.showInformationMessage(
-      'Innatera: Can not find working Python 3.6+ Interpreter. Please install the latest Python 3 and restart VSCode',
+      'innatera: Can not find working Python 3.6+ Interpreter. Please install the latest Python 3 and restart VSCode',
       { title: 'Install Python', isCloseAffordance: false },
       { title: 'I have Python', isCloseAffordance: false },
       { title: 'Try again', isCloseAffordance: false },
-      { title: 'Abort Innatera IDE Installation', isCloseAffordance: true },
+      { title: 'Abort innatera IDE Installation', isCloseAffordance: true },
     );
 
     let result = { status: this.STATUS_TRY_AGAIN };
@@ -48,7 +42,7 @@ export default class PythonPrompt {
           };
         }
         break;
-      case 'Abort Innatera IDE Installation':
+      case 'Abort innatera IDE Installation':
         result = { status: this.STATUS_ABORT };
         break;
     }

@@ -1,10 +1,4 @@
-/**
- * Copyright (c)2024-present Innatera <contact@innatera.com>
- * All rights reserved.
- *
- * This source code is licensed under the license found in the LICENSE file in
- * the root directory of this source tree.
- */
+
 
 import * as pioNodeHelpers from 'Innatera-node-helpers';
 
@@ -14,12 +8,12 @@ import vscode from 'vscode';
 
 export class ProjectConfigLanguageProvider {
   static DOCUMENT_SELECTOR = { language: 'ini' };
-  SCOPE_PLATFORMIO = 'platformio';
+  SCOPE_PLATFORMIO = 'innatera';
   SCOPE_ENV = 'env';
 
   constructor() {
     this.diagnosticCollection =
-      vscode.languages.createDiagnosticCollection('PlatformIO');
+      vscode.languages.createDiagnosticCollection('innatera');
     this.subscriptions = [
       this.diagnosticCollection,
       vscode.languages.registerHoverProvider(
@@ -78,7 +72,7 @@ export class ProjectConfigLanguageProvider {
     }
     const script = `
 import json
-from platformio.public import get_config_options_schema
+from innaterapluginio.public import get_config_options_schema
 
 print(json.dumps(get_config_options_schema()))
   `;
@@ -136,7 +130,7 @@ ${option.description}
       new vscode.Range(new vscode.Position(0, 0), position),
     );
     for (const line of text.split('\n').reverse()) {
-      if (line.startsWith('[platformio]')) {
+      if (line.startsWith('[innatera]')) {
         return this.SCOPE_PLATFORMIO;
       } else if (line.startsWith('[env]') || line.startsWith('[env:')) {
         return this.SCOPE_ENV;
@@ -216,7 +210,7 @@ ${option.description}
 
     return new vscode.Hover(
       new vscode.MarkdownString(
-        `[Open in Innatera Registry](${pkgUrlParts.join('/')})`,
+        `[Open in innatera Registry](${pkgUrlParts.join('/')})`,
       ),
     );
   }

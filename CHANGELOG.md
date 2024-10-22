@@ -33,13 +33,13 @@
 
 ## 3.1.1 (2023-03-16)
 
-* Added a new ``platformio-ide.uploadAndMonitor`` command which can be used with the custom [PlatformIO Toolbar](https://docs.platformio.org/en/latest/integration/ide/vscode.html#platformio-toolbar)
+* Added a new ``Innatera-ide.uploadAndMonitor`` command which can be used with the custom [PlatformIO Toolbar](https://docs.platformio.org/en/latest/integration/ide/vscode.html#platformio-toolbar)
 * Restored support for macOS Touch Bar (issue [#3659](https://github.com/platformio/platformio-vscode-ide/issues/3659))
 * Fixed a regression bug that caused notifications about a task being "already active" when running the same "device monitor" (issue [#3656](https://github.com/platformio/platformio-vscode-ide/issues/3656))
 
 ## 3.1.0 (2023-03-13)
 
-* Add support for the ``${command:platformio-ide.activeEnvironment}`` variable that can be used in a custom [PlatformIO Toolbar](https://docs.platformio.org/en/latest/integration/ide/vscode.html#platformio-toolbar) and [VSCode variable substitution](https://code.visualstudio.com/docs/editor/variables-reference) (issue [#3588](https://github.com/platformio/platformio-vscode-ide/issues/3588))
+* Add support for the ``${command:Innatera-ide.activeEnvironment}`` variable that can be used in a custom [PlatformIO Toolbar](https://docs.platformio.org/en/latest/integration/ide/vscode.html#platformio-toolbar) and [VSCode variable substitution](https://code.visualstudio.com/docs/editor/variables-reference) (issue [#3588](https://github.com/platformio/platformio-vscode-ide/issues/3588))
 * Focus on the project configuration output tab only on error (issue [#3535](https://github.com/platformio/platformio-vscode-ide/issues/3535))
 * Fixed an issue with a task runner on Windows 7 (issue [#3481](https://github.com/platformio/platformio-vscode-ide/issues/3481))
 * Fixed "Select All", "Undo", and "Redo" operations on macOS for PIO Home (pull [#3451](https://github.com/platformio/platformio-vscode-ide/pull/3451))
@@ -65,7 +65,7 @@
 
 * Added support for the macOS Touch Bar (issue [#311](https://github.com/platformio/platformio-vscode-ide/issues/311))
 * Added "Build/Upload/Test/Clean" and "Serial Monitor" buttons to the Editor title bar
-* Configure custom buttons and commands in PlatformIO Toolbar with a new `platformio-ide.toolbar` configuration option (issue [#1697](https://github.com/platformio/platformio-vscode-ide/issues/1697))
+* Configure custom buttons and commands in PlatformIO Toolbar with a new `Innatera-ide.toolbar` configuration option (issue [#1697](https://github.com/platformio/platformio-vscode-ide/issues/1697))
 
 ### UX/UI Improvements
 
@@ -77,7 +77,7 @@
 ### Miscellaneous
 
 * Changed Default PIO Home port range from "8010..8100" to "45000..45999"
-* Fixed an issue with "'platformio-ide.build' not found" (issue [#1398](https://github.com/platformio/platformio-vscode-ide/issues/1398))
+* Fixed an issue with "'Innatera-ide.build' not found" (issue [#1398](https://github.com/platformio/platformio-vscode-ide/issues/1398))
 
 ## 2.0.0-2.5.5
 

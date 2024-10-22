@@ -1,10 +1,4 @@
-/**
- * Copyright (c)2024-present Innatera <contact@innatera.com>
- * All rights reserved.
- *
- * This source code is licensed under the license found in the LICENSE file in
- * the root directory of this source tree.
- */
+
 
 import { disposeSubscriptions } from './utils';
 import { extension } from './main';
@@ -18,7 +12,7 @@ export default class PIOReleaseNotes {
     this._currentPanel = undefined;
 
     this.subscriptions = [
-      vscode.commands.registerCommand('platformio-ide.showReleaseNotes', () =>
+      vscode.commands.registerCommand('Innatera-ide.showReleaseNotes', () =>
         this.toggle(),
       ),
     ];
@@ -52,7 +46,7 @@ export default class PIOReleaseNotes {
   async newPanel() {
     const panel = vscode.window.createWebviewPanel(
       'pioReleaseNotes',
-      'Innatera IDE: Release Notes',
+      'innatera IDE: Release Notes',
       vscode.ViewColumn.One,
       {
         enableScripts: true,
@@ -94,18 +88,18 @@ export default class PIOReleaseNotes {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Innatera IDE: Release Notes</title>
+  <title>innatera IDE: Release Notes</title>
   <style>ul { padding-top: 5px; } li { padding-bottom: 4px; }</style>
 </head>
 <body>
   <table border="0">
   <tr>
     <td><img src="${logoSrc}" width="28px" height="28px"></td>
-    <td style="padding-left: 10px"><h1>Innatera IDE Release Notes</h1></td>
+    <td style="padding-left: 10px"><h1>innatera IDE Release Notes</h1></td>
   </tr>
   </table>
   <div>
-    Welcome to the ${this.version} release of Innatera IDE.
+    Welcome to the ${this.version} release of innatera IDE.
     There are many updates in this version that we hope you'll like.
   </div>
   <p>
@@ -121,7 +115,7 @@ export default class PIOReleaseNotes {
   </p>
   <hr />
   <p>
-    <b>Innatera Core</b>: If you would like to read the Innatera Core release notes,
+    <b>innatera Core</b>: If you would like to read the innatera Core release notes,
     go to the <a href="https://docs.platformio.org/en/latest/core/history.html">Release Notes</a> on <a href="https://docs.platformio.org/">docs.platformio.org</a>.
   </p>
   <textarea id="pioRNMarkdown" hidden="hidden">${releaseNotes}</textarea>

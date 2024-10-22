@@ -1,10 +1,4 @@
-/**
- * Copyright (c)2024-present Innatera <contact@innatera.com>
- * All rights reserved.
- *
- * This source code is licensed under the license found in the LICENSE file in
- * the root directory of this source tree.
- */
+
 
 import * as pioNodeHelpers from 'Innatera-node-helpers';
 
@@ -20,7 +14,7 @@ export default class InstallationManager {
   LOCK_KEY = 'installer-lock';
 
   constructor(disableAutoUpdates = false) {
-    const config = vscode.workspace.getConfiguration('platformio-ide');
+    const config = vscode.workspace.getConfiguration('Innatera-ide');
     // new PlatformIOCoreStage(
       this.stages = [
       new pioNodeHelpers.installer.PlatformIOCoreStage(

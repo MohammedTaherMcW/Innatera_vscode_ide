@@ -71,7 +71,7 @@ export default class PIOCustom {
   async newPanel(startUrl) {
     const panel = vscode.window.createWebviewPanel(
       'pioHome',
-      extension.getEnterpriseSetting('pioHomeTitle', 'Innatera Custom'),
+      extension.getEnterpriseSetting('pioHomeTitle', 'innatera Custom'),
       vscode.ViewColumn.One,
       {
         enableScripts: true,
@@ -205,7 +205,7 @@ async runTask(targets) {
             );
 
             const task = new vscode.Task(
-                { type: 'PlatformIO', target },
+                { type: 'innatera', target },
                 vscode.TaskScope.Workspace,
                 `Run PIO Target: ${target}`,
                 'Custom Tasks',

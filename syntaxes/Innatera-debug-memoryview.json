@@ -1,6 +1,6 @@
 {
-    "name": "Innatera Debugger Memory View",
-    "scopeName": "source.platformio-debug-memoryview",
+    "name": "innatera Debugger Memory View",
+    "scopeName": "source.Innatera-debug-memoryview",
     "patterns": [
         {
             "comment": "Heading",

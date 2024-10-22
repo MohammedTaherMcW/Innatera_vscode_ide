@@ -1,10 +1,4 @@
-/**
- * Copyright (c)2024-present Innatera <contact@innatera.com>
- * All rights reserved.
- *
- * This source code is licensed under the license found in the LICENSE file in
- * the root directory of this source tree.
- */
+
 
 import * as vscode from 'vscode';
 
@@ -50,7 +44,7 @@ export default class ProjectTasksTreeProvider {
     treeItem.tooltip = task.title;
     treeItem.command = {
       title: task.title,
-      command: 'platformio-ide._runProjectTask',
+      command: 'Innatera-ide._runProjectTask',
       arguments: [task],
     };
     if (!task.coreEnv && task.multienv && this.multiEnvProject) {

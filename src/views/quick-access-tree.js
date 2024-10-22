@@ -1,10 +1,4 @@
-/**
- * Copyright (c)2024-present Innatera <contact@innatera.com>
- * All rights reserved.
- *
- * This source code is licensed under the license found in the LICENSE file in
- * the root directory of this source tree.
- */
+
 
 import * as vscode from 'vscode';
 
@@ -34,16 +28,15 @@ export default class QuickAccessTreeProvider {
         undefined,
         vscode.TreeItemCollapsibleState.Expanded,
         [
-          new QuickItem('Open', 'platformio-ide.showHome'),
-          new QuickItem('Innatera Account', 'platformio-ide.showHome', ['/account']),
-          new QuickItem('Inspect', 'platformio-ide.showHome', ['/inspect']),
-          new QuickItem('Projects & Configuration', 'platformio-ide.showHome', [
+          new QuickItem('Open', 'Innatera-ide.showHome'),
+          new QuickItem('Innatera Account', 'Innatera-ide.showHome', ['/account']),
+          new QuickItem('Inspect', 'Innatera-ide.showHome', ['/inspect']),
+          new QuickItem('Projects & Configuration', 'Innatera-ide.showHome', [
             '/projects',
           ]),
-          new QuickItem('Libraries', 'platformio-ide.showHome', ['/libraries']),
-          new QuickItem('Boards', 'platformio-ide.showHome', ['/boards']),
-          new QuickItem('Platforms', 'platformio-ide.showHome', ['/platforms']),
-          new QuickItem('Devices', 'platformio-ide.showHome', ['/device']),
+          new QuickItem('Boards', 'Innatera-ide.showHome', ['/boards']),
+          new QuickItem('Platforms', 'Innatera-ide.showHome', ['/platforms']),
+          new QuickItem('Devices', 'Innatera-ide.showHome', ['/device']),
         ],
       ),
       new QuickItem(
@@ -52,7 +45,7 @@ export default class QuickAccessTreeProvider {
         undefined,
         vscode.TreeItemCollapsibleState.Expanded,
         [
-          new QuickItem('Start Debugging', 'platformio-ide.startDebugging'),
+          new QuickItem('Start Debugging', 'Innatera-ide.startDebugging'),
           new QuickItem('Toggle Debug Console', 'workbench.debug.action.toggleRepl'),
         ],
       ),
@@ -67,11 +60,11 @@ export default class QuickAccessTreeProvider {
             'workbench.extensions.action.showExtensionsWithIds',
             [['alexnesnes.teleplot']],
           ),
-          new QuickItem('Innatera Core CLI', 'platformio-ide.openPIOCoreCLI'),
+          new QuickItem('Innatera Core CLI', 'Innatera-ide.openPIOCoreCLI'),
           new QuickItem('Clone Git Project', 'git.clone'),
-          new QuickItem('New Terminal', 'platformio-ide.newTerminal'),
-          new QuickItem('Upgrade Innatera Core', 'platformio-ide.upgradeCore'),
-          new QuickItem('Show Release Notes', 'platformio-ide.showReleaseNotes'),
+          new QuickItem('New Terminal', 'Innatera-ide.newTerminal'),
+          new QuickItem('Upgrade Innatera Core', 'Innatera-ide.upgradeCore'),
+          new QuickItem('Show Release Notes', 'Innatera-ide.showReleaseNotes'),
         ],
       ),
     ];

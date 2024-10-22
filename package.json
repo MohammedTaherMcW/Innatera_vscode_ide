@@ -1,5 +1,5 @@
 {
-  "name": "platformio-ide",
+  "name": "Innatera-ide",
   "version": "1.0.0",
   "publisher": "Innatera",
   "engines": {
@@ -30,11 +30,11 @@
     "name": "Innatera NANO SYSTEMS"
   },
   "bugs": {
-    "url": "https://github.com/platformio/platformio-vscode-ide/issues"
+    "url": "https://github.com/innatera/innatera-vscode-ide/issues"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/platformio/platformio-vscode-ide.git"
+    "url": "https://github.com/innatera/innatera-vscode-ide.git"
   },
   "activationEvents": [
     "workspaceContains:**/innaterapluginio.ini"
@@ -51,7 +51,7 @@
     ],
     "languages": [
       {
-        "id": "platformio-debug.disassembly",
+        "id": "Innatera-debug.disassembly",
         "aliases": [
           "Disassembly"
         ],
@@ -60,7 +60,7 @@
         ]
       },
       {
-        "id": "platformio-debug.memoryview",
+        "id": "Innatera-debug.memoryview",
         "aliases": [
           "Memory"
         ],
@@ -69,7 +69,7 @@
         ]
       },
       {
-        "id": "platformio-debug.asm",
+        "id": "Innatera-debug.asm",
 
         "aliases": [
           "Assembly",
@@ -88,224 +88,224 @@
     
     "grammars": [
       {
-        "language": "platformio-debug.disassembly",
-        "scopeName": "source.platformio-debug-disassembly",
-        "path": "./syntaxes/platformio-debug-disassembly.json"
+        "language": "Innatera-debug.disassembly",
+        "scopeName": "source.Innatera-debug-disassembly",
+        "path": "./syntaxes/Innatera-debug-disassembly.json"
       },
       {
-        "language": "platformio-debug.memoryview",
-        "scopeName": "source.platformio-debug-memoryview",
-        "path": "./syntaxes/platformio-debug-memoryview.json"
+        "language": "Innatera-debug.memoryview",
+        "scopeName": "source.Innatera-debug-memoryview",
+        "path": "./syntaxes/Innatera-debug-memoryview.json"
       },
       {
-        "language": "platformio-debug.asm",
-        "scopeName": "source.platformio-debug-asm",
+        "language": "Innatera-debug.asm",
+        "scopeName": "source.Innatera-debug-asm",
         "path": "./syntaxes/assembly.tmLanguage"
       }
     ],
     "commands": [
       {
-        "command": "platformio-ide.showReleaseNotes",
+        "command": "Innatera-ide.showReleaseNotes",
         "title": "Show Release Notes",
-        "category": "Innatera"
+        "category": "innatera"
       },
       {
-        "command": "platformio-ide.showHome",
-        "title": "Innatera Home",
-        "category": "Innatera"
+        "command": "Innatera-ide.showHome",
+        "title": "innatera Home",
+        "category": "innatera"
       },
       {
-        "command": "platformio-ide.openPIOCoreCLI",
-        "title": "Open Innatera Core CLI",
-        "category": "Innatera"
+        "command": "Innatera-ide.openPIOCoreCLI",
+        "title": "Open innatera Core CLI",
+        "category": "innatera"
       },
       {
-        "command": "platformio-ide.newTerminal",
+        "command": "Innatera-ide.newTerminal",
         "title": "New Terminal",
-        "category": "Innatera",
-        "enablement": "pioCoreReady"
+        "category": "innatera",
+        "enablement": "InnateraCoreReady"
       },
       {
-        "command": "platformio-ide.upgradeCore",
-        "title": "Upgrade Innatera Core",
-        "category": "Innatera",
-        "enablement": "pioCoreReady"
+        "command": "Innatera-ide.upgradeCore",
+        "title": "Upgrade innatera Core",
+        "category": "innatera",
+        "enablement": "InnateraCoreReady"
       },
       {
-        "command": "platformio-ide.pickProjectEnv",
+        "command": "Innatera-ide.pickProjectEnv",
         "title": "Pick Project Environment",
-        "category": "Innatera",
+        "category": "innatera",
         "icon": "$(root-folder)",
-        "enablement": "pioProjectReady"
+        "enablement": "InnateraProjectReady"
       },
       {
-        "command": "platformio-ide.setProjectPort",
+        "command": "Innatera-ide.setProjectPort",
         "title": "Set Project Port (upload/monitor/test)",
-        "category": "Innatera",
+        "category": "innatera",
         "icon": "$(plug)",
-        "enablement": "pioProjectReady"
+        "enablement": "InnateraProjectReady"
       },
       {
-        "command": "platformio-ide.toggleMultiEnvProjectTasks",
+        "command": "Innatera-ide.toggleMultiEnvProjectTasks",
         "title": "Toggle between Multi Environment Project Tasks",
-        "category": "Innatera",
+        "category": "innatera",
         "icon": "$(layers)",
         "enablement": "pioProjectTasksReady"
       },
       {
-        "command": "platformio-ide.refreshProjectTasks",
+        "command": "Innatera-ide.refreshProjectTasks",
         "title": "Refresh Project Tasks",
-        "category": "Innatera",
+        "category": "innatera",
         "icon": "$(refresh)",
         "enablement": "pioProjectTasksReady"
       },
       {
-        "command": "platformio-ide.build",
+        "command": "Innatera-ide.build",
         "title": "Build",
-        "category": "Innatera",
+        "category": "innatera",
         "icon": "$(check)",
         "enablement": "pioProjectTasksReady && isTalamoProject==='spine' || isTalamoProject==='combine'"
       },
       {
-        "command": "platformio-ide.python_run",
+        "command": "Innatera-ide.python_run",
         "title": "Python Run",
-        "category": "Innatera",
+        "category": "innatera",
         "icon": "$(check)",
         "enablement": "pioProjectTasksReady && isTalamoProject==='talamo' || isTalamoProject==='combine'"
       },
       {
-        "command": "platformio-ide.custom",
+        "command": "Innatera-ide.custom",
         "title": "Custom",
-        "category": "Innatera",
+        "category": "innatera",
         "icon": "$(arrow-left)",
         "enablement": "pioProjectTasksReady && isTalamoProject==='spine' || isTalamoProject==='combine'"
       },
       {
-        "command": "platformio-ide.upload",
+        "command": "Innatera-ide.upload",
         "title": "Upload",
-        "category": "Innatera",
+        "category": "innatera",
         "icon": "$(arrow-right)",
         "enablement": "pioProjectTasksReady && isTalamoProject==='spine' || isTalamoProject==='combine'"
       },
       {
-        "command": "platformio-ide.uploadAndMonitor",
+        "command": "Innatera-ide.uploadAndMonitor",
         "title": "Upload and Monitor",
-        "category": "Innatera",
+        "category": "innatera",
         "icon": "$(arrow-right)",
         "enablement": "pioProjectTasksReady && isTalamoProject==='spine' || isTalamoProject==='combine'"
       },
       {
-        "command": "platformio-ide.clean",
+        "command": "Innatera-ide.clean",
         "title": "Clean",
-        "category": "Innatera",
+        "category": "innatera",
         "icon": "$(trashcan)",
         "enablement": "pioProjectTasksReady && isTalamoProject==='spine' || isTalamoProject==='combine'"
       },
       {
-        "command": "platformio-ide.serialMonitor",
+        "command": "Innatera-ide.serialMonitor",
         "title": "Serial Monitor",
-        "category": "Innatera",
+        "category": "innatera",
         "icon": "$(plug)",
-        "enablement": "pioProjectReady && isTalamoProject==='spine' || isTalamoProject==='combine'"
+        "enablement": "InnateraProjectReady && isTalamoProject==='spine' || isTalamoProject==='combine'"
       },
       {
-        "command": "platformio-ide.test",
+        "command": "Innatera-ide.test",
         "title": "Test",
-        "category": "Innatera",
+        "category": "innatera",
         "icon": "$(beaker)",
         "enablement": "pioProjectTasksReady && isTalamoProject==='spine' || isTalamoProject==='combine'"
       },
       {
-        "command": "platformio-ide.rebuildProjectIndex",
+        "command": "Innatera-ide.rebuildProjectIndex",
         "title": "Rebuild IntelliSense Index",
-        "category": "Innatera",
+        "category": "innatera",
         "enablement": "pioProjectTasksReady"
       },
       {
-        "command": "platformio-ide.startDebugging",
+        "command": "Innatera-ide.startDebugging",
         "title": "Start Debugging",
-        "category": "Innatera",
-        "enablement": "pioProjectReady"
+        "category": "innatera",
+        "enablement": "InnateraProjectReady"
       },
       {
-        "category": "Innatera Debug",
-        "command": "platformio-debug.peripherals.updateNode",
+        "category": "innatera Debug",
+        "command": "Innatera-debug.peripherals.updateNode",
         "title": "Update Value",
-        "enablement": "pioProjectReady"
+        "enablement": "InnateraProjectReady"
       },
       {
-        "category": "Innatera Debug",
-        "command": "platformio-debug.peripherals.selectedNode",
+        "category": "innatera Debug",
+        "command": "Innatera-debug.peripherals.selectedNode",
         "title": "Selected",
-        "enablement": "pioProjectReady"
+        "enablement": "InnateraProjectReady"
       },
       {
-        "category": "Innatera Debug",
-        "command": "platformio-debug.registers.selectedNode",
+        "category": "innatera Debug",
+        "command": "Innatera-debug.registers.selectedNode",
         "title": "Selected",
-        "enablement": "pioProjectReady"
+        "enablement": "InnateraProjectReady"
       },
       {
-        "category": "Innatera Debug",
-        "command": "platformio-debug.peripherals.copyValue",
+        "category": "innatera Debug",
+        "command": "Innatera-debug.peripherals.copyValue",
         "title": "Copy Value",
-        "enablement": "pioProjectReady"
+        "enablement": "InnateraProjectReady"
       },
       {
-        "category": "Innatera Debug",
-        "command": "platformio-debug.registers.copyValue",
+        "category": "innatera Debug",
+        "command": "Innatera-debug.registers.copyValue",
         "title": "Copy Value",
-        "enablement": "pioProjectReady"
+        "enablement": "InnateraProjectReady"
       },
       {
-        "category": "Innatera Debug",
-        "command": "platformio-debug.peripherals.setFormat",
+        "category": "innatera Debug",
+        "command": "Innatera-debug.peripherals.setFormat",
         "title": "Set Value Format",
-        "enablement": "pioProjectReady"
+        "enablement": "InnateraProjectReady"
       },
       {
-        "category": "Innatera Debug",
-        "command": "platformio-debug.registers.setFormat",
+        "category": "innatera Debug",
+        "command": "Innatera-debug.registers.setFormat",
         "title": "Set Value Format",
-        "enablement": "pioProjectReady"
+        "enablement": "InnateraProjectReady"
       },
       {
-        "category": "Innatera Debug",
-        "command": "platformio-debug.examineMemory",
+        "category": "innatera Debug",
+        "command": "Innatera-debug.examineMemory",
         "title": " View Memory",
         "icon": {
           "light": "assets/icons/add.svg",
           "dark": "assets/icons/add-inverse.svg"
         },
-        "enablement": "pioProjectReady"
+        "enablement": "InnateraProjectReady"
       },
       {
-        "category": "Innatera Debug",
-        "command": "platformio-debug.memory.clearHistory",
+        "category": "innatera Debug",
+        "command": "Innatera-debug.memory.clearHistory",
         "title": "Clear Memory View History",
         "icon": {
           "light": "assets/icons/closeall.svg",
           "dark": "assets/icons/closeall-inverse.svg"
         },
-        "enablement": "pioProjectReady"
+        "enablement": "InnateraProjectReady"
       },
       {
-        "category": "Innatera Debug",
-        "command": "platformio-debug.memory.deleteHistoryItem",
+        "category": "innatera Debug",
+        "command": "Innatera-debug.memory.deleteHistoryItem",
         "title": "Delete",
-        "enablement": "pioProjectReady"
+        "enablement": "InnateraProjectReady"
       },
       {
-        "category": "Innatera Debug",
-        "command": "platformio-debug.viewDisassembly",
+        "category": "innatera Debug",
+        "command": "Innatera-debug.viewDisassembly",
         "title": "View Disassembly (Function)",
-        "enablement": "pioProjectReady"
+        "enablement": "InnateraProjectReady"
       },
       {
-        "category": "Innatera Debug",
-        "command": "platformio-debug.setForceDisassembly",
+        "category": "innatera Debug",
+        "command": "Innatera-debug.setForceDisassembly",
         "title": "Set Force Disassembly",
-        "enablement": "pioProjectReady"
+        "enablement": "InnateraProjectReady"
       }
     ],
     "breakpoints": [
@@ -320,10 +320,10 @@
         "language": "cpp"
       },
       {
-        "language": "platformio-debug.asm"
+        "language": "Innatera-debug.asm"
       },
       {
-        "language": "platformio-debug.disassembly"
+        "language": "Innatera-debug.disassembly"
       }
     ],
     "debuggers": [
@@ -352,7 +352,7 @@
                 ]
               },
               "loadMode": {
-                "description": "Control when Innatera should load debugging firmware to the end target (see docs for `debug_load_mode` option)",
+                "description": "Control when innatera should load debugging firmware to the end target (see docs for `debug_load_mode` option)",
                 "default": null,
                 "type": [
                   "string",
@@ -378,199 +378,199 @@
         },
         "initialConfigurations": [
           {
-            "name": "Innatera Debugger",
+            "name": "innatera Debugger",
             "request": "launch",
-            "type": "platformio-debug",
+            "type": "Innatera-debug",
             "toolchainBinDir": "/usr/local/bin"
           }
         ],
         "configurationSnippets": [
           {
             "body": {
-              "name": "${6:Innatera Debugger}",
+              "name": "${6:innatera Debugger}",
               "request": "launch",
-              "type": "platformio-debug",
+              "type": "Innatera-debug",
               "executable": ".pio/build/myenv/firmware.elf",
               "toolchainBinDir": "/usr/local/bin"
             },
-            "description": "Innatera Debugger",
-            "label": "Innatera Debugger"
+            "description": "innatera Debugger",
+            "label": "innatera Debugger"
           }
         ],
-        "label": "Innatera Debugger",
+        "label": "innatera Debugger",
         "program": "./node_modules/Innatera-vscode-debug/dist/adapter.js",
         "runtime": "node",
-        "type": "platformio-debug"
+        "type": "Innatera-debug"
       }
     ],
     "menus": {
       "commandPalette": [
         {
-          "command": "platformio-debug.examineMemory",
-          "when": "debugType == platformio-debug"
+          "command": "Innatera-debug.examineMemory",
+          "when": "debugType == Innatera-debug"
         },
         {
-          "command": "platformio-debug.memory.clearHistory",
-          "when": "debugType == platformio-debug"
+          "command": "Innatera-debug.memory.clearHistory",
+          "when": "debugType == Innatera-debug"
         },
         {
-          "command": "platformio-debug.viewDisassembly",
-          "when": "debugType == platformio-debug"
+          "command": "Innatera-debug.viewDisassembly",
+          "when": "debugType == Innatera-debug"
         },
         {
-          "command": "platformio-debug.setForceDisassembly",
-          "when": "debugType == platformio-debug"
+          "command": "Innatera-debug.setForceDisassembly",
+          "when": "debugType == Innatera-debug"
         }
       ],
       "view/item/context": [
         {
-          "command": "platformio-debug.peripherals.updateNode",
-          "when": "view == platformio-debug.peripherals && viewItem == field"
+          "command": "Innatera-debug.peripherals.updateNode",
+          "when": "view == Innatera-debug.peripherals && viewItem == field"
         },
         {
-          "command": "platformio-debug.peripherals.updateNode",
-          "when": "view == platformio-debug.peripherals && viewItem == registerRW"
+          "command": "Innatera-debug.peripherals.updateNode",
+          "when": "view == Innatera-debug.peripherals && viewItem == registerRW"
         },
         {
-          "command": "platformio-debug.peripherals.updateNode",
-          "when": "view == platformio-debug.peripherals && viewItem == registerWO"
+          "command": "Innatera-debug.peripherals.updateNode",
+          "when": "view == Innatera-debug.peripherals && viewItem == registerWO"
         },
         {
-          "command": "platformio-debug.peripherals.copyValue",
-          "when": "view == platformio-debug.peripherals && viewItem == field"
+          "command": "Innatera-debug.peripherals.copyValue",
+          "when": "view == Innatera-debug.peripherals && viewItem == field"
         },
         {
-          "command": "platformio-debug.peripherals.copyValue",
-          "when": "view == platformio-debug.peripherals && viewItem == registerRW"
+          "command": "Innatera-debug.peripherals.copyValue",
+          "when": "view == Innatera-debug.peripherals && viewItem == registerRW"
         },
         {
-          "command": "platformio-debug.peripherals.copyValue",
-          "when": "view == platformio-debug.peripherals && viewItem == registerRO"
+          "command": "Innatera-debug.peripherals.copyValue",
+          "when": "view == Innatera-debug.peripherals && viewItem == registerRO"
         },
         {
-          "command": "platformio-debug.registers.copyValue",
-          "when": "view == platformio-debug.registers && viewItem == register"
+          "command": "Innatera-debug.registers.copyValue",
+          "when": "view == Innatera-debug.registers && viewItem == register"
         },
         {
-          "command": "platformio-debug.registers.copyValue",
-          "when": "view == platformio-debug.registers && viewItem == field"
+          "command": "Innatera-debug.registers.copyValue",
+          "when": "view == Innatera-debug.registers && viewItem == field"
         },
         {
-          "command": "platformio-debug.peripherals.setFormat",
-          "when": "view == platformio-debug.peripherals"
+          "command": "Innatera-debug.peripherals.setFormat",
+          "when": "view == Innatera-debug.peripherals"
         },
         {
-          "command": "platformio-debug.registers.setFormat",
-          "when": "view == platformio-debug.registers"
+          "command": "Innatera-debug.registers.setFormat",
+          "when": "view == Innatera-debug.registers"
         },
         {
-          "command": "platformio-debug.memory.deleteHistoryItem",
-          "when": "view == platformio-debug.memory",
+          "command": "Innatera-debug.memory.deleteHistoryItem",
+          "when": "view == Innatera-debug.memory",
           "group": "inline"
         }
       ],
       "view/title": [
         {
-          "command": "platformio-ide.pickProjectEnv",
-          "when": "pioProjectTasksReady && pioMultiEnvProject && view == platformio-ide.projectTasks",
+          "command": "Innatera-ide.pickProjectEnv",
+          "when": "pioProjectTasksReady && pioMultiEnvProject && view == Innatera-ide.projectTasks",
           "group": "navigation"
         },
         {
-          "command": "platformio-ide.toggleMultiEnvProjectTasks",
-          "when": "pioProjectTasksReady && view == platformio-ide.projectTasks",
+          "command": "Innatera-ide.toggleMultiEnvProjectTasks",
+          "when": "pioProjectTasksReady && view == Innatera-ide.projectTasks",
           "group": "navigation"
         },
         {
-          "command": "platformio-ide.refreshProjectTasks",
-          "when": "pioProjectTasksReady && view == platformio-ide.projectTasks",
+          "command": "Innatera-ide.refreshProjectTasks",
+          "when": "pioProjectTasksReady && view == Innatera-ide.projectTasks",
           "group": "navigation"
         },
         {
-          "command": "platformio-debug.examineMemory",
-          "when": "debugType == platformio-debug && view == platformio-debug.memory",
+          "command": "Innatera-debug.examineMemory",
+          "when": "debugType == Innatera-debug && view == Innatera-debug.memory",
           "group": "navigation"
         },
         {
-          "command": "platformio-debug.memory.clearHistory",
-          "when": "debugType == platformio-debug && view == platformio-debug.memory",
+          "command": "Innatera-debug.memory.clearHistory",
+          "when": "debugType == Innatera-debug && view == Innatera-debug.memory",
           "group": "navigation"
         }
       ],
       "editor/title/run": [
         {
-          "command": "platformio-ide.python_run",
-          "when": "pioProjectReady && config.platformio-ide.showEditorTitleShortcuts && isTalamoProject==='talamo' || isTalamoProject==='combine'",
+          "command": "Innatera-ide.python_run",
+          "when": "InnateraProjectReady && config.Innatera-ide.showEditorTitleShortcuts && isTalamoProject==='talamo' || isTalamoProject==='combine'",
           "group": "pio_run@5"
         },
         {
-          "command": "platformio-ide.build",
-          "when": "pioProjectReady && config.platformio-ide.showEditorTitleShortcuts && isTalamoProject==='spine' || isTalamoProject==='combine' ",
+          "command": "Innatera-ide.build",
+          "when": "InnateraProjectReady && config.Innatera-ide.showEditorTitleShortcuts && isTalamoProject==='spine' || isTalamoProject==='combine' ",
           "group": "pio_run@0"
         },
         {
-          "command": "platformio-ide.upload",
-          "when": "pioProjectReady && config.platformio-ide.showEditorTitleShortcuts && isTalamoProject==='spine' || isTalamoProject==='combine'",
+          "command": "Innatera-ide.upload",
+          "when": "InnateraProjectReady && config.Innatera-ide.showEditorTitleShortcuts && isTalamoProject==='spine' || isTalamoProject==='combine'",
           "group": "pio_run@1"
         },
         {
-          "command": "platformio-ide.test",
-          "when": "pioProjectReady && config.platformio-ide.showEditorTitleShortcuts && isTalamoProject==='spine' || isTalamoProject==='combine'",
+          "command": "Innatera-ide.test",
+          "when": "InnateraProjectReady && config.Innatera-ide.showEditorTitleShortcuts && isTalamoProject==='spine' || isTalamoProject==='combine'",
           "group": "pio_run@2"
         },
         {  
-          "command": "platformio-ide.clean",
-          "when": "pioProjectReady && config.platformio-ide.showEditorTitleShortcuts  && isTalamoProject==='spine' || isTalamoProject==='combine'",
+          "command": "Innatera-ide.clean",
+          "when": "InnateraProjectReady && config.Innatera-ide.showEditorTitleShortcuts  && isTalamoProject==='spine' || isTalamoProject==='combine'",
           "group": "pio_run@3"
         },
         {
-          "command": "platformio-ide.custom",
-          "when": "pioProjectReady && config.platformio-ide.showEditorTitleShortcuts  && isTalamoProject==='spine' || isTalamoProject==='combine'",
+          "command": "Innatera-ide.custom",
+          "when": "InnateraProjectReady && config.Innatera-ide.showEditorTitleShortcuts  && isTalamoProject==='spine' || isTalamoProject==='combine'",
           "group": "pio_run@4"
         }
       ],
       "editor/title": [
         {
-          "command": "platformio-ide.serialMonitor",
-          "when": "pioCoreReady && config.platformio-ide.showEditorTitleShortcuts",
+          "command": "Innatera-ide.serialMonitor",
+          "when": "InnateraCoreReady && config.Innatera-ide.showEditorTitleShortcuts",
           "group": "navigation"
         }
       ],
       "file/newFile": [
         {
-          "command": "platformio-ide.showHome",
-          "when": "pioCoreReady",
+          "command": "Innatera-ide.showHome",
+          "when": "InnateraCoreReady",
           "group": "navigation"
         }
       ],
       "touchBar": [
         {
-          "command": "platformio-ide.python_run",
-          "when": "pioProjectReady && config.platformio-ide.showEditorTitleShortcuts && isTalamoProject==='talamo' || isTalamoProject==='combine'",
+          "command": "Innatera-ide.python_run",
+          "when": "InnateraProjectReady && config.Innatera-ide.showEditorTitleShortcuts && isTalamoProject==='talamo' || isTalamoProject==='combine'",
           "group": "pio_run@5"
         },
         {
-          "command": "platformio-ide.build",
-          "when": "pioProjectReady && config.platformio-ide.showEditorTitleShortcuts && isTalamoProject==='spine' || isTalamoProject==='combine' ",
+          "command": "Innatera-ide.build",
+          "when": "InnateraProjectReady && config.Innatera-ide.showEditorTitleShortcuts && isTalamoProject==='spine' || isTalamoProject==='combine' ",
           "group": "pio_run@0"
         },
         {
-          "command": "platformio-ide.upload",
-          "when": "pioProjectReady && config.platformio-ide.showEditorTitleShortcuts && isTalamoProject==='spine' || isTalamoProject==='combine'",
+          "command": "Innatera-ide.upload",
+          "when": "InnateraProjectReady && config.Innatera-ide.showEditorTitleShortcuts && isTalamoProject==='spine' || isTalamoProject==='combine'",
           "group": "z_pio_run@1"
         },
         {
-          "command": "platformio-ide.test",
-          "when": "pioProjectReady && config.platformio-ide.showEditorTitleShortcuts  && isTalamoProject==='spine' || isTalamoProject==='combine'",
+          "command": "Innatera-ide.test",
+          "when": "InnateraProjectReady && config.Innatera-ide.showEditorTitleShortcuts  && isTalamoProject==='spine' || isTalamoProject==='combine'",
           "group": "z_pio_run@2"
         },
         {
-          "command": "platformio-ide.clean",
-          "when": "pioProjectReady && config.platformio-ide.showEditorTitleShortcuts  && isTalamoProject==='spine' || isTalamoProject==='combine'",
+          "command": "Innatera-ide.clean",
+          "when": "InnateraProjectReady && config.Innatera-ide.showEditorTitleShortcuts  && isTalamoProject==='spine' || isTalamoProject==='combine'",
           "group": "z_pio_run@3"
         },
         {
-          "command": "platformio-ide.serialMonitor",
-          "when": "pioCoreReady && config.platformio-ide.showEditorTitleShortcuts && isTalamoProject==='spine' || isTalamoProject==='combine'",
+          "command": "Innatera-ide.serialMonitor",
+          "when": "InnateraCoreReady && config.Innatera-ide.showEditorTitleShortcuts && isTalamoProject==='spine' || isTalamoProject==='combine'",
           "group": "z_pio_tools"
         }
       ]
@@ -578,116 +578,116 @@
     "viewsContainers": {
       "activitybar": [
         {
-          "id": "platformio",
+          "id": "innatera",
           "title": "Innatera",
           "icon": "assets/icons/platformio-activity-icon.svg"
         }
       ]
     },
     "views": {
-      "platformio": [
+      "innatera": [
         {
-          "id": "platformio-ide.projectTasks",
+          "id": "Innatera-ide.projectTasks",
           "name": "Project Tasks",
-          "when": "pioCoreReady",
+          "when": "InnateraCoreReady",
           "type": "tree"
         },
         {
-          "id": "platformio-ide.quickAccess",
+          "id": "Innatera-ide.quickAccess",
           "name": "Quick Access",
           "type": "tree"
         }
       ],
       "debug": [
         {
-          "id": "platformio-debug.peripherals",
+          "id": "Innatera-debug.peripherals",
           "name": "Peripherals"
         },
         {
-          "id": "platformio-debug.registers",
+          "id": "Innatera-debug.registers",
           "name": "Registers"
         },
         {
-          "id": "platformio-debug.memory",
+          "id": "Innatera-debug.memory",
           "name": "Memory"
         },
         {
-          "id": "platformio-debug.disassembly",
+          "id": "Innatera-debug.disassembly",
           "name": "Disassembly"
         }
       ]
     },
     "viewsWelcome": [
       {
-        "view": "platformio-ide.projectTasks",
-        "contents": "You have not yet opened a Innatera project.\nYou can open an existing Innatera-based project (a folder that contains [innaterapluginio.ini](https://bit.ly/vscode-platformio-ini-docs) file).\n[Pick a folder](command:workbench.action.files.openFolder)\nYou can create a new Innatera Project or explore examples using Innatera Home.\n[Create New Project](command:platformio-ide.showHome)"
+        "view": "Innatera-ide.projectTasks",
+        "contents": "You have not yet opened a innatera project.\nYou can open an existing innatera-based project (a folder that contains [innaterapluginio.ini](https://bit.ly/vscode-innatera-ini-docs) file).\n[Pick a folder](command:workbench.action.files.openFolder)\nYou can create a new innatera Project or explore examples using innatera Home.\n[Create New Project](command:Innatera-ide.showHome)"
       },
       {
-        "view": "platformio-ide.quickAccess",
-        "contents": "Initializing Innatera Core..."
+        "view": "Innatera-ide.quickAccess",
+        "contents": "Initializing innatera Core..."
       }
     ],
     "walkthroughs": [
       {
-        "id": "platformio-ide.welcome",
-        "title": "Get started with Innatera IDE",
+        "id": "Innatera-ide.welcome",
+        "title": "Get started with innatera IDE",
         "description": "The most loved IDE solution for Microsoft Visual Studio Code",
         "steps": [
           {
-            "id": "platformio-core",
+            "id": "innatera-core",
             "title": "Rich CLI developed for Humans",
-            "description": "[Innatera Core](https://bit.ly/vscode-platformio-core-docs) is the heart of PlatformIO IDE and it's your one-stop shop for professional embedded development.\nIt takes care of everything from dependency management to testing, so you can focus on what matters most – your project.\n[Install Innatera Core](command:platformio-ide.openPIOCoreCLI)",
+            "description": "[innatera Core](https://bit.ly/vscode-innatera-core-docs) is the heart of innatera IDE and it's your one-stop shop for professional embedded development.\nIt takes care of everything from dependency management to testing, so you can focus on what matters most – your project.\n[Install innatera Core](command:Innatera-ide.openPIOCoreCLI)",
             "media": {
-              "image": "assets/welcome/platformio-core-cli-demo.png",
-              "altText": "Innatera Core CLI Demo"
+              "image": "assets/welcome/innatera-core-cli-demo.png",
+              "altText": "innatera Core CLI Demo"
             },
             "completionEvents": [
-              "onContext:pioCoreReady"
+              "onContext:InnateraCoreReady"
             ]
           },
           {
             "id": "innaterapluginio.ini",
             "title": "Platform-agnostic shareable configuration",
             "icon": "assets/icons/file_type_innatera.svg",
-            "description": "[innaterapluginio.ini](https://bit.ly/vscode-platformio-ini-docs) is the single configuration file that lets you set up your development environment and share your configurations with your team or organization.\nLeverage a declarative approach to embedded development and the power of semantic versioning.\n[Learn More](https://bit.ly/vscode-platformio-ini-docs)",
+            "description": "[innaterapluginio.ini](https://bit.ly/vscode-innatera-ini-docs) is the single configuration file that lets you set up your development environment and share your configurations with your team or organization.\nLeverage a declarative approach to embedded development and the power of semantic versioning.\n[Learn More](https://bit.ly/vscode-innatera-ini-docs)",
             "media": {
-              "markdown": "assets/welcome/platformio-ini-example.md"
+              "markdown": "assets/welcome/innatera-ini-example.md"
             },
             "completionEvents": [
-              "onLink:https://bit.ly/vscode-platformio-ini-docs"
+              "onLink:https://bit.ly/vscode-innatera-ini-docs"
             ]
           },
           {
-            "id": "platformio-home",
+            "id": "innatera-home",
             "title": "Advanced project management",
-            "description": "Boost your product development with [Innatera Home](https://bit.ly/vscode-platformio-home-docs) – a powerful, modern, and interactive user interface for advanced project management.\nIt allows you to enhance your project source code with advanced instruments such as firmware explorer, memory inspection, and static code analysis.\n[Open Innaera Home](command:platformio-ide.showHome)\nTip: Use 🏠 icon at the bottom status bar.",
+            "description": "Boost your product development with [innatera Home](https://bit.ly/vscode-innatera-home-docs) – a powerful, modern, and interactive user interface for advanced project management.\nIt allows you to enhance your project source code with advanced instruments such as firmware explorer, memory inspection, and static code analysis.\n[Open Innaera Home](command:Innatera-ide.showHome)\nTip: Use 🏠 icon at the bottom status bar.",
             "media": {
               "image": "assets/welcome/project-inspection-demo.png",
-              "altText": "Innatera Project Inspection Demo"
+              "altText": "innatera Project Inspection Demo"
             }
           },
           {
             "id": "explore-more-resources",
             "title": "Explore more resources",
-            "description": "📦 Browse over 10,000 libraries from software vendors, open-source projects, and the community in the [PlatformIO Registry](https://bit.ly/platformio-registry).\n🚀 Learn more about getting started with [PlatformIO IDE for VSCode](https://bit.ly/platformio-ide-for-vscode-docs).\n🧡 Have any ideas or need help with your project? Ask our awesome [PlatformIO Community](https://community.platformio.org/).\n[Learn More](https://bit.ly/platformio-ide-for-vscode-docs)",
+            "description": "📦 Browse over 10,000 libraries from software vendors, open-source projects, and the community in the [innatera Registry](https://bit.ly/innatera-registry).\n🚀 Learn more about getting started with [innatera IDE for VSCode](https://bit.ly/Innatera-ide-for-vscode-docs).\n🧡 Have any ideas or need help with your project? Ask our awesome [innatera Community](https://community.innatera.org/).\n[Learn More](https://bit.ly/Innatera-ide-for-vscode-docs)",
             "media": {
-              "image": "assets/welcome/platformio-package-registry-demo.png",
-              "altText": "Innatera Package Registry"
+              "image": "assets/welcome/innatera-package-registry-demo.png",
+              "altText": "innatera Package Registry"
             },
             "completionEvents": [
-              "onLink:https://bit.ly/platformio-ide-for-vscode-docs"
+              "onLink:https://bit.ly/Innatera-ide-for-vscode-docs"
             ]
           },
           {
             "id": "ready-to-start",
             "title": "Ready to start?",
-            "description": "Navigate to the Innatera IDE View in the left activity bar and open an existing project or create a new one.\n[Open Innatera IDE View](command:workbench.view.extension.platformio)",
+            "description": "Navigate to the innatera IDE View in the left activity bar and open an existing project or create a new one.\n[Open innatera IDE View](command:workbench.view.extension.innatera)",
             "media": {
-              "image": "assets/welcome/platformio-ide-view-demo.png",
-              "altText": "Innatera IDE View"
+              "image": "assets/welcome/Innatera-ide-view-demo.png",
+              "altText": "innatera IDE View"
             },
             "completionEvents": [
-              "onView:platformio-ide.projectTasks"
+              "onView:Innatera-ide.projectTasks"
             ]
           }
         ]
@@ -695,38 +695,38 @@
     ],
     "keybindings": [
       {
-        "command": "platformio-ide.build",
+        "command": "Innatera-ide.build",
         "key": "ctrl+alt+b",
-        "when": "pioProjectReady"
+        "when": "InnateraProjectReady"
       },
       {
-        "command": "platformio-ide.upload",
+        "command": "Innatera-ide.upload",
         "key": "ctrl+alt+u",
-        "when": "pioProjectReady"
+        "when": "InnateraProjectReady"
       },
       {
-        "command": "platformio-ide.serialMonitor",
+        "command": "Innatera-ide.serialMonitor",
         "key": "ctrl+alt+s",
-        "when": "pioProjectReady"
+        "when": "InnateraProjectReady"
       }
     ],
     "taskDefinitions": [
       {
-        "type": "PlatformIO",
+        "type": "innatera",
         "required": [
           "task"
         ],
         "properties": {
           "task": {
             "type": "string",
-            "description": "Innatera Task ID"
+            "description": "innatera Task ID"
           }
         }
       }
     ],
     "problemMatchers": [
       {
-        "name": "platformio",
+        "name": "innatera",
         "owner": "cpp",
         "fileLocation": [
           "relative",
@@ -747,91 +747,91 @@
     },
     "configuration": {
       "type": "object",
-      "title": "Innatera IDE",
+      "title": "innatera IDE",
       "properties": {
-        "platformio-ide.activateProjectOnTextEditorChange": {
+        "Innatera-ide.activateProjectOnTextEditorChange": {
           "type": "boolean",
           "default": false,
           "description": "Automatically activate project depending on an active opened text editor"
         },
-        "platformio-ide.autoOpenPlatformIOIniFile": {
+        "Innatera-ide.autoOpeninnateraIniFile": {
           "type": "boolean",
           "default": true,
           "description": "Automatically open the `innaterapluginio.ini` file from a project when no other editors are opened"
         },
-        "platformio-ide.autoCloseSerialMonitor": {
+        "Innatera-ide.autoCloseSerialMonitor": {
           "type": "boolean",
           "default": true,
           "description": "Automatically close Serial Port Monitor before uploading/testing"
         },
-        "platformio-ide.autoRebuildAutocompleteIndex": {
+        "Innatera-ide.autoRebuildAutocompleteIndex": {
           "type": "boolean",
           "default": true,
           "description": "Automatically rebuild the project IntelliSense index when innaterapluginio.ini is changed or when new libraries are installed"
         },
-        "platformio-ide.showEditorTitleShortcuts": {
+        "Innatera-ide.showEditorTitleShortcuts": {
           "type": "boolean",
           "default": true,
           "description": "Show Build, Upload, Clean, and other buttons in the editor title bar"
         },
-        "platformio-ide.autoPreloadEnvTasks": {
+        "Innatera-ide.autoPreloadEnvTasks": {
           "type": "boolean",
           "default": false,
           "description": "Automatically preload ALL project environment tasks"
         },
-        "platformio-ide.customPATH": {
+        "Innatera-ide.customPATH": {
           "type": [
             "string",
             "null"
           ],
           "default": null,
-          "description": "Custom PATH for the `Innatera` command, if you prefer to use a custom version of PlatformIO Core. Fill in the result of the system terminal command `echo $PATH` (Unix) / `echo %PATH%` (Windows)."
+          "description": "Custom PATH for the `innatera` command, if you prefer to use a custom version of innatera Core. Fill in the result of the system terminal command `echo $PATH` (Unix) / `echo %PATH%` (Windows)."
         },
-        "platformio-ide.reopenSerialMonitorDelay": {
+        "Innatera-ide.reopenSerialMonitorDelay": {
           "type": "integer",
           "default": 0,
           "minimum": 0,
           "description": "Time in milliseconds after which the Serial Port Monitor is reopened"
         },
-        "platformio-ide.useBuiltinPython": {
+        "Innatera-ide.useBuiltinPython": {
           "type": "boolean",
           "default": true,
           "description": "Use a portable Python 3 Interpreter if available"
         },
-        "platformio-ide.useBuiltinPIOCore": {
+        "Innatera-ide.useBuiltinPIOCore": {
           "type": "boolean",
           "default": true,
-          "description": "Use a built-in Innatera Core"
+          "description": "Use a built-in innatera Core"
         },
-        "platformio-ide.useDevelopmentPIOCore": {
+        "Innatera-ide.useDevelopmentPIOCore": {
           "type": "boolean",
           "default": false,
-          "description": "Use a development version of Innatera Core"
+          "description": "Use a development version of innatera Core"
         },
-        "platformio-ide.disablePIOHomeStartup": {
+        "Innatera-ide.disablePIOHomeStartup": {
           "type": "boolean",
           "default": false,
           "description": "Disable showing PIO Home at startup"
         },
-        "platformio-ide.pioHomeServerHttpHost": {
+        "Innatera-ide.pioHomeServerHttpHost": {
           "type": "string",
           "default": "127.0.0.1",
-          "description": "Innatera Home server HTTP host (default is 127.0.0.1, but in case of dockerized environments 0.0.0.0)"
+          "description": "innatera Home server HTTP host (default is 127.0.0.1, but in case of dockerized environments 0.0.0.0)"
         },
-        "platformio-ide.pioHomeServerHttpPort": {
+        "Innatera-ide.pioHomeServerHttpPort": {
           "type": "integer",
-          "description": "Innatera Home server HTTP port (the default value 0 automatically assigns a free port in the range [45000..45999])"
+          "description": "innatera Home server HTTP port (the default value 0 automatically assigns a free port in the range [45000..45999])"
         },
-        "platformio-ide.pioCustomServerHttpHost": {
+        "Innatera-ide.pioCustomServerHttpHost": {
           "type": "string",
           "default": "127.0.0.2",
-          "description": "Innatera Custom server HTTP host (default is 127.0.0.2, but in case of dockerized environments 0.0.0.0)"
+          "description": "innatera Custom server HTTP host (default is 127.0.0.2, but in case of dockerized environments 0.0.0.0)"
         },
-        "platformio-ide.pioCustomServerHttpPort": {
+        "Innatera-ide.pioCustomServerHttpPort": {
           "type": "integer",
-          "description": "Innatera Custom server HTTP port (the default value 0 automatically assigns a free port in the range [45000..45999])"
+          "description": "innatera Custom server HTTP port (the default value 0 automatically assigns a free port in the range [45000..45999])"
         },
-        "platformio-ide.customPyPiIndexUrl": {
+        "Innatera-ide.customPyPiIndexUrl": {
           "type": [
             "string",
             "null"
@@ -839,8 +839,8 @@
           "default": null,
           "description": "Custom base URL of the Python Package Index (default `https://pypi.org/simple`)"
         },
-        "platformio-ide.toolbar": {
-          "description": "Innatera Toolbar",
+        "Innatera-ide.toolbar": {
+          "description": "innatera Toolbar",
           "type": "array",
           "items": {
             "type": "object",
@@ -920,49 +920,49 @@
           "default": [
             {
               "text": "$(home)",
-              "tooltip": "Innatera: Home",
-              "commands": "platformio-ide.showHome"
+              "tooltip": "innatera: Home",
+              "commands": "Innatera-ide.showHome"
             },
             {
               "text": "$(check)",
-              "tooltip": "Innatera: Python Run",
-              "commands": "platformio-ide.python_run",
+              "tooltip": "innatera: Python Run",
+              "commands": "Innatera-ide.python_run",
               "when": "talamo, combine"
             },
             {
               "text": "$(check)",
-              "tooltip": "Innatera: Build",
-              "commands": "platformio-ide.build",
+              "tooltip": "innatera: Build",
+              "commands": "Innatera-ide.build",
               "when": "spine, combine"
             },  
             {
               "text": "$(arrow-right)",
               "tooltip": "Innnatera: Upload",
-              "commands": "platformio-ide.upload",
+              "commands": "Innatera-ide.upload",
               "when": "talamo, spine, combine"
             },
             {
               "text": "$(trashcan)",
-              "tooltip": "Innatera: Clean",
-              "commands": "platformio-ide.clean",
+              "tooltip": "innatera: Clean",
+              "commands": "Innatera-ide.clean",
               "when": "talamo, spine, combine"
             },
             {
               "text": "$(beaker)",
-              "tooltip": "Innatera: Test",
-              "commands": "platformio-ide.test",
+              "tooltip": "innatera: Test",
+              "commands": "Innatera-ide.test",
               "when": "talamo, spine, combine"
             },
             {
               "text": "$(plug)",
-              "tooltip": "Innatera: Serial Monitor",
-              "commands": "platformio-ide.serialMonitor",
+              "tooltip": "innatera: Serial Monitor",
+              "commands": "Innatera-ide.serialMonitor",
               "when": "talamo, spine, combine"
             },
             {
               "text": "$(terminal)",
-              "tooltip": "Innatera: New Terminal",
-              "commands": "platformio-ide.newTerminal",
+              "tooltip": "innatera: New Terminal",
+              "commands": "Innatera-ide.newTerminal",
               "when": "talamo, spine, combine"
             }
           ]

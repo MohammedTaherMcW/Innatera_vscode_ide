@@ -343,7 +343,6 @@
       {
         "language": "ini"
       },
-      
       {
         "language": "cpp"
       },
@@ -1034,5 +1033,4 @@
   "extensionDependencies": [
     "ms-vscode.cpptools"
   ]
-  
 }

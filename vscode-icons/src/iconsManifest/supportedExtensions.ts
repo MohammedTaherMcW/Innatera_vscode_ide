@@ -3693,9 +3693,9 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'platformio',
-      extensions: ['platformio.ini'],
+      extensions: ['conf.ini'],
       filename: true,
-      languages: [languages.platformio],
+      languages: [languages.innatera],
       format: FileFormat.svg,
     },
     {

@@ -1,13 +1,13 @@
 
-# Innatera IDE
-Innatera IDE is a Vscode extension, Which provides the functionality of the [Innatera Core ](https://github.com/MohammedTaherMcW/Innatera_core/blob/master/README.rst) in Vscode.
+# innatera IDE
+innatera IDE is a Vscode extension, Which provides the functionality of the [innatera Core ](https://github.com/MohammedTaherMcW/innatera_core/blob/master/README.rst) in Vscode.
 
 ## Installation Guide
 
 ### 1) Clone the Repository
-#### Run the below command to clone the Innatera Home Repository  
+#### Run the below command to clone the innatera Home Repository  
 ```
-git clone https://github.com/MohammedTaherMcW/Innatera_vscode_ide.git
+git clone https://github.com/MohammedTaherMcW/innatera_vscode_ide.git
 ```
 
 ### 2) Node.js Installation

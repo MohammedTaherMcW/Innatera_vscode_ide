@@ -1,11 +1,3 @@
-/**
- * Copyright (c) 2017-present Innaterra <contact@innatera.com>
- * All rights reserved.
- *
- * This source code is licensed under the license found in the LICENSE file in
- * the root directory of this source tree.
- */
-
 const fs = require('fs');
 const path = require('path');
 

@@ -1,10 +1,4 @@
-/**
- * Copyright (c)2024-present Innatera <contact@innatera.com>
- * All rights reserved.
- *
- * This source code is licensed under the license found in the LICENSE file in
- * the root directory of this source tree.
- */
+
 
 import { CONFLICTED_EXTENSION_IDS } from './constants';
 import { extension } from './main';
@@ -30,18 +24,18 @@ export async function maybeRateExtension() {
   }
 
   const selectedItem = await vscode.window.showInformationMessage(
-    'If you enjoy using Innatera IDE for VSCode, would you mind taking a moment to rate it? ' +
+    'If you enjoy using innatera IDE for VSCode, would you mind taking a moment to rate it? ' +
       'It will not take more than one minute. Thanks for your support!',
-    { title: 'Rate Innatera IDE Extension', isCloseAffordance: false },
+    { title: 'Rate innatera IDE Extension', isCloseAffordance: false },
     { title: 'Remind later', isCloseAffordance: false },
     { title: 'No, Thanks', isCloseAffordance: true },
   );
 
   switch (selectedItem ? selectedItem.title : undefined) {
-    case 'Rate Innatera IDE Extension':
+    case 'Rate innatera IDE Extension':
       vscode.commands.executeCommand(
         'vscode.open',
-        vscode.Uri.parse('http://bit.ly/pio-vscode-rate'),
+        vscode.Uri.parse('https://innatera.com/'),
       );
       state.done = true;
       break;

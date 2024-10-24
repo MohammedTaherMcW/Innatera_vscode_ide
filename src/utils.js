@@ -1,10 +1,4 @@
-/**
- * Copyright (c)2024-present Innatera <contact@innatera.com>
- * All rights reserved.
- *
- * This source code is licensed under the license found in the LICENSE file in
- * the root directory of this source tree.
- */
+
 
 import * as pioNodeHelpers from 'Innatera-node-helpers';
 
@@ -55,8 +49,8 @@ export async function notifyError(title, err) {
 
 export function getIDEManifest() {
   //change for innatera otheriwse in VSCODE core is not gettign iniatilized 
-  //return vscode.extensions.getExtension('platformio.platformio-ide').packageJSON;
-  return vscode.extensions.getExtension('Innatera.platformio-ide').packageJSON;
+  //return vscode.extensions.getExtension('platformio.Innatera-snp-ide').packageJSON;
+  return vscode.extensions.getExtension('innatera.Innatera-snp-ide').packageJSON;
 }
 
 export function getIDEVersion() {
@@ -66,7 +60,7 @@ export function getIDEVersion() {
 export async function listCoreSerialPorts() {
   const script = `
 import json
-from platformio.public import list_serial_ports
+from innaterapluginio.public import list_serial_ports
 
 print(json.dumps(list_serial_ports()))
     `;

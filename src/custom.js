@@ -71,7 +71,7 @@ export default class PIOCustom {
   async newPanel(startUrl) {
     const panel = vscode.window.createWebviewPanel(
       'pioHome',
-      extension.getEnterpriseSetting('pioHomeTitle', 'Innatera Custom'),
+      extension.getEnterpriseSetting('pioHomeTitle', 'innatera Custom'),
       vscode.ViewColumn.One,
       {
         enableScripts: true,
@@ -128,8 +128,8 @@ export default class PIOCustom {
   async getWebviewContent(startUrl) {
     this._lastStartUrl = startUrl;
     await pioNodeHelpers.custom.ensureServerStarted({
-      port: extension.getConfiguration('pioCustomServerHttpPort'),
-      host: extension.getConfiguration('pioCustomServerHttpHost'),
+      port: extension.getConfiguration('innateraCustomServerHttpPort'),
+      host: extension.getConfiguration('innateraCustomServerHttpHost'),
       onIDECommand: await this.onIDECommand.bind(this),
     });
     const theme = this.getTheme();
@@ -196,8 +196,8 @@ async runTask(targets) {
         for (let target of targets) { 
             target = target.trim();
             const platformioPath = IS_WINDOWS 
-                ? path.join(process.env.USERPROFILE, '.platformio', 'penv', 'Scripts', 'platformio.exe')
-                : path.join(process.env.HOME, '.platformio', 'penv', 'bin', 'platformio');
+                ? path.join(process.env.USERPROFILE, '.innatera', 'penv', 'Scripts', 'innaterapluginio.exe')
+                : path.join(process.env.HOME, '.innatera', 'penv', 'bin', 'innaterapluginio');
 
             const execution = new vscode.ProcessExecution(
                 platformioPath,
@@ -205,7 +205,7 @@ async runTask(targets) {
             );
 
             const task = new vscode.Task(
-                { type: 'PlatformIO', target },
+                { type: 'innatera', target },
                 vscode.TaskScope.Workspace,
                 `Run PIO Target: ${target}`,
                 'Custom Tasks',

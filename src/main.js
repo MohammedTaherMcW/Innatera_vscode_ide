@@ -1,10 +1,3 @@
-/**
- * Copyright (c) 2017-present PlatformIO <contact@platformio.org>
- * All rights reserved.
- *
- * This source code is licensed under the license found in the LICENSE file in
- * the root directory of this source tree.
- */
 
 import * as misc from './misc';
 import * as pioNodeHelpers from 'Innatera-node-helpers';
@@ -64,14 +57,14 @@ class PlatformIOVSCodeExtension {
     await this.startInstaller(!hasPIOProject);
     this.subscriptions.push(this.handleUseDevelopmentPIOCoreConfiguration());
 
-    vscode.commands.executeCommand('setContext', 'pioCoreReady', true);
-    if (typeof this.getEnterpriseSetting('onPIOCoreReady') === 'function') {
-      await this.getEnterpriseSetting('onPIOCoreReady')();
+    vscode.commands.executeCommand('setContext', 'InnateraCoreReady', true);
+    if (typeof this.getEnterpriseSetting('onInnateraCoreReady') === 'function') {
+      await this.getEnterpriseSetting('onInnateraCoreReady')();
     }
 
     this.subscriptions.push(
       vscode.window.registerTreeDataProvider(
-        'platformio-ide.quickAccess',
+        'Innatera-snp-ide.quickAccess',
         new QuickAccessTreeProvider(),
       ),
     );
@@ -81,13 +74,13 @@ class PlatformIOVSCodeExtension {
 
     if (!hasPIOProject) {
       this.subscriptions.push(
-        new PIOToolbar({ filterCommands: ['platformio-ide.showHome'] }, 
+        new PIOToolbar({ filterCommands: ['Innatera-snp-ide.showHome'] }, 
         this.projectManager),
       );
       return;
     }
 
-    vscode.commands.executeCommand('setContext', 'pioProjectReady', true);
+    vscode.commands.executeCommand('setContext', 'InnateraProjectReady', true);
     this.subscriptions.push(
       new PIOToolbar({
         ignoreCommands: this.getEnterpriseSetting('ignoreToolbarCommands'),
@@ -110,14 +103,14 @@ class PlatformIOVSCodeExtension {
   }
 
   getConfiguration(id) {
-    return vscode.workspace.getConfiguration('platformio-ide').get(id);
+    return vscode.workspace.getConfiguration('Innatera-snp-ide').get(id);
   }
 
   loadEnterpriseSettings() {
     const ext = vscode.extensions.all.find(
       (item) =>
-        item.id.startsWith('platformio.') &&
-        item.id !== 'platformio.platformio-ide' &&
+        item.id.startsWith('innatera.') &&
+        item.id !== 'innatera.Innatera-snp-ide' &&
         item.isActive,
     );
     return ext && ext.exports ? ext.exports.settings : undefined;
@@ -162,7 +155,7 @@ class PlatformIOVSCodeExtension {
     const im = new InstallationManager(disableAutoUpdates);
     if (im.locked()) {
       vscode.window.showInformationMessage(
-        'PlatformIO IDE installation has been suspended, because PlatformIO ' +
+        'innatera IDE installation has been suspended, because innatera ' +
           'IDE Installer is already started in another window.',
       );
       return;
@@ -170,11 +163,11 @@ class PlatformIOVSCodeExtension {
     const doInstall = await vscode.window.withProgress(
       {
         location: vscode.ProgressLocation.Window,
-        title: 'PlatformIO',
+        title: 'innatera',
       },
       async (progress) => {
         progress.report({
-          message: 'Initializing PlatformIO Core...',
+          message: 'Initializing innatera Core...',
         });
         try {
           return !(await im.check());
@@ -190,17 +183,17 @@ class PlatformIOVSCodeExtension {
     return await vscode.window.withProgress(
       {
         location: vscode.ProgressLocation.Notification,
-        title: 'PlatformIO Installer',
+        title: 'Innatera Installer',
       },
       async (progress) => {
         progress.report({
-          message: 'Installing PlatformIO IDE...',
+          message: 'Installing Innatera IDE...',
         });
         const outputChannel = vscode.window.createOutputChannel(
-          'PlatformIO Installation',
+          'innatera Installation',
         );
         outputChannel.show();
-        outputChannel.appendLine('Installing PlatformIO IDE...');
+        outputChannel.appendLine('Installing Innatera IDE...');
         outputChannel.appendLine(
           'It may take a few minutes depending on your connection speed',
         );
@@ -215,18 +208,18 @@ class PlatformIOVSCodeExtension {
         try {
           im.lock();
           await im.install(progress);
-          outputChannel.appendLine('PlatformIO IDE installed successfully.\n');
+          outputChannel.appendLine('Innatera IDE installed successfully.\n');
           outputChannel.appendLine('Please restart VSCode.');
           const action = 'Reload Now';
           const selected = await vscode.window.showInformationMessage(
-            'PlatformIO IDE has been successfully installed! Please reload window',
+            'Innatera IDE has been successfully installed! Please reload window',
             action,
           );
           if (selected === action) {
             vscode.commands.executeCommand('workbench.action.reloadWindow');
           }
         } catch (err) {
-          outputChannel.appendLine('Failed to install PlatformIO IDE.');
+          outputChannel.appendLine('Failed to install Innatera IDE.');
           utils.notifyError('Installation Manager', err);
         } finally {
           im.unlock();
@@ -240,35 +233,35 @@ class PlatformIOVSCodeExtension {
 
   async startPIOHome() {
     if (
-      this.getConfiguration('disablePIOHomeStartup') ||
+      this.getConfiguration('disableInnateraHomeStartup') ||
       !pioNodeHelpers.home.showAtStartup('vscode')
     ) {
       return;
     }
-    vscode.commands.executeCommand('platformio-ide.showHome');
+    vscode.commands.executeCommand('Innatera-snp-ide.showHome');
   }
 
   registerGlobalCommands() {
     this.subscriptions.push(
-      vscode.commands.registerCommand('platformio-ide.showHome', (startUrl) =>
+      vscode.commands.registerCommand('Innatera-snp-ide.showHome', (startUrl) =>
         this.pioHome.toggle(startUrl),
       ),
-      vscode.commands.registerCommand('platformio-ide.newTerminal', () =>
+      vscode.commands.registerCommand('Innatera-snp-ide.newTerminal', () =>
         this.pioTerm.new().show(),
       ),
-      vscode.commands.registerCommand('platformio-ide.openPIOCoreCLI', () =>
-        this.pioTerm.sendText('pio --help'),
+      vscode.commands.registerCommand('Innatera-snp-ide.openPIOCoreCLI', () =>
+        this.pioTerm.sendText('innaterapluginio --help'),
       ),
-      vscode.commands.registerCommand('platformio-ide.runPIOCoreCommand', (cmd) =>
+      vscode.commands.registerCommand('Innatera-snp-ide.runPIOCoreCommand', (cmd) =>
         this.pioTerm.sendText(cmd),
       ),
-      vscode.commands.registerCommand('platformio-ide.startDebugging', () => {
+      vscode.commands.registerCommand('Innatera-snp-ide.startDebugging', () => {
         vscode.commands.executeCommand('workbench.view.debug');
         vscode.commands.executeCommand('workbench.debug.action.toggleRepl');
         vscode.commands.executeCommand('workbench.action.debug.start');
       }),
-      vscode.commands.registerCommand('platformio-ide.upgradeCore', () =>
-        this.pioTerm.sendText('pio upgrade'),
+      vscode.commands.registerCommand('Innatera-snp-ide.upgradeCore', () =>
+        this.pioTerm.sendText('echo "You have upgraded the Innatera Core"'),
       ),
     );
   }
@@ -280,8 +273,8 @@ class PlatformIOVSCodeExtension {
   handleUseDevelopmentPIOCoreConfiguration() {
     return vscode.workspace.onDidChangeConfiguration(async (e) => {
       if (
-        !e.affectsConfiguration('platformio-ide.useDevelopmentPIOCore') ||
-        !this.getConfiguration('useBuiltinPIOCore')
+        !e.affectsConfiguration('Innatera-snp-ide.useDevelopmentInnateraCore') ||
+        !this.getConfiguration('useBuiltinInnateraCore')
       ) {
         return;
       }
@@ -303,8 +296,8 @@ class PlatformIOVSCodeExtension {
   }
 
   disposeLocalSubscriptions() {
-    vscode.commands.executeCommand('setContext', 'pioCoreReady', false);
-    vscode.commands.executeCommand('setContext', 'pioProjectReady', false);
+    vscode.commands.executeCommand('setContext', 'InnateraCoreReady', false);
+    vscode.commands.executeCommand('setContext', 'InnateraProjectReady', false);
     vscode.commands.executeCommand('setContext', 'isTalamoProject', false);
     utils.disposeSubscriptions(this.subscriptions);
   }

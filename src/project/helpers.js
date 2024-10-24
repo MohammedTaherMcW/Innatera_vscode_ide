@@ -1,10 +1,4 @@
-/**
- * Copyright (c)2024-present Innatera <contact@innatera.com>
- * All rights reserved.
- *
- * This source code is licensed under the license found in the LICENSE file in
- * the root directory of this source tree.
- */
+
 
 import { extension } from '../main';
 import fs from 'fs';
@@ -13,7 +7,7 @@ import vscode from 'vscode';
 
 export function getFrameworkFromProject(projectDir) {
   const iniContent = fs.readFileSync(
-    path.join(projectDir, 'platformio.ini'),
+    path.join(projectDir, 'conf.ini'),
     'utf8'
   );
   const frameworkMatch = iniContent.match(/\bframework\s*=\s*([\w-]+)/);
@@ -22,7 +16,7 @@ export function getFrameworkFromProject(projectDir) {
 
 export function isPIOProjectSync(projectDir) {
   try {
-    fs.accessSync(path.join(projectDir, 'platformio.ini'));
+    fs.accessSync(path.join(projectDir, 'conf.ini'));
     return true;
   } catch (err) {}
   return false;

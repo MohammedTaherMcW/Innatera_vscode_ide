@@ -1,6 +1,6 @@
 {
-    "name": "PlatformIO Debugger Disassembly",
-    "scopeName": "source.platformio-debug-disassembly",
+    "name": "innatera Debugger Disassembly",
+    "scopeName": "source.Innatera-debug-disassembly",
     "patterns": [
         {
             "comment": "Address, bytes and opcode",

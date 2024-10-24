@@ -1,10 +1,4 @@
-/**
- * Copyright (c)2024-present Innatera <contact@innatera.com>
- * All rights reserved.
- *
- * This source code is licensed under the license found in the LICENSE file in
- * the root directory of this source tree.
- */
+
 
 import vscode from 'vscode';
 
@@ -15,12 +9,12 @@ export default class PIOTerminal {
 
   new() {
     const envClone = Object.assign({}, process.env);
-    if (process.env.PLATFORMIO_PATH) {
-      envClone.PATH = process.env.PLATFORMIO_PATH;
-      envClone.Path = process.env.PLATFORMIO_PATH;
+    if (process.env.Innatera_PATH) {
+      envClone.PATH = process.env.Innatera_PATH;
+      envClone.Path = process.env.Innatera_PATH;
     }
     return vscode.window.createTerminal({
-      name: 'Innatera CLI',
+      name: 'innatera CLI',
       env: envClone,
     });
   }

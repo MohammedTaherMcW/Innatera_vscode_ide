@@ -8,7 +8,7 @@
 
 import * as misc from './misc';
 import * as pioNodeHelpers from 'Innatera-node-helpers';
-import * as piodebug from 'Innatera-debug-adapter';
+import * as piodebug from 'Innatera-vscode-debug';
 import * as utils from './utils';
 
 import InstallationManager from './installer/manager';

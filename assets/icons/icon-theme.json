@@ -5,6 +5,6 @@
     }
   },
   "fileExtensions": {
-    "ini": "innateraIcon"  // Associate the icon with the specific file name
+    "ini": "innateraIcon"
   }
 }

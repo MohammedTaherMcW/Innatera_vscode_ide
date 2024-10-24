@@ -1,5 +1,5 @@
 {
-  "name": "Innatera-ide",
+  "name": "Innatera-snp-ide",
   "version": "1.0.0",
   "publisher": "Innatera",
   "engines": {
@@ -37,7 +37,7 @@
     "url": "https://github.com/innatera/innatera-vscode-ide.git"
   },
   "activationEvents": [
-    "workspaceContains:**/innaterapluginio.ini"
+    "workspaceContains:**/conf.ini"
   ],
   "contributes": {
   "iconThemes": [
@@ -47,7 +47,7 @@
         "path": "./vscode-icons/dist/src/vsicons-icon-theme.json",
         "_watch": true
       }
-      
+
     ],
     "languages": [
       {
@@ -83,9 +83,19 @@
           ".s"
         ],
         "configuration": "./syntaxes/assembly-configuration.json"
+      },
+      {
+        "id": "confFile",
+        "aliases": ["Conf File"],
+        "filenames": ["conf.ini"],
+        "configuration": "./syntaxes/assembly-configuration.json"
       }
     ],
-    
+    "iconDefinitions": {
+      "confFile": {
+        "iconPath": "$(ExtensionIcon)"
+      }
+    },
     "grammars": [
       {
         "language": "Innatera-debug.disassembly",
@@ -105,124 +115,124 @@
     ],
     "commands": [
       {
-        "command": "Innatera-ide.showReleaseNotes",
+        "command": "Innatera-snp-ide.showReleaseNotes",
         "title": "Show Release Notes",
         "category": "innatera"
       },
       {
-        "command": "Innatera-ide.showHome",
+        "command": "Innatera-snp-ide.showHome",
         "title": "innatera Home",
         "category": "innatera"
       },
       {
-        "command": "Innatera-ide.openPIOCoreCLI",
+        "command": "Innatera-snp-ide.openPIOCoreCLI",
         "title": "Open innatera Core CLI",
         "category": "innatera"
       },
       {
-        "command": "Innatera-ide.newTerminal",
+        "command": "Innatera-snp-ide.newTerminal",
         "title": "New Terminal",
         "category": "innatera",
         "enablement": "InnateraCoreReady"
       },
       {
-        "command": "Innatera-ide.upgradeCore",
+        "command": "Innatera-snp-ide.upgradeCore",
         "title": "Upgrade innatera Core",
         "category": "innatera",
         "enablement": "InnateraCoreReady"
       },
       {
-        "command": "Innatera-ide.pickProjectEnv",
+        "command": "Innatera-snp-ide.pickProjectEnv",
         "title": "Pick Project Environment",
         "category": "innatera",
         "icon": "$(root-folder)",
         "enablement": "InnateraProjectReady"
       },
       {
-        "command": "Innatera-ide.setProjectPort",
+        "command": "Innatera-snp-ide.setProjectPort",
         "title": "Set Project Port (upload/monitor/test)",
         "category": "innatera",
         "icon": "$(plug)",
         "enablement": "InnateraProjectReady"
       },
       {
-        "command": "Innatera-ide.toggleMultiEnvProjectTasks",
+        "command": "Innatera-snp-ide.toggleMultiEnvProjectTasks",
         "title": "Toggle between Multi Environment Project Tasks",
         "category": "innatera",
         "icon": "$(layers)",
-        "enablement": "pioProjectTasksReady"
+        "enablement": "innateraProjectTasksReady"
       },
       {
-        "command": "Innatera-ide.refreshProjectTasks",
+        "command": "Innatera-snp-ide.refreshProjectTasks",
         "title": "Refresh Project Tasks",
         "category": "innatera",
         "icon": "$(refresh)",
-        "enablement": "pioProjectTasksReady"
+        "enablement": "innateraProjectTasksReady"
       },
       {
-        "command": "Innatera-ide.build",
+        "command": "Innatera-snp-ide.build",
         "title": "Build",
         "category": "innatera",
         "icon": "$(check)",
-        "enablement": "pioProjectTasksReady && isTalamoProject==='spine' || isTalamoProject==='combine'"
+        "enablement": "innateraProjectTasksReady && isTalamoProject==='spine' || isTalamoProject==='combine'"
       },
       {
-        "command": "Innatera-ide.python_run",
+        "command": "Innatera-snp-ide.python_run",
         "title": "Python Run",
         "category": "innatera",
         "icon": "$(check)",
-        "enablement": "pioProjectTasksReady && isTalamoProject==='talamo' || isTalamoProject==='combine'"
+        "enablement": "innateraProjectTasksReady && isTalamoProject==='talamo' || isTalamoProject==='combine'"
       },
       {
-        "command": "Innatera-ide.custom",
+        "command": "Innatera-snp-ide.custom",
         "title": "Custom",
         "category": "innatera",
         "icon": "$(arrow-left)",
-        "enablement": "pioProjectTasksReady && isTalamoProject==='spine' || isTalamoProject==='combine'"
+        "enablement": "innateraProjectTasksReady && isTalamoProject==='spine' || isTalamoProject==='combine'"
       },
       {
-        "command": "Innatera-ide.upload",
+        "command": "Innatera-snp-ide.upload",
         "title": "Upload",
         "category": "innatera",
         "icon": "$(arrow-right)",
-        "enablement": "pioProjectTasksReady && isTalamoProject==='spine' || isTalamoProject==='combine'"
+        "enablement": "innateraProjectTasksReady && isTalamoProject==='spine' || isTalamoProject==='combine'"
       },
       {
-        "command": "Innatera-ide.uploadAndMonitor",
+        "command": "Innatera-snp-ide.uploadAndMonitor",
         "title": "Upload and Monitor",
         "category": "innatera",
         "icon": "$(arrow-right)",
-        "enablement": "pioProjectTasksReady && isTalamoProject==='spine' || isTalamoProject==='combine'"
+        "enablement": "innateraProjectTasksReady && isTalamoProject==='spine' || isTalamoProject==='combine'"
       },
       {
-        "command": "Innatera-ide.clean",
+        "command": "Innatera-snp-ide.clean",
         "title": "Clean",
         "category": "innatera",
         "icon": "$(trashcan)",
-        "enablement": "pioProjectTasksReady && isTalamoProject==='spine' || isTalamoProject==='combine'"
+        "enablement": "innateraProjectTasksReady && isTalamoProject==='spine' || isTalamoProject==='combine'"
       },
       {
-        "command": "Innatera-ide.serialMonitor",
+        "command": "Innatera-snp-ide.serialMonitor",
         "title": "Serial Monitor",
         "category": "innatera",
         "icon": "$(plug)",
         "enablement": "InnateraProjectReady && isTalamoProject==='spine' || isTalamoProject==='combine'"
       },
       {
-        "command": "Innatera-ide.test",
+        "command": "Innatera-snp-ide.test",
         "title": "Test",
         "category": "innatera",
         "icon": "$(beaker)",
-        "enablement": "pioProjectTasksReady && isTalamoProject==='spine' || isTalamoProject==='combine'"
+        "enablement": "innateraProjectTasksReady && isTalamoProject==='spine' || isTalamoProject==='combine'"
       },
       {
-        "command": "Innatera-ide.rebuildProjectIndex",
+        "command": "Innatera-snp-ide.rebuildProjectIndex",
         "title": "Rebuild IntelliSense Index",
         "category": "innatera",
-        "enablement": "pioProjectTasksReady"
+        "enablement": "innateraProjectTasksReady"
       },
       {
-        "command": "Innatera-ide.startDebugging",
+        "command": "Innatera-snp-ide.startDebugging",
         "title": "Start Debugging",
         "category": "innatera",
         "enablement": "InnateraProjectReady"
@@ -306,7 +316,25 @@
         "command": "Innatera-debug.setForceDisassembly",
         "title": "Set Force Disassembly",
         "enablement": "InnateraProjectReady"
-      }
+      },
+      {
+				"category": "Innatera Debug",
+				"command": "Innatera-debug.memory.updateNode",
+				"title": "Update",
+				"enablement": "InnateraProjectReady"
+			},
+      {
+        "category": "Innatera Debug",
+        "command": "Innatera-debug.memory.ViewType",
+        "title": "View Type",
+        "enablement": "InnateraProjectReady"
+      },
+      {
+        "category": "Innatera Debug",
+        "command": "Innatera-debug.registers.UpdateNode",
+				"title": "Update Node",
+				"enablement": "InnateraProjectReady"
+			}
     ],
     "breakpoints": [
       {
@@ -465,24 +493,35 @@
         },
         {
           "command": "Innatera-debug.memory.deleteHistoryItem",
-          "when": "view == Innatera-debug.memory",
-          "group": "inline"
-        }
+          "when": "view == Innatera-debug.memory"
+        },
+        {
+					"command": "Innatera-debug.registers.UpdateNode",
+					"when": "view == Innatera-debug.registers"
+				},				
+        {
+					"command": "Innatera-debug.memory.updateNode",
+					"when": "view == Innatera-debug.memory"
+				},
+				{
+					"command": "Innatera-debug.memory.ViewType",
+					"when": "view == Innatera-debug.memory"
+				}
       ],
       "view/title": [
         {
-          "command": "Innatera-ide.pickProjectEnv",
-          "when": "pioProjectTasksReady && pioMultiEnvProject && view == Innatera-ide.projectTasks",
+          "command": "Innatera-snp-ide.pickProjectEnv",
+          "when": "innateraProjectTasksReady && pioMultiEnvProject && view == Innatera-snp-ide.projectTasks",
           "group": "navigation"
         },
         {
-          "command": "Innatera-ide.toggleMultiEnvProjectTasks",
-          "when": "pioProjectTasksReady && view == Innatera-ide.projectTasks",
+          "command": "Innatera-snp-ide.toggleMultiEnvProjectTasks",
+          "when": "innateraProjectTasksReady && view == Innatera-snp-ide.projectTasks",
           "group": "navigation"
         },
         {
-          "command": "Innatera-ide.refreshProjectTasks",
-          "when": "pioProjectTasksReady && view == Innatera-ide.projectTasks",
+          "command": "Innatera-snp-ide.refreshProjectTasks",
+          "when": "innateraProjectTasksReady && view == Innatera-snp-ide.projectTasks",
           "group": "navigation"
         },
         {
@@ -498,79 +537,79 @@
       ],
       "editor/title/run": [
         {
-          "command": "Innatera-ide.python_run",
-          "when": "InnateraProjectReady && config.Innatera-ide.showEditorTitleShortcuts && isTalamoProject==='talamo' || isTalamoProject==='combine'",
+          "command": "Innatera-snp-ide.python_run",
+          "when": "InnateraProjectReady && config.Innatera-snp-ide.showEditorTitleShortcuts && isTalamoProject==='talamo' || isTalamoProject==='combine'",
           "group": "pio_run@5"
         },
         {
-          "command": "Innatera-ide.build",
-          "when": "InnateraProjectReady && config.Innatera-ide.showEditorTitleShortcuts && isTalamoProject==='spine' || isTalamoProject==='combine' ",
+          "command": "Innatera-snp-ide.build",
+          "when": "InnateraProjectReady && config.Innatera-snp-ide.showEditorTitleShortcuts && isTalamoProject==='spine' || isTalamoProject==='combine' ",
           "group": "pio_run@0"
         },
         {
-          "command": "Innatera-ide.upload",
-          "when": "InnateraProjectReady && config.Innatera-ide.showEditorTitleShortcuts && isTalamoProject==='spine' || isTalamoProject==='combine'",
+          "command": "Innatera-snp-ide.upload",
+          "when": "InnateraProjectReady && config.Innatera-snp-ide.showEditorTitleShortcuts && isTalamoProject==='spine' || isTalamoProject==='combine'",
           "group": "pio_run@1"
         },
         {
-          "command": "Innatera-ide.test",
-          "when": "InnateraProjectReady && config.Innatera-ide.showEditorTitleShortcuts && isTalamoProject==='spine' || isTalamoProject==='combine'",
+          "command": "Innatera-snp-ide.test",
+          "when": "InnateraProjectReady && config.Innatera-snp-ide.showEditorTitleShortcuts && isTalamoProject==='spine' || isTalamoProject==='combine'",
           "group": "pio_run@2"
         },
         {  
-          "command": "Innatera-ide.clean",
-          "when": "InnateraProjectReady && config.Innatera-ide.showEditorTitleShortcuts  && isTalamoProject==='spine' || isTalamoProject==='combine'",
+          "command": "Innatera-snp-ide.clean",
+          "when": "InnateraProjectReady && config.Innatera-snp-ide.showEditorTitleShortcuts  && isTalamoProject==='spine' || isTalamoProject==='combine'",
           "group": "pio_run@3"
         },
         {
-          "command": "Innatera-ide.custom",
-          "when": "InnateraProjectReady && config.Innatera-ide.showEditorTitleShortcuts  && isTalamoProject==='spine' || isTalamoProject==='combine'",
+          "command": "Innatera-snp-ide.custom",
+          "when": "InnateraProjectReady && config.Innatera-snp-ide.showEditorTitleShortcuts  && isTalamoProject==='spine' || isTalamoProject==='combine'",
           "group": "pio_run@4"
         }
       ],
       "editor/title": [
         {
-          "command": "Innatera-ide.serialMonitor",
-          "when": "InnateraCoreReady && config.Innatera-ide.showEditorTitleShortcuts",
+          "command": "Innatera-snp-ide.serialMonitor",
+          "when": "InnateraCoreReady && config.Innatera-snp-ide.showEditorTitleShortcuts",
           "group": "navigation"
         }
       ],
       "file/newFile": [
         {
-          "command": "Innatera-ide.showHome",
+          "command": "Innatera-snp-ide.showHome",
           "when": "InnateraCoreReady",
           "group": "navigation"
         }
       ],
       "touchBar": [
         {
-          "command": "Innatera-ide.python_run",
-          "when": "InnateraProjectReady && config.Innatera-ide.showEditorTitleShortcuts && isTalamoProject==='talamo' || isTalamoProject==='combine'",
+          "command": "Innatera-snp-ide.python_run",
+          "when": "InnateraProjectReady && config.Innatera-snp-ide.showEditorTitleShortcuts && isTalamoProject==='talamo' || isTalamoProject==='combine'",
           "group": "pio_run@5"
         },
         {
-          "command": "Innatera-ide.build",
-          "when": "InnateraProjectReady && config.Innatera-ide.showEditorTitleShortcuts && isTalamoProject==='spine' || isTalamoProject==='combine' ",
+          "command": "Innatera-snp-ide.build",
+          "when": "InnateraProjectReady && config.Innatera-snp-ide.showEditorTitleShortcuts && isTalamoProject==='spine' || isTalamoProject==='combine' ",
           "group": "pio_run@0"
         },
         {
-          "command": "Innatera-ide.upload",
-          "when": "InnateraProjectReady && config.Innatera-ide.showEditorTitleShortcuts && isTalamoProject==='spine' || isTalamoProject==='combine'",
+          "command": "Innatera-snp-ide.upload",
+          "when": "InnateraProjectReady && config.Innatera-snp-ide.showEditorTitleShortcuts && isTalamoProject==='spine' || isTalamoProject==='combine'",
           "group": "z_pio_run@1"
         },
         {
-          "command": "Innatera-ide.test",
-          "when": "InnateraProjectReady && config.Innatera-ide.showEditorTitleShortcuts  && isTalamoProject==='spine' || isTalamoProject==='combine'",
+          "command": "Innatera-snp-ide.test",
+          "when": "InnateraProjectReady && config.Innatera-snp-ide.showEditorTitleShortcuts  && isTalamoProject==='spine' || isTalamoProject==='combine'",
           "group": "z_pio_run@2"
         },
         {
-          "command": "Innatera-ide.clean",
-          "when": "InnateraProjectReady && config.Innatera-ide.showEditorTitleShortcuts  && isTalamoProject==='spine' || isTalamoProject==='combine'",
+          "command": "Innatera-snp-ide.clean",
+          "when": "InnateraProjectReady && config.Innatera-snp-ide.showEditorTitleShortcuts  && isTalamoProject==='spine' || isTalamoProject==='combine'",
           "group": "z_pio_run@3"
         },
         {
-          "command": "Innatera-ide.serialMonitor",
-          "when": "InnateraCoreReady && config.Innatera-ide.showEditorTitleShortcuts && isTalamoProject==='spine' || isTalamoProject==='combine'",
+          "command": "Innatera-snp-ide.serialMonitor",
+          "when": "InnateraCoreReady && config.Innatera-snp-ide.showEditorTitleShortcuts && isTalamoProject==='spine' || isTalamoProject==='combine'",
           "group": "z_pio_tools"
         }
       ]
@@ -587,13 +626,13 @@
     "views": {
       "innatera": [
         {
-          "id": "Innatera-ide.projectTasks",
+          "id": "Innatera-snp-ide.projectTasks",
           "name": "Project Tasks",
           "when": "InnateraCoreReady",
           "type": "tree"
         },
         {
-          "id": "Innatera-ide.quickAccess",
+          "id": "Innatera-snp-ide.quickAccess",
           "name": "Quick Access",
           "type": "tree"
         }
@@ -619,24 +658,24 @@
     },
     "viewsWelcome": [
       {
-        "view": "Innatera-ide.projectTasks",
-        "contents": "You have not yet opened a innatera project.\nYou can open an existing innatera-based project (a folder that contains [innaterapluginio.ini](https://bit.ly/vscode-innatera-ini-docs) file).\n[Pick a folder](command:workbench.action.files.openFolder)\nYou can create a new innatera Project or explore examples using innatera Home.\n[Create New Project](command:Innatera-ide.showHome)"
+        "view": "Innatera-snp-ide.projectTasks",
+        "contents": "You have not yet opened a innatera project.\nYou can open an existing innatera-based project (a folder that contains [conf.ini](https://bit.ly/vscode-innatera-ini-docs) file).\n[Pick a folder](command:workbench.action.files.openFolder)\nYou can create a new innatera Project or explore examples using innatera Home.\n[Create New Project](command:Innatera-snp-ide.showHome)"
       },
       {
-        "view": "Innatera-ide.quickAccess",
+        "view": "Innatera-snp-ide.quickAccess",
         "contents": "Initializing innatera Core..."
       }
     ],
     "walkthroughs": [
       {
-        "id": "Innatera-ide.welcome",
+        "id": "Innatera-snp-ide.welcome",
         "title": "Get started with innatera IDE",
         "description": "The most loved IDE solution for Microsoft Visual Studio Code",
         "steps": [
           {
             "id": "innatera-core",
             "title": "Rich CLI developed for Humans",
-            "description": "[innatera Core](https://bit.ly/vscode-innatera-core-docs) is the heart of innatera IDE and it's your one-stop shop for professional embedded development.\nIt takes care of everything from dependency management to testing, so you can focus on what matters most – your project.\n[Install innatera Core](command:Innatera-ide.openPIOCoreCLI)",
+            "description": "[innatera Core](https://bit.ly/vscode-innatera-core-docs) is the heart of innatera IDE and it's your one-stop shop for professional embedded development.\nIt takes care of everything from dependency management to testing, so you can focus on what matters most – your project.\n[Install innatera Core](command:Innatera-snp-ide.openPIOCoreCLI)",
             "media": {
               "image": "assets/welcome/innatera-core-cli-demo.png",
               "altText": "innatera Core CLI Demo"
@@ -646,10 +685,10 @@
             ]
           },
           {
-            "id": "innaterapluginio.ini",
+            "id": "conf.ini",
             "title": "Platform-agnostic shareable configuration",
             "icon": "assets/icons/file_type_innatera.svg",
-            "description": "[innaterapluginio.ini](https://bit.ly/vscode-innatera-ini-docs) is the single configuration file that lets you set up your development environment and share your configurations with your team or organization.\nLeverage a declarative approach to embedded development and the power of semantic versioning.\n[Learn More](https://bit.ly/vscode-innatera-ini-docs)",
+            "description": "[conf.ini](https://bit.ly/vscode-innatera-ini-docs) is the single configuration file that lets you set up your development environment and share your configurations with your team or organization.\nLeverage a declarative approach to embedded development and the power of semantic versioning.\n[Learn More](https://bit.ly/vscode-innatera-ini-docs)",
             "media": {
               "markdown": "assets/welcome/innatera-ini-example.md"
             },
@@ -660,7 +699,7 @@
           {
             "id": "innatera-home",
             "title": "Advanced project management",
-            "description": "Boost your product development with [innatera Home](https://bit.ly/vscode-innatera-home-docs) – a powerful, modern, and interactive user interface for advanced project management.\nIt allows you to enhance your project source code with advanced instruments such as firmware explorer, memory inspection, and static code analysis.\n[Open Innaera Home](command:Innatera-ide.showHome)\nTip: Use 🏠 icon at the bottom status bar.",
+            "description": "Boost your product development with [innatera Home](https://bit.ly/vscode-innatera-home-docs) – a powerful, modern, and interactive user interface for advanced project management.\nIt allows you to enhance your project source code with advanced instruments such as firmware explorer, memory inspection, and static code analysis.\n[Open Innaera Home](command:Innatera-snp-ide.showHome)\nTip: Use 🏠 icon at the bottom status bar.",
             "media": {
               "image": "assets/welcome/project-inspection-demo.png",
               "altText": "innatera Project Inspection Demo"
@@ -669,13 +708,13 @@
           {
             "id": "explore-more-resources",
             "title": "Explore more resources",
-            "description": "📦 Browse over 10,000 libraries from software vendors, open-source projects, and the community in the [innatera Registry](https://bit.ly/innatera-registry).\n🚀 Learn more about getting started with [innatera IDE for VSCode](https://bit.ly/Innatera-ide-for-vscode-docs).\n🧡 Have any ideas or need help with your project? Ask our awesome [innatera Community](https://community.innatera.org/).\n[Learn More](https://bit.ly/Innatera-ide-for-vscode-docs)",
+            "description": "📦 Browse over 10,000 libraries from software vendors, open-source projects, and the community in the [innatera Registry](https://bit.ly/innatera-registry).\n🚀 Learn more about getting started with [innatera IDE for VSCode](https://bit.ly/Innatera-snp-ide-for-vscode-docs).\n🧡 Have any ideas or need help with your project? Ask our awesome [innatera Community](https://community.innatera.org/).\n[Learn More](https://bit.ly/Innatera-snp-ide-for-vscode-docs)",
             "media": {
               "image": "assets/welcome/innatera-package-registry-demo.png",
               "altText": "innatera Package Registry"
             },
             "completionEvents": [
-              "onLink:https://bit.ly/Innatera-ide-for-vscode-docs"
+              "onLink:https://bit.ly/Innatera-snp-ide-for-vscode-docs"
             ]
           },
           {
@@ -683,11 +722,11 @@
             "title": "Ready to start?",
             "description": "Navigate to the innatera IDE View in the left activity bar and open an existing project or create a new one.\n[Open innatera IDE View](command:workbench.view.extension.innatera)",
             "media": {
-              "image": "assets/welcome/Innatera-ide-view-demo.png",
+              "image": "assets/welcome/Innatera-snp-ide-view-demo.png",
               "altText": "innatera IDE View"
             },
             "completionEvents": [
-              "onView:Innatera-ide.projectTasks"
+              "onView:Innatera-snp-ide.projectTasks"
             ]
           }
         ]
@@ -695,17 +734,17 @@
     ],
     "keybindings": [
       {
-        "command": "Innatera-ide.build",
+        "command": "Innatera-snp-ide.build",
         "key": "ctrl+alt+b",
         "when": "InnateraProjectReady"
       },
       {
-        "command": "Innatera-ide.upload",
+        "command": "Innatera-snp-ide.upload",
         "key": "ctrl+alt+u",
         "when": "InnateraProjectReady"
       },
       {
-        "command": "Innatera-ide.serialMonitor",
+        "command": "Innatera-snp-ide.serialMonitor",
         "key": "ctrl+alt+s",
         "when": "InnateraProjectReady"
       }
@@ -749,89 +788,89 @@
       "type": "object",
       "title": "innatera IDE",
       "properties": {
-        "Innatera-ide.activateProjectOnTextEditorChange": {
+        "Innatera-snp-ide.activateProjectOnTextEditorChange": {
           "type": "boolean",
           "default": false,
           "description": "Automatically activate project depending on an active opened text editor"
         },
-        "Innatera-ide.autoOpeninnateraIniFile": {
+        "Innatera-snp-ide.autoOpeninnateraIniFile": {
           "type": "boolean",
           "default": true,
-          "description": "Automatically open the `innaterapluginio.ini` file from a project when no other editors are opened"
+          "description": "Automatically open the `conf.ini` file from a project when no other editors are opened"
         },
-        "Innatera-ide.autoCloseSerialMonitor": {
+        "Innatera-snp-ide.autoCloseSerialMonitor": {
           "type": "boolean",
           "default": true,
           "description": "Automatically close Serial Port Monitor before uploading/testing"
         },
-        "Innatera-ide.autoRebuildAutocompleteIndex": {
+        "Innatera-snp-ide.autoRebuildAutocompleteIndex": {
           "type": "boolean",
           "default": true,
-          "description": "Automatically rebuild the project IntelliSense index when innaterapluginio.ini is changed or when new libraries are installed"
+          "description": "Automatically rebuild the project IntelliSense index when conf.ini is changed or when new libraries are installed"
         },
-        "Innatera-ide.showEditorTitleShortcuts": {
+        "Innatera-snp-ide.showEditorTitleShortcuts": {
           "type": "boolean",
           "default": true,
           "description": "Show Build, Upload, Clean, and other buttons in the editor title bar"
         },
-        "Innatera-ide.autoPreloadEnvTasks": {
+        "Innatera-snp-ide.autoPreloadEnvTasks": {
           "type": "boolean",
           "default": false,
           "description": "Automatically preload ALL project environment tasks"
         },
-        "Innatera-ide.customPATH": {
+        "Innatera-snp-ide.customPATH": {
           "type": [
             "string",
             "null"
           ],
           "default": null,
-          "description": "Custom PATH for the `innatera` command, if you prefer to use a custom version of innatera Core. Fill in the result of the system terminal command `echo $PATH` (Unix) / `echo %PATH%` (Windows)."
+          "description": "Custom PATH for the `Innatera` command, if you prefer to use a custom version of Innatera Core. Fill in the result of the system terminal command `echo $PATH` (Unix) / `echo %PATH%` (Windows)."
         },
-        "Innatera-ide.reopenSerialMonitorDelay": {
+        "Innatera-snp-ide.reopenSerialMonitorDelay": {
           "type": "integer",
           "default": 0,
           "minimum": 0,
           "description": "Time in milliseconds after which the Serial Port Monitor is reopened"
         },
-        "Innatera-ide.useBuiltinPython": {
+        "Innatera-snp-ide.useBuiltinPython": {
           "type": "boolean",
           "default": true,
           "description": "Use a portable Python 3 Interpreter if available"
         },
-        "Innatera-ide.useBuiltinPIOCore": {
+        "Innatera-snp-ide.useBuiltinInnateraCore": {
           "type": "boolean",
           "default": true,
-          "description": "Use a built-in innatera Core"
+          "description": "Use a built-in Innatera Core"
         },
-        "Innatera-ide.useDevelopmentPIOCore": {
+        "Innatera-snp-ide.useDevelopmentInnateraCore": {
           "type": "boolean",
           "default": false,
-          "description": "Use a development version of innatera Core"
+          "description": "Use a development version of Innatera Core"
         },
-        "Innatera-ide.disablePIOHomeStartup": {
+        "Innatera-snp-ide.disableInnateraHomeStartup": {
           "type": "boolean",
           "default": false,
-          "description": "Disable showing PIO Home at startup"
+          "description": "Disable showing Innatera Home at startup"
         },
-        "Innatera-ide.pioHomeServerHttpHost": {
+        "Innatera-snp-ide.innateraHomeServerHttpHost": {
           "type": "string",
           "default": "127.0.0.1",
-          "description": "innatera Home server HTTP host (default is 127.0.0.1, but in case of dockerized environments 0.0.0.0)"
+          "description": "Innatera Home server HTTP host (default is 127.0.0.1, but in case of dockerized environments 0.0.0.0)"
         },
-        "Innatera-ide.pioHomeServerHttpPort": {
+        "Innatera-snp-ide.innateraHomeServerHttpPort": {
           "type": "integer",
-          "description": "innatera Home server HTTP port (the default value 0 automatically assigns a free port in the range [45000..45999])"
+          "description": "Innatera Home server HTTP port (the default value 0 automatically assigns a free port in the range [45000..45999])"
         },
-        "Innatera-ide.pioCustomServerHttpHost": {
+        "Innatera-snp-ide.innateraCustomServerHttpHost": {
           "type": "string",
           "default": "127.0.0.2",
-          "description": "innatera Custom server HTTP host (default is 127.0.0.2, but in case of dockerized environments 0.0.0.0)"
+          "description": "Innatera Custom server HTTP host (default is 127.0.0.2, but in case of dockerized environments 0.0.0.0)"
         },
-        "Innatera-ide.pioCustomServerHttpPort": {
+        "Innatera-snp-ide.innateraCustomServerHttpPort": {
           "type": "integer",
-          "description": "innatera Custom server HTTP port (the default value 0 automatically assigns a free port in the range [45000..45999])"
+          "description": "Innatera Custom server HTTP port (the default value 0 automatically assigns a free port in the range [45000..45999])"
         },
-        "Innatera-ide.customPyPiIndexUrl": {
+        "Innatera-snp-ide.customPyPiIndexUrl": {
           "type": [
             "string",
             "null"
@@ -839,7 +878,7 @@
           "default": null,
           "description": "Custom base URL of the Python Package Index (default `https://pypi.org/simple`)"
         },
-        "Innatera-ide.toolbar": {
+        "Innatera-snp-ide.toolbar": {
           "description": "innatera Toolbar",
           "type": "array",
           "items": {
@@ -921,48 +960,48 @@
             {
               "text": "$(home)",
               "tooltip": "innatera: Home",
-              "commands": "Innatera-ide.showHome"
+              "commands": "Innatera-snp-ide.showHome"
             },
             {
               "text": "$(check)",
               "tooltip": "innatera: Python Run",
-              "commands": "Innatera-ide.python_run",
+              "commands": "Innatera-snp-ide.python_run",
               "when": "talamo, combine"
             },
             {
               "text": "$(check)",
               "tooltip": "innatera: Build",
-              "commands": "Innatera-ide.build",
+              "commands": "Innatera-snp-ide.build",
               "when": "spine, combine"
             },  
             {
               "text": "$(arrow-right)",
               "tooltip": "Innnatera: Upload",
-              "commands": "Innatera-ide.upload",
+              "commands": "Innatera-snp-ide.upload",
               "when": "talamo, spine, combine"
             },
             {
               "text": "$(trashcan)",
               "tooltip": "innatera: Clean",
-              "commands": "Innatera-ide.clean",
+              "commands": "Innatera-snp-ide.clean",
               "when": "talamo, spine, combine"
             },
             {
               "text": "$(beaker)",
               "tooltip": "innatera: Test",
-              "commands": "Innatera-ide.test",
+              "commands": "Innatera-snp-ide.test",
               "when": "talamo, spine, combine"
             },
             {
               "text": "$(plug)",
               "tooltip": "innatera: Serial Monitor",
-              "commands": "Innatera-ide.serialMonitor",
+              "commands": "Innatera-snp-ide.serialMonitor",
               "when": "talamo, spine, combine"
             },
             {
               "text": "$(terminal)",
               "tooltip": "innatera: New Terminal",
-              "commands": "Innatera-ide.newTerminal",
+              "commands": "Innatera-snp-ide.newTerminal",
               "when": "talamo, spine, combine"
             }
           ]
@@ -995,7 +1034,5 @@
   "extensionDependencies": [
     "ms-vscode.cpptools"
   ]
-
   
 }
-

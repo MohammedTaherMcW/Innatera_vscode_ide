@@ -128,8 +128,8 @@ export default class PIOCustom {
   async getWebviewContent(startUrl) {
     this._lastStartUrl = startUrl;
     await pioNodeHelpers.custom.ensureServerStarted({
-      port: extension.getConfiguration('pioCustomServerHttpPort'),
-      host: extension.getConfiguration('pioCustomServerHttpHost'),
+      port: extension.getConfiguration('innateraCustomServerHttpPort'),
+      host: extension.getConfiguration('innateraCustomServerHttpHost'),
       onIDECommand: await this.onIDECommand.bind(this),
     });
     const theme = this.getTheme();

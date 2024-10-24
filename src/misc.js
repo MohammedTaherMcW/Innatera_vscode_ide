@@ -35,7 +35,7 @@ export async function maybeRateExtension() {
     case 'Rate innatera IDE Extension':
       vscode.commands.executeCommand(
         'vscode.open',
-        vscode.Uri.parse('http://bit.ly/pio-vscode-rate'),
+        vscode.Uri.parse('https://innatera.com/'),
       );
       state.done = true;
       break;

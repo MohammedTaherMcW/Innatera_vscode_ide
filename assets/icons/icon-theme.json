@@ -4,7 +4,7 @@
       "iconPath": "./file_type_innatera.svg"  // Path to your custom icon
     }
   },
-  "fileNames": {
-    "innaterapluginio.ini": "innateraIcon"  // Associate the icon with the specific file name
+  "fileExtensions": {
+    "ini": "innateraIcon"  // Associate the icon with the specific file name
   }
 }

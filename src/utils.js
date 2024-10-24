@@ -49,8 +49,8 @@ export async function notifyError(title, err) {
 
 export function getIDEManifest() {
   //change for innatera otheriwse in VSCODE core is not gettign iniatilized 
-  //return vscode.extensions.getExtension('platformio.Innatera-ide').packageJSON;
-  return vscode.extensions.getExtension('innatera.Innatera-ide').packageJSON;
+  //return vscode.extensions.getExtension('platformio.Innatera-snp-ide').packageJSON;
+  return vscode.extensions.getExtension('innatera.Innatera-snp-ide').packageJSON;
 }
 
 export function getIDEVersion() {

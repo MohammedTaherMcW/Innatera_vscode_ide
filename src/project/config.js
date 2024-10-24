@@ -338,8 +338,8 @@ ${option.description}
    * Linting
    */
   async lintConfig(uri) {
-    // ignore non-innaterapluginio.ini docs
-    if (path.basename(uri.fsPath) !== 'innaterapluginio.ini') {
+    // ignore non-conf.ini docs
+    if (path.basename(uri.fsPath) !== 'conf.ini') {
       return;
     }
     const script = `

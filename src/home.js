@@ -111,8 +111,8 @@ export default class PIOHome {
   async getWebviewContent(startUrl) {
     this._lastStartUrl = startUrl;
     await pioNodeHelpers.home.ensureServerStarted({
-      port: extension.getConfiguration('pioHomeServerHttpPort'),
-      host: extension.getConfiguration('pioHomeServerHttpHost'),
+      port: extension.getConfiguration('innateraHomeServerHttpPort'),
+      host: extension.getConfiguration('innateraHomeServerHttpHost'),
       onIDECommand: await this.onIDECommand.bind(this),
     });
     const theme = this.getTheme();

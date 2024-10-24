@@ -108,20 +108,20 @@ export default class ProjectManager {
       vscode.workspace.onDidChangeWorkspaceFolders(() =>
         this.switchToProject(this.findActiveProjectDir()),
       ),
-      vscode.commands.registerCommand('Innatera-ide.rebuildProjectIndex', () =>
+      vscode.commands.registerCommand('Innatera-snp-ide.rebuildProjectIndex', () =>
         this._pool.getActiveObserver().rebuildIndex({ force: true }),
       ),
-      vscode.commands.registerCommand('Innatera-ide.refreshProjectTasks', () =>
+      vscode.commands.registerCommand('Innatera-snp-ide.refreshProjectTasks', () =>
         this._taskManager.refresh({ force: true }),
       ),
-      vscode.commands.registerCommand('Innatera-ide.toggleMultiEnvProjectTasks', () =>
+      vscode.commands.registerCommand('Innatera-snp-ide.toggleMultiEnvProjectTasks', () =>
         this._taskManager.toggleMultiEnvExplorer(),
       ),
-      vscode.commands.registerCommand('Innatera-ide._runProjectTask', (task) =>
+      vscode.commands.registerCommand('Innatera-snp-ide._runProjectTask', (task) =>
         this._taskManager.runTask(task),
       ),
       vscode.commands.registerCommand(
-        'Innatera-ide.activeEnvironment',
+        'Innatera-snp-ide.activeEnvironment',
         async () => await this._pool.getActiveObserver().revealActiveEnvironment(),
       ),
     ];
@@ -195,13 +195,13 @@ export default class ProjectManager {
     const observer = this._pool.getObserver(projectDir);
 
     // validate configuration file
-    const configUri = vscode.Uri.file(path.join(projectDir, 'innaterapluginio.ini'));
+    const configUri = vscode.Uri.file(path.join(projectDir, 'conf.ini'));
     try {
       const isConfigValid = await this._configProvider.lintConfig(configUri);
       if (!isConfigValid) {
         vscode.window.showErrorMessage(
           'The project configuration process has encountered an error due to ' +
-            "a problem with the 'innaterapluginio.ini' file. " +
+            "a problem with the 'conf.ini' file. " +
             'Please review the file and fix the issues.',
         );
         vscode.window.showTextDocument(configUri);
@@ -234,13 +234,13 @@ export default class ProjectManager {
         new ProjectTestManager(projectDir),
       );
 
-      // open "innaterapluginio.ini" if no visible editors
+      // open "conf.ini" if no visible editors
       if (
         vscode.window.visibleTextEditors.length === 0 &&
         extension.getConfiguration('autoOpenPlatformIOIniFile')
       ) {
         vscode.window.showTextDocument(
-          vscode.Uri.file(path.join(projectDir, 'innaterapluginio.ini')),
+          vscode.Uri.file(path.join(projectDir, 'conf.ini')),
         );
       }
     }
@@ -258,13 +258,13 @@ export default class ProjectManager {
     );
     this._sbEnvSwitcher.name = 'innatera: Project Environment Switcher';
     this._sbEnvSwitcher.tooltip = 'Switch  Project Environment';
-    this._sbEnvSwitcher.command = 'Innatera-ide.pickProjectEnv';
+    this._sbEnvSwitcher.command = 'Innatera-snp-ide.pickProjectEnv';
     this._sbEnvSwitcher.text = '$(root-folder) Loading...';
     this._sbEnvSwitcher.show();
 
     this.subscriptions.push(
       this._sbEnvSwitcher,
-      vscode.commands.registerCommand('Innatera-ide.pickProjectEnv', () =>
+      vscode.commands.registerCommand('Innatera-snp-ide.pickProjectEnv', () =>
         this.pickProjectEnv(),
       ),
     );
@@ -297,7 +297,7 @@ export default class ProjectManager {
       items.push({
         projectDir,
         label: 'Default',
-        description: `$(folder) ${shortProjectDir} ("default_envs" from "innaterapluginio.ini")`,
+        description: `$(folder) ${shortProjectDir} ("default_envs" from "conf.ini")`,
       });
       items.push(
         ...envs.map((env) => ({

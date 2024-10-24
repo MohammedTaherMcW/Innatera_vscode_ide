@@ -11,7 +11,7 @@ import vscode from 'vscode';
 
 export default class ProjectTaskManager {
   static PROVIDER_TYPE = 'innatera';
-  static TASKS_VIEW_ID = 'Innatera-ide.projectTasks';
+  static TASKS_VIEW_ID = 'Innatera-snp-ide.projectTasks';
   static AUTO_REFRESH_DELAY = 500; // 0.5 sec
 
   constructor(projectDir, projectObserver) {
@@ -94,7 +94,7 @@ export default class ProjectTaskManager {
 
     this.registerTaskBasedCommands(projectTasks);
     this.registerPortSwitcher();
-    vscode.commands.executeCommand('setContext', 'pioProjectTasksReady', true);
+    vscode.commands.executeCommand('setContext', 'innateraProjectTasksReady', true);
     vscode.commands.executeCommand(
       'setContext',
       'pioMultiEnvProject',
@@ -116,7 +116,6 @@ export default class ProjectTaskManager {
       envClone.PATH = process.env.Innatera_PATH;
       envClone.Path = process.env.Innatera_PATH;
     }
-    console.log("Envclone Path from innatera vscode",envClone);
     const vscodeTask = new vscode.Task(
       {
         type: ProjectTaskManager.PROVIDER_TYPE,
@@ -249,20 +248,20 @@ export default class ProjectTaskManager {
     };
     this.subscriptions.push(
 
-      vscode.commands.registerCommand('Innatera-ide.build', () => _runTask('C Build')),
-      vscode.commands.registerCommand('Innatera-ide.python_run', () => _runTask('Python Run')),
-      vscode.commands.registerCommand('Innatera-ide.upload', () =>
+      vscode.commands.registerCommand('Innatera-snp-ide.build', () => _runTask('C Build')),
+      vscode.commands.registerCommand('Innatera-snp-ide.python_run', () => _runTask('Python Run')),
+      vscode.commands.registerCommand('Innatera-snp-ide.upload', () =>
         _runTask('Upload'),
       ),
-      vscode.commands.registerCommand('Innatera-ide.uploadAndMonitor', () =>
+      vscode.commands.registerCommand('Innatera-snp-ide.uploadAndMonitor', () =>
         _runTask('Upload and Monitor'),
       ),
-      vscode.commands.registerCommand('Innatera-ide.clean', () => _runTask('Clean')),
-      vscode.commands.registerCommand('Innatera-ide.test', () => _runTask('Test')),
-      vscode.commands.registerCommand('Innatera-ide.serialMonitor', () =>
+      vscode.commands.registerCommand('Innatera-snp-ide.clean', () => _runTask('Clean')),
+      vscode.commands.registerCommand('Innatera-snp-ide.test', () => _runTask('Test')),
+      vscode.commands.registerCommand('Innatera-snp-ide.serialMonitor', () =>
         _runTask('Monitor'),
       ),
-      vscode.commands.registerCommand('Innatera-ide.custom', (startUrl) =>
+      vscode.commands.registerCommand('Innatera-snp-ide.custom', (startUrl) =>
         this.PIOCustom.toggle(startUrl),
       ),      
     );
@@ -276,12 +275,12 @@ export default class ProjectTaskManager {
     );
     this._sbPortSwitcher.name = 'innatera: Port Switcher';
     this._sbPortSwitcher.tooltip = 'Set upload/monitor/test port';
-    this._sbPortSwitcher.command = 'Innatera-ide.setProjectPort';
+    this._sbPortSwitcher.command = 'Innatera-snp-ide.setProjectPort';
     this.switchPort(this._customPort);
 
     this.subscriptions.push(
       this._sbPortSwitcher,
-      vscode.commands.registerCommand('Innatera-ide.setProjectPort', () =>
+      vscode.commands.registerCommand('Innatera-snp-ide.setProjectPort', () =>
         this.pickProjectPort(),
       ),
     );

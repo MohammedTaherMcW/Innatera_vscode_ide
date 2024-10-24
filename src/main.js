@@ -64,7 +64,7 @@ class PlatformIOVSCodeExtension {
 
     this.subscriptions.push(
       vscode.window.registerTreeDataProvider(
-        'Innatera-ide.quickAccess',
+        'Innatera-snp-ide.quickAccess',
         new QuickAccessTreeProvider(),
       ),
     );
@@ -74,7 +74,7 @@ class PlatformIOVSCodeExtension {
 
     if (!hasPIOProject) {
       this.subscriptions.push(
-        new PIOToolbar({ filterCommands: ['Innatera-ide.showHome'] }, 
+        new PIOToolbar({ filterCommands: ['Innatera-snp-ide.showHome'] }, 
         this.projectManager),
       );
       return;
@@ -103,14 +103,14 @@ class PlatformIOVSCodeExtension {
   }
 
   getConfiguration(id) {
-    return vscode.workspace.getConfiguration('Innatera-ide').get(id);
+    return vscode.workspace.getConfiguration('Innatera-snp-ide').get(id);
   }
 
   loadEnterpriseSettings() {
     const ext = vscode.extensions.all.find(
       (item) =>
         item.id.startsWith('innatera.') &&
-        item.id !== 'innatera.Innatera-ide' &&
+        item.id !== 'innatera.Innatera-snp-ide' &&
         item.isActive,
     );
     return ext && ext.exports ? ext.exports.settings : undefined;
@@ -233,34 +233,34 @@ class PlatformIOVSCodeExtension {
 
   async startPIOHome() {
     if (
-      this.getConfiguration('disablePIOHomeStartup') ||
+      this.getConfiguration('disableInnateraHomeStartup') ||
       !pioNodeHelpers.home.showAtStartup('vscode')
     ) {
       return;
     }
-    vscode.commands.executeCommand('Innatera-ide.showHome');
+    vscode.commands.executeCommand('Innatera-snp-ide.showHome');
   }
 
   registerGlobalCommands() {
     this.subscriptions.push(
-      vscode.commands.registerCommand('Innatera-ide.showHome', (startUrl) =>
+      vscode.commands.registerCommand('Innatera-snp-ide.showHome', (startUrl) =>
         this.pioHome.toggle(startUrl),
       ),
-      vscode.commands.registerCommand('Innatera-ide.newTerminal', () =>
+      vscode.commands.registerCommand('Innatera-snp-ide.newTerminal', () =>
         this.pioTerm.new().show(),
       ),
-      vscode.commands.registerCommand('Innatera-ide.openPIOCoreCLI', () =>
+      vscode.commands.registerCommand('Innatera-snp-ide.openPIOCoreCLI', () =>
         this.pioTerm.sendText('innaterapluginio --help'),
       ),
-      vscode.commands.registerCommand('Innatera-ide.runPIOCoreCommand', (cmd) =>
+      vscode.commands.registerCommand('Innatera-snp-ide.runPIOCoreCommand', (cmd) =>
         this.pioTerm.sendText(cmd),
       ),
-      vscode.commands.registerCommand('Innatera-ide.startDebugging', () => {
+      vscode.commands.registerCommand('Innatera-snp-ide.startDebugging', () => {
         vscode.commands.executeCommand('workbench.view.debug');
         vscode.commands.executeCommand('workbench.debug.action.toggleRepl');
         vscode.commands.executeCommand('workbench.action.debug.start');
       }),
-      vscode.commands.registerCommand('Innatera-ide.upgradeCore', () =>
+      vscode.commands.registerCommand('Innatera-snp-ide.upgradeCore', () =>
         this.pioTerm.sendText('echo "You have upgraded the Innatera Core"'),
       ),
     );
@@ -273,8 +273,8 @@ class PlatformIOVSCodeExtension {
   handleUseDevelopmentPIOCoreConfiguration() {
     return vscode.workspace.onDidChangeConfiguration(async (e) => {
       if (
-        !e.affectsConfiguration('Innatera-ide.useDevelopmentPIOCore') ||
-        !this.getConfiguration('useBuiltinPIOCore')
+        !e.affectsConfiguration('Innatera-snp-ide.useDevelopmentInnateraCore') ||
+        !this.getConfiguration('useBuiltinInnateraCore')
       ) {
         return;
       }

@@ -55,7 +55,7 @@ class ToolbarButtonCommands {
 }
 
 export default class PIOToolbar {
-  static RUN_BUTTON_COMMANDS_ID = 'Innatera-ide.runToolbarButtonCommand';
+  static RUN_BUTTON_COMMANDS_ID = 'Innatera-snp-ide.runToolbarButtonCommand';
   
   constructor(options = { filterCommands: undefined, ignoreCommands: undefined }, projectManager = undefined) {
       if(getPIOProjectDirs().length > 0 && projectManager) {
@@ -116,7 +116,7 @@ export default class PIOToolbar {
 
     this.subscriptions.push(
       vscode.workspace.onDidChangeConfiguration((e) =>
-        e.affectsConfiguration('Innatera-ide.toolbar') ? this.refresh() : undefined,
+        e.affectsConfiguration('Innatera-snp-ide.toolbar') ? this.refresh() : undefined,
       ),
       vscode.commands.registerCommand(
         PIOToolbar.RUN_BUTTON_COMMANDS_ID,

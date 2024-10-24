@@ -44,7 +44,7 @@ export default class ProjectTasksTreeProvider {
     treeItem.tooltip = task.title;
     treeItem.command = {
       title: task.title,
-      command: 'Innatera-ide._runProjectTask',
+      command: 'Innatera-snp-ide._runProjectTask',
       arguments: [task],
     };
     if (!task.coreEnv && task.multienv && this.multiEnvProject) {

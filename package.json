@@ -290,9 +290,21 @@
         "enablement": "pioProjectReady"
       },
       {
+				"category": "Innatera Debug",
+				"command": "platformio-debug.memory.deleteHistoryItem",
+				"title": "Remove",
+				"enablement": "pioProjectReady"
+			},
+			{
+				"category": "Innatera Debug",
+				"command": "platformio-debug.memory.updateNode",
+				"title": "Update",
+				"enablement": "pioProjectReady"
+			},
+      {
         "category": "Innatera Debug",
-        "command": "platformio-debug.memory.deleteHistoryItem",
-        "title": "Delete",
+        "command": "platformio-debug.memory.ViewType",
+        "title": "View Type",
         "enablement": "pioProjectReady"
       },
       {
@@ -301,6 +313,12 @@
         "title": "View Disassembly (Function)",
         "enablement": "pioProjectReady"
       },
+      {
+        "category": "Innatera Debug",
+        "command": "platformio-debug.registers.UpdateNode",
+				"title": "Update Node",
+				"enablement": "pioProjectReady"
+			},
       {
         "category": "Innatera Debug",
         "command": "platformio-debug.setForceDisassembly",
@@ -315,7 +333,6 @@
       {
         "language": "ini"
       },
-      
       {
         "language": "cpp"
       },
@@ -465,9 +482,20 @@
         },
         {
           "command": "platformio-debug.memory.deleteHistoryItem",
-          "when": "view == platformio-debug.memory",
-          "group": "inline"
-        }
+          "when": "view == platformio-debug.memory"
+        },
+        {
+					"command": "platformio-debug.registers.UpdateNode",
+					"when": "view == platformio-debug.registers"
+				},				
+        {
+					"command": "platformio-debug.memory.updateNode",
+					"when": "view == platformio-debug.memory"
+				},
+				{
+					"command": "platformio-debug.memory.ViewType",
+					"when": "view == platformio-debug.memory"
+				}
       ],
       "view/title": [
         {
@@ -994,8 +1022,5 @@
   },
   "extensionDependencies": [
     "ms-vscode.cpptools"
-  ]
-
-  
+  ] 
 }
-
